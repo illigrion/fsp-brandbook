@@ -1,0 +1,1640 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<title>ФСП · Brand Book</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+/* ───────── Fonts ───────── */
+@font-face { font-family: "Montserrat"; src: url("fonts/Montserrat-Light.ttf") format("truetype");      font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("fonts/Montserrat-Regular.ttf") format("truetype");    font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("fonts/Montserrat-Medium.ttf") format("truetype");     font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("fonts/Montserrat-SemiBold.ttf") format("truetype");   font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("fonts/Montserrat-Bold.ttf") format("truetype");       font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("fonts/Montserrat-ExtraBold.ttf") format("truetype");  font-weight: 800; font-style: normal; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("fonts/Montserrat-Black.ttf") format("truetype");      font-weight: 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("fonts/Montserrat-Italic.ttf") format("truetype");     font-weight: 400; font-style: italic; font-display: swap; }
+
+/* ───────── Tokens ───────── */
+:root{
+  --navy:       #2D4F91;
+  --navy-deep:  #1F3A6E;
+  --navy-50:    #EBF0F9;
+  --navy-100:   #D7DFEE;
+  --navy-200:   #A8B6D5;
+  --graphite:   #2A2A2D;
+  --graphite-700:#434242;
+  --graphite-500:#6E6E70;
+  --graphite-300:#A8A8A8;
+  --concrete:   #ECECEA;
+  --cement:     #C9C8C3;
+  --paper:      #F7F6F2;
+  --paper-2:    #FAFAF7;
+  --white:      #FFFFFF;
+  --red:        #C0071A;
+  --red-50:     #FDECEE;
+
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px;
+  --space-5: 24px; --space-6: 32px; --space-7: 48px; --space-8: 64px;
+  --space-9: 96px; --space-10: 128px;
+
+  --gutter: clamp(24px, 5vw, 80px);
+  --side-w: 280px;
+}
+
+/* ───────── Base ───────── */
+*{ box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: var(--paper); color: var(--graphite); }
+body{
+  font-family: "Montserrat", system-ui, -apple-system, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+.mono{ font-feature-settings: "tnum"; font-variant-numeric: tabular-nums; }
+.upper{ text-transform: uppercase; letter-spacing: 0.08em; }
+.tight{ letter-spacing: -0.02em; }
+
+/* ───────── Layout ───────── */
+.shell{
+  display: grid;
+  grid-template-columns: var(--side-w) 1fr;
+  min-height: 100vh;
+}
+@media (max-width: 900px){
+  .shell{ grid-template-columns: 1fr; }
+  .side{ position: static !important; height: auto !important; border-right: 0 !important; border-bottom: 1px solid var(--cement); }
+}
+
+.side{
+  position: sticky; top: 0; align-self: start; height: 100vh;
+  border-right: 1px solid var(--cement);
+  background: var(--paper);
+  padding: 32px 28px;
+  display: flex; flex-direction: column; gap: 28px;
+  overflow-y: auto;
+}
+.side .brand{
+  display: flex; align-items: center; gap: 12px;
+}
+.side .brand .name{
+  font-weight: 800; font-size: 14px; letter-spacing: 0.02em;
+}
+.side .brand .name small{
+  display: block; font-weight: 500; color: var(--graphite-500); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+}
+.side nav{ display: flex; flex-direction: column; gap: 2px; }
+.side nav a{
+  display: grid; grid-template-columns: 28px 1fr; align-items: baseline;
+  padding: 9px 0; font-size: 13px; color: var(--graphite-700); font-weight: 500;
+  border-top: 1px solid transparent;
+  transition: color .15s;
+}
+.side nav a:hover{ color: var(--navy); }
+.side nav a .n{ color: var(--graphite-300); font-weight: 400; font-feature-settings: "tnum"; font-size: 11px; }
+.side nav a.active{ color: var(--navy); }
+.side nav a.active .n{ color: var(--navy); }
+.side .meta{
+  margin-top: auto;
+  font-size: 11px; color: var(--graphite-500); letter-spacing: 0.04em;
+  line-height: 1.7;
+}
+.side .meta b{ color: var(--graphite); font-weight: 600; }
+
+.main{
+  background: var(--paper);
+  min-width: 0;
+}
+
+/* ───────── Section ───────── */
+.section{
+  padding: clamp(56px, 9vw, 128px) var(--gutter);
+  border-bottom: 1px solid var(--cement);
+  position: relative;
+}
+.section + .section{ border-top: 0; }
+.s-header{
+  display: grid; grid-template-columns: 80px 1fr; gap: 24px; align-items: baseline;
+  margin-bottom: 48px;
+}
+.s-header .num{
+  font-size: 12px; color: var(--graphite-500); font-weight: 500;
+  letter-spacing: 0.2em; text-transform: uppercase;
+}
+.s-header .kicker{ font-size: 12px; color: var(--navy); font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 8px; }
+.s-header h2{
+  margin: 0;
+  font-size: clamp(28px, 4.4vw, 56px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.02;
+  color: var(--graphite);
+}
+.s-header h2 em{ font-style: normal; color: var(--navy); }
+.s-header .sub{
+  margin-top: 18px;
+  font-size: 16px; color: var(--graphite-500); max-width: 60ch; line-height: 1.65;
+}
+
+/* ───────── Cover ───────── */
+.cover{
+  padding: 0 var(--gutter);
+  min-height: 100vh;
+  display: grid; grid-template-rows: 1fr auto;
+  position: relative; overflow: hidden;
+  background:
+    linear-gradient(180deg, var(--paper) 0%, var(--paper) 60%, var(--paper-2) 100%);
+}
+.cover-top{
+  display: flex; justify-content: space-between; align-items: flex-start;
+  padding-top: 36px;
+  font-size: 11px; color: var(--graphite-500); letter-spacing: 0.2em; text-transform: uppercase;
+}
+.cover-top span{ display: block; }
+.cover-mid{
+  align-self: end; padding-bottom: 80px;
+  display: grid; grid-template-columns: 1fr; gap: 32px;
+  position: relative; z-index: 2;
+  padding-right: clamp(0px, 16vw, 240px);
+}
+@media (max-width: 900px){ .cover-mid{ padding-right: 0; } }
+.cover-mark{ display: flex; align-items: center; gap: 28px; margin-bottom: 16px; }
+.cover-title{
+  font-size: clamp(64px, 10.5vw, 168px);
+  font-weight: 900;
+  line-height: 0.86;
+  letter-spacing: -0.04em;
+  color: var(--graphite);
+  margin: 0;
+}
+.cover-title em{ font-style: normal; color: var(--navy); }
+.cover-title .reg{
+  font-size: 0.18em; vertical-align: top; font-weight: 600; color: var(--graphite-500);
+  margin-left: 8px; letter-spacing: 0;
+}
+.cover-line{
+  display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px;
+  margin-top: 32px;
+  border-top: 1px solid var(--graphite); padding-top: 24px;
+}
+.cover-line div{ font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--graphite-700); font-weight: 600; }
+.cover-line div small{ display: block; color: var(--graphite-500); font-weight: 400; letter-spacing: 0.1em; margin-top: 6px; font-size: 11px; }
+.cover-line .c1{ grid-column: span 3; }
+.cover-line .c2{ grid-column: span 3; }
+.cover-line .c3{ grid-column: span 3; }
+.cover-line .c4{ grid-column: span 3; }
+
+.cover-stripes{
+  position: absolute; right: var(--gutter); top: 120px;
+  display: flex; gap: 14px;
+  opacity: 0.95;
+  z-index: 1;
+}
+@media (max-width: 900px){ .cover-stripes{ display: none; } }
+.cover-stripes .b{
+  width: 56px; height: 320px; background: var(--navy); border-radius: 0;
+}
+.cover-stripes .b.b2{ background: var(--navy-deep); }
+
+/* ───────── Mark / Logos ───────── */
+.mark{
+  display: inline-flex; align-items: stretch; gap: 0;
+}
+.mark .b{
+  display: inline-block;
+  background: var(--navy);
+}
+.lockup{
+  display: inline-flex; align-items: center; gap: 14px;
+}
+.lockup .marks{ display: inline-flex; gap: 4px; align-items: stretch; }
+.lockup .marks .b{ background: var(--navy); }
+.lockup .word{
+  display: inline-block;
+  font-weight: 800; line-height: 0.96; letter-spacing: 0.005em;
+  color: var(--graphite-700);
+}
+.lockup .word.dark{ color: var(--graphite-700); }
+.lockup .word.light{ color: var(--white); }
+.lockup .word span{ display: block; }
+.lockup .reg{ font-size: 0.32em; font-weight: 600; vertical-align: top; color: var(--graphite-500); margin-left: 4px; }
+.lockup.alt-blue .marks .b{ background: var(--navy); }
+.lockup.mono-light .marks .b{ background: var(--white); }
+.lockup.mono-light .word{ color: var(--white); }
+.lockup.mono-dark .marks .b{ background: var(--graphite); }
+.lockup.mono-dark .word{ color: var(--graphite); }
+.lockup.red-bg .marks .b{ background: var(--white); }
+.lockup.red-bg .word{ color: var(--white); }
+
+/* Sizes */
+.lockup.size-sm .word{ font-size: 16px; }
+.lockup.size-sm .marks{ height: 50px; }
+.lockup.size-sm .marks .b{ width: 12px; }
+.lockup.size-sm .marks{ gap: 3px; }
+.lockup.size-md .word{ font-size: 28px; }
+.lockup.size-md .marks{ height: 90px; }
+.lockup.size-md .marks .b{ width: 22px; }
+.lockup.size-md .marks{ gap: 5px; }
+.lockup.size-lg .word{ font-size: 48px; }
+.lockup.size-lg .marks{ height: 160px; }
+.lockup.size-lg .marks .b{ width: 36px; }
+.lockup.size-lg .marks{ gap: 8px; }
+.lockup.size-xl .word{ font-size: 76px; }
+.lockup.size-xl .marks{ height: 260px; }
+.lockup.size-xl .marks .b{ width: 58px; }
+.lockup.size-xl .marks{ gap: 13px; }
+
+.markbox{
+  display: inline-flex; gap: 5px; align-items: stretch;
+}
+.markbox .b{ background: var(--navy); width: 22px; height: 90px; }
+.markbox.sz-sm .b{ width: 10px; height: 42px; }
+.markbox.sz-md .b{ width: 22px; height: 90px; }
+.markbox.sz-lg .b{ width: 40px; height: 170px; }
+.markbox.sz-xl .b{ width: 64px; height: 270px; }
+
+/* ───────── Cards & grids ───────── */
+.grid-2{ display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.grid-3{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.grid-4{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.grid-6{ display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+@media (max-width: 900px){
+  .grid-2,.grid-3,.grid-4,.grid-6{ grid-template-columns: 1fr 1fr; }
+}
+
+.frame{
+  background: var(--white);
+  border: 1px solid var(--cement);
+  border-radius: 0;
+  padding: 32px;
+  display: flex; align-items: center; justify-content: center;
+  min-height: 220px;
+  position: relative;
+  overflow: hidden;
+}
+.frame.dark{ background: var(--graphite); border-color: var(--graphite); }
+.frame.navy{ background: var(--navy); border-color: var(--navy); }
+.frame.red{ background: var(--red); border-color: var(--red); }
+.frame.concrete{ background: var(--concrete); border-color: var(--concrete); }
+.frame .label{
+  position: absolute; left: 14px; bottom: 12px;
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--graphite-500); font-weight: 600;
+}
+.frame.dark .label, .frame.navy .label, .frame.red .label{ color: rgba(255,255,255,0.6); }
+
+/* ───────── Color swatches ───────── */
+.swatch{
+  position: relative; aspect-ratio: 1/1.18; padding: 22px; display: flex; flex-direction: column; justify-content: space-between;
+}
+.swatch.dark-text{ color: var(--graphite); }
+.swatch.light-text{ color: var(--white); }
+.swatch .top{ display: flex; justify-content: space-between; align-items: flex-start; font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; opacity: 0.85; }
+.swatch .bottom h3{ margin: 0; font-size: 22px; font-weight: 800; letter-spacing: -0.01em; }
+.swatch .bottom .codes{ margin-top: 6px; font-size: 11px; letter-spacing: 0.04em; font-feature-settings: "tnum"; opacity: 0.78; }
+.swatch .bottom .codes div{ line-height: 1.5; }
+
+.colorrow{
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--cement);
+  border: 1px solid var(--cement);
+}
+.colorrow .step{
+  padding: 18px 16px; min-height: 110px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.05em;
+}
+.colorrow .step .code{ font-size: 10px; opacity: 0.7; font-weight: 500; letter-spacing: 0.04em; font-feature-settings: "tnum"; }
+
+/* ───────── Type scale ───────── */
+.type-row{
+  display: grid; grid-template-columns: 110px 130px 1fr; gap: 24px; align-items: baseline;
+  padding: 18px 0; border-top: 1px solid var(--cement);
+}
+.type-row:last-child{ border-bottom: 1px solid var(--cement); }
+.type-row .meta{ font-size: 11px; color: var(--graphite-500); letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500; }
+.type-row .meta b{ display: block; color: var(--graphite); font-weight: 600; font-size: 12px; margin-bottom: 2px; }
+.type-row .specs{ font-size: 11px; color: var(--graphite-500); font-feature-settings: "tnum"; letter-spacing: 0.04em; }
+.type-row .specs b{ color: var(--graphite); font-weight: 600; }
+.type-row .sample{ color: var(--graphite); line-height: 1.05; letter-spacing: -0.01em; }
+.t-d1{ font-size: 92px; font-weight: 900; line-height: 0.92; letter-spacing: -0.035em; }
+.t-d2{ font-size: 64px; font-weight: 800; line-height: 0.96; letter-spacing: -0.025em; }
+.t-h1{ font-size: 44px; font-weight: 800; line-height: 1.04; letter-spacing: -0.02em; }
+.t-h2{ font-size: 32px; font-weight: 700; line-height: 1.1; letter-spacing: -0.015em; }
+.t-h3{ font-size: 22px; font-weight: 700; line-height: 1.2; letter-spacing: -0.005em; }
+.t-body-l{ font-size: 20px; font-weight: 400; line-height: 1.55; }
+.t-body{ font-size: 16px; font-weight: 400; line-height: 1.6; }
+.t-cap{ font-size: 12px; font-weight: 500; line-height: 1.5; letter-spacing: 0.12em; text-transform: uppercase; }
+
+/* ───────── Components ───────── */
+.btn{
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 24px; font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  background: var(--navy); color: var(--white); border: 1px solid var(--navy); cursor: pointer;
+  transition: background .15s, transform .12s;
+}
+.btn:hover{ background: var(--navy-deep); }
+.btn:active{ transform: translateY(1px); }
+.btn.secondary{ background: transparent; color: var(--navy); }
+.btn.secondary:hover{ background: var(--navy-50); }
+.btn.ghost{ background: transparent; color: var(--graphite); border-color: var(--graphite); }
+.btn.ghost:hover{ background: var(--graphite); color: var(--white); }
+.btn.danger{ background: var(--red); border-color: var(--red); }
+.btn.danger:hover{ background: #960512; }
+.btn.sm{ padding: 9px 16px; font-size: 11px; }
+.btn .arrow{ width: 16px; height: 1px; background: currentColor; position: relative; }
+.btn .arrow::after{ content: ""; position: absolute; right: 0; top: -3px; width: 7px; height: 7px; border-top: 1px solid currentColor; border-right: 1px solid currentColor; transform: rotate(45deg); }
+
+.field{
+  display: flex; flex-direction: column; gap: 6px; font-size: 12px;
+}
+.field label{ font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--graphite-500); font-size: 11px; }
+.field input, .field select, .field textarea{
+  font: inherit; font-size: 15px;
+  padding: 14px 16px; border: 1px solid var(--cement);
+  background: var(--white); color: var(--graphite);
+  border-radius: 0; outline: none; transition: border-color .15s;
+}
+.field input:focus, .field select:focus, .field textarea:focus{ border-color: var(--navy); }
+.field .help{ color: var(--graphite-500); font-weight: 500; }
+
+.badge{
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 12px; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  border: 1px solid currentColor; color: var(--navy);
+}
+.badge.solid{ background: var(--navy); color: var(--white); border-color: var(--navy); }
+.badge.red{ color: var(--red); }
+.badge.red.solid{ background: var(--red); color: var(--white); border-color: var(--red); }
+.badge .dot{ width: 6px; height: 6px; background: currentColor; }
+
+.card{
+  background: var(--white);
+  border: 1px solid var(--cement);
+  padding: 28px;
+  display: flex; flex-direction: column; gap: 16px;
+  position: relative;
+}
+.card .num{ font-size: 11px; color: var(--graphite-500); letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600; }
+.card h4{ margin: 0; font-size: 22px; font-weight: 700; letter-spacing: -0.005em; color: var(--graphite); }
+.card p{ margin: 0; font-size: 14px; color: var(--graphite-500); line-height: 1.6; }
+.card .stat{ display: flex; align-items: baseline; gap: 6px; }
+.card .stat b{ font-size: 56px; font-weight: 800; letter-spacing: -0.03em; color: var(--graphite); line-height: 1; }
+.card .stat span{ font-size: 14px; color: var(--graphite-500); font-weight: 500; }
+.card .cap{ font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--navy); font-weight: 700; }
+
+/* ───────── Don'ts ───────── */
+.do-grid{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+@media (max-width: 900px){ .do-grid{ grid-template-columns: 1fr 1fr; } }
+.do{
+  background: var(--white); border: 1px solid var(--cement); aspect-ratio: 1/1;
+  position: relative; display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+}
+.do.bad{ background: var(--paper-2); }
+.do .tag{
+  position: absolute; top: 12px; left: 12px;
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700;
+  color: var(--red);
+}
+.do.ok .tag{ color: #1F8A5B; }
+.do .label{ position: absolute; bottom: 12px; left: 14px; right: 14px; font-size: 11px; color: var(--graphite-500); font-weight: 500; line-height: 1.4; }
+
+/* ───────── III graphic pattern ───────── */
+.pattern{
+  width: 100%; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.pattern.large-mark .markbox .b{ width: 80px; height: 360px; }
+.pattern.row-bars{
+  background: var(--paper);
+  display: grid; grid-template-columns: repeat(20, 1fr); gap: 8px; padding: 40px;
+}
+.pattern.row-bars .bar{ background: var(--navy); height: 100%; }
+.pattern.row-bars .bar.alt{ background: var(--graphite); }
+.pattern.row-bars .bar.faint{ background: var(--cement); }
+.pattern.row-bars .bar.red{ background: var(--red); }
+.pattern.row-bars .bar.h-tall{ grid-row: span 1; }
+
+.layered{
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px;
+}
+.layered .layer{
+  aspect-ratio: 1/2.6;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700;
+  color: var(--white); padding: 12px; text-align: center; line-height: 1.4;
+}
+.layered .l1{ background: var(--navy); }
+.layered .l2{ background: var(--concrete); color: var(--graphite-700); }
+.layered .l3{ background: var(--navy-deep); }
+
+/* ───────── Photo / app cards ───────── */
+.photo{
+  background: var(--cement); aspect-ratio: 4/3; position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+.photo img{ width: 100%; height: 100%; object-fit: cover; }
+.photo .cap{ position: absolute; left: 16px; bottom: 14px; color: var(--white); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; }
+.photo.tall{ aspect-ratio: 3/4; }
+
+.app{
+  background: var(--white); border: 1px solid var(--cement);
+  padding: 0; overflow: hidden;
+  display: grid; grid-template-rows: 1fr auto;
+}
+.app .body{
+  height: 280px; display: flex; align-items: center; justify-content: center; padding: 20px;
+  position: relative;
+}
+.app .body img{ width: 100%; height: 100%; object-fit: cover; }
+.app .meta{
+  padding: 16px 20px; border-top: 1px solid var(--cement);
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--graphite-500); font-weight: 600;
+}
+.app .meta b{ color: var(--graphite); font-weight: 700; }
+
+/* ───────── Icons ───────── */
+.icon-grid{ display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+@media (max-width: 900px){ .icon-grid{ grid-template-columns: repeat(3, 1fr); } }
+.icon{
+  aspect-ratio: 1/1; border: 1px solid var(--cement); background: var(--white);
+  display: flex; align-items: center; justify-content: center; flex-direction: column;
+  padding: 18px; gap: 10px;
+}
+.icon svg{ width: 48px; height: 48px; stroke: var(--graphite); fill: none; stroke-width: 1.5; stroke-linecap: square; stroke-linejoin: miter; }
+.icon span{ font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--graphite-500); font-weight: 600; text-align: center; }
+
+/* ───────── Letterhead ───────── */
+.letterhead{
+  background: var(--white); border: 1px solid var(--cement); aspect-ratio: 0.707; max-width: 480px;
+  padding: 40px; display: flex; flex-direction: column; gap: 28px; position: relative;
+}
+.letterhead .header{ display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 16px; border-bottom: 1px solid var(--graphite); }
+.letterhead .corp{ font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--graphite-500); text-align: right; line-height: 1.6; }
+.letterhead .body{ font-size: 9px; line-height: 1.6; color: var(--graphite-700); }
+.letterhead .body h5{ font-size: 11px; margin: 0 0 8px; font-weight: 700; }
+.letterhead .body p{ margin: 0 0 8px; }
+.letterhead .footer{ margin-top: auto; padding-top: 12px; border-top: 1px solid var(--cement); font-size: 8px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--graphite-500); display: flex; justify-content: space-between; }
+
+/* ───────── Tone of voice ───────── */
+.voice{ display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+@media (max-width: 900px){ .voice{ grid-template-columns: 1fr; } }
+.voice .pair{ padding: 24px; border: 1px solid var(--cement); background: var(--white); }
+.voice .pair .line{ display: grid; grid-template-columns: 80px 1fr; gap: 16px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--cement); }
+.voice .pair .line:last-child{ border-bottom: 0; }
+.voice .pair .line .tag{ font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700; color: var(--navy); }
+.voice .pair .line .tag.no{ color: var(--red); }
+.voice .pair .line .t{ font-size: 14px; color: var(--graphite-700); line-height: 1.45; }
+.voice .pair h4{ margin: 0 0 8px; font-size: 16px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+
+/* ───────── Footer ───────── */
+.foot{
+  padding: 96px var(--gutter) 64px;
+  background: var(--graphite); color: var(--cement);
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 48px;
+}
+.foot h6{ margin: 0 0 16px; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--graphite-300); font-weight: 600; }
+.foot p{ margin: 0; line-height: 1.7; font-size: 14px; }
+.foot a:hover{ color: var(--white); }
+.foot .colophon{ font-size: 11px; color: var(--graphite-300); letter-spacing: 0.06em; }
+@media (max-width: 900px){ .foot{ grid-template-columns: 1fr; } }
+
+/* ───────── Misc ───────── */
+.rule{ height: 1px; background: var(--cement); margin: 56px 0; }
+.tag-row{ display: flex; flex-wrap: wrap; gap: 8px; }
+.kv{ display: grid; grid-template-columns: 200px 1fr; gap: 16px; padding: 14px 0; border-top: 1px solid var(--cement); font-size: 13px; }
+.kv:last-child{ border-bottom: 1px solid var(--cement); }
+.kv .k{ font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--graphite-500); font-weight: 600; }
+.kv .v{ color: var(--graphite); font-weight: 500; }
+
+.note{
+  font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--graphite-500); font-weight: 600;
+}
+.callout{
+  padding: 28px; background: var(--navy-50); border-left: 4px solid var(--navy);
+  font-size: 15px; line-height: 1.6; color: var(--navy-deep); font-weight: 500;
+}
+
+/* ───────── III mark utilities ───────── */
+.mk-inline{ display: inline-flex; gap: 2px; vertical-align: middle; }
+.mk-inline .b{ width: 5px; height: 18px; background: var(--navy); }
+.side .brand .mark{ display: inline-flex; gap: 3px; }
+.side .brand .mark .b{ width: 7px; height: 28px; background: var(--navy); }
+</style>
+</head>
+<body>
+
+<template id="__bundler_thumbnail" data-bg-color="#F7F6F2">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#F7F6F2"/>
+    <g transform="translate(420 240)">
+      <rect x="0"   y="0" width="80" height="320" fill="#2D4F91"/>
+      <rect x="120" y="0" width="80" height="320" fill="#2D4F91"/>
+      <rect x="240" y="0" width="80" height="320" fill="#2D4F91"/>
+    </g>
+    <text x="600" y="640" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="900" font-size="56" fill="#2A2A2D" letter-spacing="-1">FINSTROYPANEL</text>
+    <text x="600" y="690" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="600" font-size="20" fill="#6E6E70" letter-spacing="6">BRAND BOOK · 2026</text>
+  </svg>
+</template>
+
+<div class="shell">
+
+  <!-- ───────── Side nav ───────── -->
+  <aside class="side" data-screen-label="Sidebar">
+    <div class="brand">
+      <span class="mark"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+      <span class="name">FINSTROYPANEL<small>Brand Book 2026</small></span>
+    </div>
+
+    <nav id="sideNav">
+      <a href="#cover"><span class="n">00</span><span>Обложка</span></a>
+      <a href="#essence"><span class="n">01</span><span>О бренде</span></a>
+      <a href="#logo"><span class="n">02</span><span>Логотип</span></a>
+      <a href="#construction"><span class="n">03</span><span>Построение и отступы</span></a>
+      <a href="#donts"><span class="n">04</span><span>Что нельзя делать</span></a>
+      <a href="#color"><span class="n">05</span><span>Цвет</span></a>
+      <a href="#type"><span class="n">06</span><span>Типографика</span></a>
+      <a href="#pattern"><span class="n">07</span><span>Графический язык</span></a>
+      <a href="#icons"><span class="n">08</span><span>Иконография</span></a>
+      <a href="#photo"><span class="n">09</span><span>Фотография</span></a>
+      <a href="#grid"><span class="n">10</span><span>Сетка</span></a>
+      <a href="#components"><span class="n">11</span><span>UI-компоненты</span></a>
+      <a href="#applications"><span class="n">12</span><span>Применения</span></a>
+      <a href="#voice"><span class="n">13</span><span>Tone of voice</span></a>
+      <a href="#colophon"><span class="n">14</span><span>Контакты</span></a>
+    </nav>
+
+    <div class="meta">
+      <b>ФСП · ФИНСТРОЙПАНЕЛЬ</b><br />
+      Энергоэффективные дома<br />
+      из сборного железобетона<br /><br />
+      Версия документа · v1.0<br />
+      Май 2026
+    </div>
+  </aside>
+
+  <!-- ───────── Main ───────── -->
+  <main class="main">
+
+    <!-- 00 · Cover -->
+    <section class="section cover" id="cover" data-screen-label="00 Cover">
+      <div class="cover-stripes" aria-hidden="true">
+        <div class="b"></div>
+        <div class="b"></div>
+        <div class="b b2"></div>
+      </div>
+      <div class="cover-top">
+        <span>FSP · ФСП · 2026</span>
+        <span>Brand Book · v1.0</span>
+      </div>
+      <div class="cover-mid">
+        <div class="cover-mark">
+          <span class="badge red solid"><span class="dot" style="background:#fff"></span>Конфиденциально · Внутр. документ</span>
+        </div>
+        <h1 class="cover-title">
+          Дизайн-<br />система<em>.</em><span class="reg">®</span>
+        </h1>
+        <p style="max-width: 680px; font-size: 18px; line-height: 1.55; color: var(--graphite-700); font-weight: 500; margin: 12px 0 0;">
+          Правила работы с фирменным стилем «ФИНСТРОЙПАНЕЛЬ» — производителя энергоэффективных домов из&nbsp;сборного трёхслойного железобетона. Логотип, цвет, шрифт, графика, тон голоса и&nbsp;носители — в одном месте.
+        </p>
+        <div class="cover-line">
+          <div class="c1">Логотип<small>RU / EN, моно, версии</small></div>
+          <div class="c2">Палитра<small>Navy · Graphite · Red</small></div>
+          <div class="c3">Шрифт<small>Montserrat 300–900</small></div>
+          <div class="c4">Применения<small>Спецодежда · авто · соцсети</small></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 01 · Essence -->
+    <section class="section" id="essence" data-screen-label="01 Essence">
+      <div class="s-header">
+        <div class="num">01</div>
+        <div>
+          <div class="kicker">Суть бренда</div>
+          <h2>Три слоя — <em>одна стена.</em><br />Один знак — <em>весь бренд.</em></h2>
+          <p class="sub">
+            Производственная сила бренда — <b>трёхслойная железобетонная панель</b>: несущий слой, теплоизоляция, фасадный слой. Этот же принцип лежит в основе фирменного знака: три синих вертикальных бруска, читаемых как «панель в разрезе». Это рабочий, инженерный, узнаваемый символ — без декоративности.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid-3" style="gap: 0; border: 1px solid var(--cement);">
+        <div class="card" style="border: 0; border-right: 1px solid var(--cement);">
+          <div class="num">Слой 01</div>
+          <h4>Несущий железобетон</h4>
+          <p>Прочность, ответственность, инженерная точность. В бренде — насыщенный синий <b>Navy #2D4F91</b> как сигнал надёжности и&nbsp;корпоративного класса.</p>
+        </div>
+        <div class="card" style="border: 0; border-right: 1px solid var(--cement);">
+          <div class="num">Слой 02</div>
+          <h4>Теплоизоляция</h4>
+          <p>Энергоэффективность, забота, незаметная работа. В&nbsp;палитре — нейтральные тона <b>бетона и&nbsp;бумаги</b>, в&nbsp;типографике — лёгкие веса Montserrat.</p>
+        </div>
+        <div class="card" style="border: 0;">
+          <div class="num">Слой 03</div>
+          <h4>Фасад</h4>
+          <p>Лицо проекта, скорость монтажа, готовность под ключ. В&nbsp;коммуникациях — большой набор Black/ExtraBold-заголовков и&nbsp;контрастная&nbsp;геометрия.</p>
+        </div>
+      </div>
+
+      <div class="rule"></div>
+
+      <div class="grid-2" style="align-items: stretch;">
+        <div>
+          <div class="kicker" style="font-size: 12px; color: var(--navy); font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 16px;">Знак как чертёж панели</div>
+          <p style="font-size: 17px; line-height: 1.65; color: var(--graphite-700); margin: 0 0 18px;">
+            Три бруска одинаковой высоты — это и буква «Ш» (от «штамп / шов»), и&nbsp;литера «Ф» в&nbsp;трёх частях, и&nbsp;чертёжный разрез стенового модуля. Знак работает без надписи в&nbsp;маленьких применениях (favicon, печать, тиснение) и&nbsp;с&nbsp;надписью — в&nbsp;остальных.
+          </p>
+          <div class="tag-row">
+            <span class="badge">Инженерный</span>
+            <span class="badge">Геометричный</span>
+            <span class="badge">Масштабируемый</span>
+            <span class="badge">Бикультурный · RU/EN</span>
+          </div>
+        </div>
+        <div class="frame concrete" style="min-height: 320px;">
+          <div class="layered" style="width: 70%;">
+            <div class="layer l1">Несущий<br/>железобетон</div>
+            <div class="layer l2">Утеплитель<br/>120 мм</div>
+            <div class="layer l3">Фасадный<br/>слой</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 · Logo -->
+    <section class="section" id="logo" data-screen-label="02 Logo">
+      <div class="s-header">
+        <div class="num">02</div>
+        <div>
+          <div class="kicker">Логотип</div>
+          <h2>Один знак,<br/><em>два алфавита.</em></h2>
+          <p class="sub">Основная блокировка — горизонтальная: знак&nbsp;«III» + наборный wordmark из&nbsp;трёх строк. Логотип существует в&nbsp;латинской и&nbsp;кириллической версиях, в&nbsp;цветном, монохромном и&nbsp;инверсном исполнении.</p>
+        </div>
+      </div>
+
+      <!-- Primary lockup -->
+      <div class="frame" style="min-height: 360px; padding: 60px;">
+        <div class="lockup size-xl">
+          <span class="marks"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+          <span class="word dark">
+            <span>FIN</span><span>STROY</span><span>PANEL<span class="reg">®</span></span>
+          </span>
+        </div>
+        <span class="label">02.1 · Основной знак — латиница, на бумажном</span>
+      </div>
+
+      <div class="grid-2" style="margin-top: 24px;">
+        <div class="frame" style="min-height: 280px;">
+          <div class="lockup size-lg">
+            <span class="marks"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+            <span class="word dark">
+              <span>ФИН</span><span>СТРОЙ</span><span>ПАНЕЛЬ<span class="reg">®</span></span>
+            </span>
+          </div>
+          <span class="label">02.2 · Кириллический вариант</span>
+        </div>
+        <div class="frame dark" style="min-height: 280px;">
+          <div class="lockup size-lg mono-light">
+            <span class="marks"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+            <span class="word light">
+              <span>FIN</span><span>STROY</span><span>PANEL<span class="reg" style="color:var(--graphite-300)">®</span></span>
+            </span>
+          </div>
+          <span class="label">02.3 · Инверсия на графите</span>
+        </div>
+      </div>
+
+      <div class="grid-3" style="margin-top: 24px;">
+        <div class="frame navy" style="min-height: 220px;">
+          <div class="lockup size-md mono-light">
+            <span class="marks"><span class="b" style="background:#fff"></span><span class="b" style="background:#fff"></span><span class="b" style="background:#fff"></span></span>
+            <span class="word light">
+              <span>ФИН</span><span>СТРОЙ</span><span>ПАНЕЛЬ</span>
+            </span>
+          </div>
+          <span class="label" style="color:rgba(255,255,255,0.6)">02.4 · На фирменном синем</span>
+        </div>
+        <div class="frame red" style="min-height: 220px;">
+          <div class="lockup size-md red-bg">
+            <span class="marks"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+            <span class="word">
+              <span>ФИН</span><span>СТРОЙ</span><span>ПАНЕЛЬ</span>
+            </span>
+          </div>
+          <span class="label" style="color:rgba(255,255,255,0.7)">02.5 · На красном (спецодежда)</span>
+        </div>
+        <div class="frame" style="min-height: 220px; background: var(--concrete); border-color: var(--concrete);">
+          <div class="lockup size-md mono-dark">
+            <span class="marks"><span class="b" style="background:var(--graphite)"></span><span class="b" style="background:var(--graphite)"></span><span class="b" style="background:var(--graphite)"></span></span>
+            <span class="word" style="color: var(--graphite)">
+              <span>FIN</span><span>STROY</span><span>PANEL</span>
+            </span>
+          </div>
+          <span class="label">02.6 · Монохромный на сером</span>
+        </div>
+      </div>
+
+      <!-- Mark-only -->
+      <div class="rule"></div>
+      <div class="grid-3" style="gap: 16px; align-items: stretch;">
+        <div class="frame" style="min-height: 260px;">
+          <span class="markbox sz-lg"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+          <span class="label">02.7 · Только знак (favicon · печать)</span>
+        </div>
+        <div class="frame dark" style="min-height: 260px;">
+          <span class="markbox sz-lg"><span class="b" style="background:#fff"></span><span class="b" style="background:#fff"></span><span class="b" style="background:#fff"></span></span>
+          <span class="label">02.8 · Знак, инверсия</span>
+        </div>
+        <div class="frame" style="min-height: 260px; background: var(--paper-2); border: 1px dashed var(--graphite-300); flex-direction: column; gap: 12px;">
+          <div style="display: flex; gap: 18px; align-items: flex-end;">
+            <span class="markbox sz-sm"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+            <span class="markbox sz-md"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+            <span class="markbox sz-lg"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+          </div>
+          <span class="label">02.9 · Размерный ряд: 16 / 40 / 80 px</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 · Construction -->
+    <section class="section" id="construction" data-screen-label="03 Construction" style="background: var(--paper-2);">
+      <div class="s-header">
+        <div class="num">03</div>
+        <div>
+          <div class="kicker">Построение · охранная зона</div>
+          <h2>Геометрия знака<br/>построена на модуле <em>X</em>.</h2>
+          <p class="sub">Каждый брусок знака равен модулю <b>X</b>. Расстояние между брусками — <b>½&nbsp;X</b>. Охранная зона вокруг логотипа — <b>1&nbsp;X</b> с&nbsp;каждой стороны. В&nbsp;охранной зоне не&nbsp;размещается никакая графика, текст или фотоконтент.</p>
+        </div>
+      </div>
+
+      <div class="grid-2" style="gap: 32px;">
+        <!-- Construction diagram -->
+        <div class="frame" style="min-height: 460px; padding: 48px;">
+          <svg viewBox="0 0 320 240" style="width:100%; max-width: 460px;">
+            <defs>
+              <pattern id="dash" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(0)">
+                <line x1="0" y1="3" x2="6" y2="3" stroke="#A8A8A8" stroke-width="0.5" stroke-dasharray="2 2"/>
+              </pattern>
+            </defs>
+            <!-- Clear space rectangle -->
+            <rect x="20" y="40" width="280" height="160" fill="none" stroke="#A8A8A8" stroke-width="0.7" stroke-dasharray="3 3"/>
+            <text x="160" y="32" text-anchor="middle" fill="#6E6E70" font-size="9" font-weight="600" letter-spacing="2">CLEAR SPACE = 1X</text>
+            <!-- Bars -->
+            <g transform="translate(60,80)">
+              <rect x="0"   y="0" width="20" height="80" fill="#2D4F91"/>
+              <rect x="30"  y="0" width="20" height="80" fill="#2D4F91"/>
+              <rect x="60"  y="0" width="20" height="80" fill="#2D4F91"/>
+              <!-- X dim arrows -->
+              <line x1="0" y1="100" x2="20" y2="100" stroke="#2D4F91" stroke-width="0.8"/>
+              <text x="10" y="112" text-anchor="middle" fill="#2D4F91" font-size="8" font-weight="700">X</text>
+              <line x1="20" y1="-12" x2="30" y2="-12" stroke="#6E6E70" stroke-width="0.5"/>
+              <text x="25" y="-16" text-anchor="middle" fill="#6E6E70" font-size="7">½X</text>
+              <line x1="-12" y1="0" x2="-12" y2="80" stroke="#6E6E70" stroke-width="0.5"/>
+              <text x="-18" y="44" text-anchor="middle" fill="#6E6E70" font-size="8" font-weight="700">4X</text>
+            </g>
+            <!-- Wordmark mock -->
+            <g transform="translate(170,80)" fill="#434242">
+              <rect x="0" y="2" width="36" height="22" fill="#434242"/>
+              <rect x="0" y="29" width="68" height="22" fill="#434242"/>
+              <rect x="0" y="56" width="80" height="22" fill="#434242"/>
+            </g>
+            <!-- Outer X arrow -->
+            <line x1="10" y1="220" x2="30" y2="220" stroke="#2D4F91" stroke-width="0.8"/>
+            <text x="20" y="232" text-anchor="middle" fill="#2D4F91" font-size="8" font-weight="700">1X</text>
+          </svg>
+          <span class="label">03.1 · Модуль X — ширина одного бруска</span>
+        </div>
+
+        <!-- Specs -->
+        <div>
+          <div class="kv"><div class="k">Высота знака</div><div class="v">4×X (4 модуля)</div></div>
+          <div class="kv"><div class="k">Ширина бруска</div><div class="v">1×X</div></div>
+          <div class="kv"><div class="k">Расстояние между брусками</div><div class="v">½×X</div></div>
+          <div class="kv"><div class="k">Охранная зона</div><div class="v">1×X со всех сторон</div></div>
+          <div class="kv"><div class="k">Соотношение знак · текст</div><div class="v">Знак выровнен по высоте трёх строк wordmark</div></div>
+          <div class="kv"><div class="k">Минимальный размер · экран</div><div class="v">Высота знака не&nbsp;менее 24&nbsp;px</div></div>
+          <div class="kv"><div class="k">Минимальный размер · печать</div><div class="v">Высота знака не&nbsp;менее 8&nbsp;мм</div></div>
+          <div class="kv"><div class="k">Угол наклона</div><div class="v">0° — наклон запрещён</div></div>
+
+          <div class="callout" style="margin-top: 32px;">
+            На контрастных фонах допустима белая или одноцветная заливка знака. На&nbsp;фото — только в&nbsp;зоне нейтрального фона; запрещено накладывать знак на&nbsp;сложные текстуры (бетон с&nbsp;пятнами, лица, надписи).
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 · Donts -->
+    <section class="section" id="donts" data-screen-label="04 Donts">
+      <div class="s-header">
+        <div class="num">04</div>
+        <div>
+          <div class="kicker">Что нельзя делать</div>
+          <h2>Восемь вещей,<br/>от которых <em>знак ломается</em>.</h2>
+          <p class="sub">Любое из этих действий уничтожает узнаваемость и&nbsp;инженерный характер знака. Если сомневаетесь — используйте основную версию.</p>
+        </div>
+      </div>
+
+      <div class="do-grid">
+        <!-- 1 OK -->
+        <div class="do ok">
+          <span class="tag">Так — можно</span>
+          <div class="lockup size-sm"><span class="marks"><span class="b"></span><span class="b"></span><span class="b"></span></span><span class="word dark"><span>FIN</span><span>STROY</span><span>PANEL</span></span></div>
+          <span class="label">Основная блокировка, исходные пропорции</span>
+        </div>
+        <!-- 2 -->
+        <div class="do bad">
+          <span class="tag">Нельзя</span>
+          <div class="lockup size-sm" style="transform: rotate(-12deg);"><span class="marks"><span class="b"></span><span class="b"></span><span class="b"></span></span><span class="word dark"><span>FIN</span><span>STROY</span><span>PANEL</span></span></div>
+          <span class="label">Поворачивать или наклонять знак</span>
+        </div>
+        <!-- 3 -->
+        <div class="do bad">
+          <span class="tag">Нельзя</span>
+          <div class="lockup size-sm" style="transform: scaleX(0.55);"><span class="marks"><span class="b"></span><span class="b"></span><span class="b"></span></span><span class="word dark"><span>FIN</span><span>STROY</span><span>PANEL</span></span></div>
+          <span class="label">Сжимать или растягивать пропорции</span>
+        </div>
+        <!-- 4 -->
+        <div class="do bad">
+          <span class="tag">Нельзя</span>
+          <div class="lockup size-sm"><span class="marks"><span class="b" style="background:#19A33C"></span><span class="b" style="background:#F2A93B"></span><span class="b" style="background:#C0071A"></span></span><span class="word dark"><span>FIN</span><span>STROY</span><span>PANEL</span></span></div>
+          <span class="label">Перекрашивать брусья в&nbsp;нефирменные цвета</span>
+        </div>
+        <!-- 5 -->
+        <div class="do bad" style="background: linear-gradient(135deg, #b04 0%, #0bf 100%);">
+          <span class="tag" style="color:#fff">Нельзя</span>
+          <div class="lockup size-sm mono-light"><span class="marks"><span class="b" style="background:#fff"></span><span class="b" style="background:#fff"></span><span class="b" style="background:#fff"></span></span><span class="word light"><span>FIN</span><span>STROY</span><span>PANEL</span></span></div>
+          <span class="label" style="color:rgba(255,255,255,0.85)">Размещать на&nbsp;сложных градиентах и&nbsp;фото</span>
+        </div>
+        <!-- 6 -->
+        <div class="do bad">
+          <span class="tag">Нельзя</span>
+          <div class="lockup size-sm" style="filter: drop-shadow(0 6px 8px rgba(0,0,0,0.4));"><span class="marks"><span class="b"></span><span class="b"></span><span class="b"></span></span><span class="word dark"><span>FIN</span><span>STROY</span><span>PANEL</span></span></div>
+          <span class="label">Добавлять тени, объём, обводки, свечения</span>
+        </div>
+        <!-- 7 -->
+        <div class="do bad">
+          <span class="tag">Нельзя</span>
+          <div class="lockup size-sm"><span class="marks" style="gap:18px"><span class="b"></span><span class="b"></span><span class="b"></span></span><span class="word dark" style="margin-left:24px"><span>FIN</span><span>STROY</span><span>PANEL</span></span></div>
+          <span class="label">Менять расстояние между знаком и&nbsp;текстом</span>
+        </div>
+        <!-- 8 -->
+        <div class="do bad">
+          <span class="tag">Нельзя</span>
+          <div class="lockup size-sm"><span class="marks"><span class="b"></span><span class="b"></span></span><span class="word dark"><span>FIN</span><span>STROY</span><span>PANEL</span></span></div>
+          <span class="label">Удалять элементы знака (нужны три бруска)</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 · Color -->
+    <section class="section" id="color" data-screen-label="05 Color">
+      <div class="s-header">
+        <div class="num">05</div>
+        <div>
+          <div class="kicker">Цветовая система</div>
+          <h2>Синий держит,<br/>графит читает,<br/><em>красный сигналит.</em></h2>
+          <p class="sub">Три рабочих цвета и&nbsp;четыре опорных оттенка бетона и&nbsp;бумаги. Синий — основной идентификатор. Графит — рабочий текст. Красный — только сигнальная роль: спецодежда, важные предупреждения, акценты в&nbsp;инфографике.</p>
+        </div>
+      </div>
+
+      <!-- Primary swatches -->
+      <div class="grid-4" style="gap: 16px;">
+        <div class="swatch light-text" style="background: var(--navy);">
+          <div class="top"><span>Primary</span><span>01</span></div>
+          <div class="bottom"><h3>FSP Navy</h3>
+            <div class="codes">
+              <div>HEX · #2D4F91</div>
+              <div>RGB · 45 / 79 / 145</div>
+              <div>CMYK · 88 / 71 / 0 / 12</div>
+              <div>PMS · 287 C</div>
+            </div>
+          </div>
+        </div>
+        <div class="swatch light-text" style="background: var(--graphite);">
+          <div class="top"><span>Primary</span><span>02</span></div>
+          <div class="bottom"><h3>Graphite</h3>
+            <div class="codes">
+              <div>HEX · #2A2A2D</div>
+              <div>RGB · 42 / 42 / 45</div>
+              <div>CMYK · 0 / 0 / 0 / 90</div>
+              <div>Pantone · Black 7 C</div>
+            </div>
+          </div>
+        </div>
+        <div class="swatch dark-text" style="background: var(--paper); border: 1px solid var(--cement);">
+          <div class="top"><span>Primary</span><span>03</span></div>
+          <div class="bottom"><h3>Paper</h3>
+            <div class="codes">
+              <div>HEX · #F7F6F2</div>
+              <div>RGB · 247 / 246 / 242</div>
+              <div>CMYK · 0 / 0 / 3 / 0</div>
+              <div>Off-white — нейтрально-тёплый</div>
+            </div>
+          </div>
+        </div>
+        <div class="swatch light-text" style="background: var(--red);">
+          <div class="top"><span>Accent</span><span>04</span></div>
+          <div class="bottom"><h3>Signal Red</h3>
+            <div class="codes">
+              <div>HEX · #C0071A</div>
+              <div>RGB · 192 / 7 / 26</div>
+              <div>CMYK · 0 / 100 / 92 / 12</div>
+              <div>PMS · 186 C</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tints -->
+      <div class="rule"></div>
+      <div class="note" style="margin-bottom: 18px;">Оттеночная шкала · вспомогательные тона для интерфейсов и&nbsp;инфографики</div>
+      <div class="grid-2">
+        <div class="colorrow">
+          <div class="step" style="background:#1F3A6E; color:#fff">Navy 900<br/><span class="code">#1F3A6E</span></div>
+          <div class="step" style="background:#2D4F91; color:#fff">Navy 700<br/><span class="code">#2D4F91</span></div>
+          <div class="step" style="background:#A8B6D5; color:#1F3A6E">Navy 300<br/><span class="code">#A8B6D5</span></div>
+          <div class="step" style="background:#D7DFEE; color:#1F3A6E">Navy 100<br/><span class="code">#D7DFEE</span></div>
+          <div class="step" style="background:#EBF0F9; color:#1F3A6E">Navy 50<br/><span class="code">#EBF0F9</span></div>
+        </div>
+        <div class="colorrow">
+          <div class="step" style="background:#2A2A2D; color:#fff">Graphite 900<br/><span class="code">#2A2A2D</span></div>
+          <div class="step" style="background:#434242; color:#fff">Graphite 700<br/><span class="code">#434242</span></div>
+          <div class="step" style="background:#6E6E70; color:#fff">Graphite 500<br/><span class="code">#6E6E70</span></div>
+          <div class="step" style="background:#C9C8C3; color:#2A2A2D">Cement<br/><span class="code">#C9C8C3</span></div>
+          <div class="step" style="background:#ECECEA; color:#2A2A2D">Concrete<br/><span class="code">#ECECEA</span></div>
+        </div>
+      </div>
+
+      <div class="rule"></div>
+      <div class="grid-2">
+        <div>
+          <div class="kicker" style="font-size: 12px; color: var(--navy); font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 16px;">Пропорции в&nbsp;коммуникациях</div>
+          <p style="font-size: 16px; line-height: 1.65; color: var(--graphite-700); margin: 0 0 24px;">Любой носитель строится по&nbsp;принципу <b>60/30/8/2</b>: 60% — бумажный или бетонный фон, 30% — графит/текст, 8% — синий как акцент, 2% — красный только для&nbsp;сигнальных сообщений.</p>
+          <div style="display: flex; height: 80px; border: 1px solid var(--cement);">
+            <div style="flex: 60; background: var(--paper); position: relative;"><span class="label" style="position:absolute;left:14px;top:30px;color:var(--graphite-500)">60% Paper</span></div>
+            <div style="flex: 30; background: var(--graphite); position: relative;"><span class="label" style="position:absolute;left:14px;top:30px;color:rgba(255,255,255,0.6)">30%</span></div>
+            <div style="flex: 8; background: var(--navy);"></div>
+            <div style="flex: 2; background: var(--red);"></div>
+          </div>
+        </div>
+        <div>
+          <div class="kicker" style="font-size: 12px; color: var(--navy); font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 16px;">Доступность · контраст</div>
+          <div class="kv"><div class="k">Navy · White</div><div class="v">7.8 : 1 — AAA</div></div>
+          <div class="kv"><div class="k">Graphite · White</div><div class="v">15.4 : 1 — AAA</div></div>
+          <div class="kv"><div class="k">Navy · Paper</div><div class="v">7.5 : 1 — AAA</div></div>
+          <div class="kv"><div class="k">Red · White</div><div class="v">6.4 : 1 — AA Large</div></div>
+          <div class="kv"><div class="k">Navy · Navy-100</div><div class="v">5.9 : 1 — AA</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 · Type -->
+    <section class="section" id="type" data-screen-label="06 Type" style="background: var(--paper-2);">
+      <div class="s-header">
+        <div class="num">06</div>
+        <div>
+          <div class="kicker">Типографика</div>
+          <h2>Montserrat —<br/>от <em>Thin&nbsp;100</em> до&nbsp;<em>Black&nbsp;900</em>.</h2>
+          <p class="sub">Один шрифт на весь бренд. Montserrat закрывает русскую и&nbsp;латинскую графику и&nbsp;поддерживает девять весов. Заголовки — ExtraBold/Black, основной текст — Regular, технические подписи — Medium upper-case.</p>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 32px;">
+        <div style="font-size: clamp(64px, 12vw, 184px); font-weight: 900; letter-spacing: -0.04em; line-height: 0.9; color: var(--graphite);">Aa Яя 01.</div>
+        <div style="font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--graphite-500); font-weight: 600; margin-top: 12px;">Montserrat · 100 / 300 / 400 / 500 / 600 / 700 / 800 / 900 + italic</div>
+      </div>
+
+      <!-- Type scale -->
+      <div>
+        <div class="type-row">
+          <div class="meta"><b>Display 1</b>Hero · обложки</div>
+          <div class="specs"><b>92 / 86</b> px<br/>weight 900<br/>tracking −3.5%</div>
+          <div class="sample t-d1">Энергоэффективно.</div>
+        </div>
+        <div class="type-row">
+          <div class="meta"><b>Display 2</b>Section · посадочные</div>
+          <div class="specs"><b>64 / 60</b> px<br/>weight 800<br/>tracking −2.5%</div>
+          <div class="sample t-d2">Сборный железобетон.</div>
+        </div>
+        <div class="type-row">
+          <div class="meta"><b>Heading 1</b>Заголовки разделов</div>
+          <div class="specs"><b>44 / 46</b> px<br/>weight 800<br/>tracking −2%</div>
+          <div class="sample t-h1">Дома без компромиссов</div>
+        </div>
+        <div class="type-row">
+          <div class="meta"><b>Heading 2</b>Подзаголовки</div>
+          <div class="specs"><b>32 / 36</b> px<br/>weight 700<br/>tracking −1.5%</div>
+          <div class="sample t-h2">Трёхслойная панель</div>
+        </div>
+        <div class="type-row">
+          <div class="meta"><b>Heading 3</b>Карточки</div>
+          <div class="specs"><b>22 / 28</b> px<br/>weight 700<br/>tracking −0.5%</div>
+          <div class="sample t-h3">Заводское качество, монтаж под ключ</div>
+        </div>
+        <div class="type-row">
+          <div class="meta"><b>Body Large</b>Лиды</div>
+          <div class="specs"><b>20 / 32</b> px<br/>weight 400</div>
+          <div class="sample t-body-l">Панели изготавливаются в&nbsp;заводских условиях с&nbsp;точностью до&nbsp;миллиметра — это сокращает срок строительства в&nbsp;3–4 раза.</div>
+        </div>
+        <div class="type-row">
+          <div class="meta"><b>Body</b>Основной текст</div>
+          <div class="specs"><b>16 / 26</b> px<br/>weight 400</div>
+          <div class="sample t-body">Технология сочетает преимущества панельного и&nbsp;монолитного методов. Между внешним и&nbsp;внутренним слоями железобетона размещён теплоизоляционный слой.</div>
+        </div>
+        <div class="type-row">
+          <div class="meta"><b>Caption</b>Метки · техн. подписи</div>
+          <div class="specs"><b>12 / 18</b> px<br/>weight 500<br/>tracking +12% UPPER</div>
+          <div class="sample t-cap">Серия КП-3 · 2026 · ГОСТ 31310</div>
+        </div>
+      </div>
+
+      <div class="rule"></div>
+      <div class="grid-3">
+        <div class="card">
+          <div class="cap">Заголовки</div>
+          <h4>Montserrat 800–900</h4>
+          <p>Применяется только в&nbsp;заголовках, hero-секциях, числах в&nbsp;инфографике. Tracking отрицательный, кейс — допустим UPPER и&nbsp;sentence-case.</p>
+        </div>
+        <div class="card">
+          <div class="cap">Основной текст</div>
+          <h4>Montserrat 400 · 500</h4>
+          <p>Регуляр для абзацев, медиум для&nbsp;лидов и&nbsp;подписей в&nbsp;интерфейсах. Минимальный размер — 14&nbsp;px на&nbsp;экране, 9&nbsp;pt в&nbsp;печати.</p>
+        </div>
+        <div class="card">
+          <div class="cap">Технические подписи</div>
+          <h4>Montserrat 600 UPPER</h4>
+          <p>Tracking +0.12em. Используется в&nbsp;метках, рубриках, шильдиках, сертификатах. Не&nbsp;использовать для&nbsp;длинного текста.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 · Pattern -->
+    <section class="section" id="pattern" data-screen-label="07 Pattern">
+      <div class="s-header">
+        <div class="num">07</div>
+        <div>
+          <div class="kicker">Графический язык</div>
+          <h2>«III» —<br/><em>универсальный</em> графический модуль.</h2>
+          <p class="sub">Тройной брусок — не только знак, но и&nbsp;конструктивный элемент макетов. Из&nbsp;него собираются разделители, орнаменты, баннерные ленты, заполнения титульных страниц и&nbsp;инфографические сетки.</p>
+        </div>
+      </div>
+
+      <!-- Large mark on color -->
+      <div class="frame navy" style="min-height: 380px; padding: 0; overflow: hidden;">
+        <div style="display: flex; gap: 28px;">
+          <span class="markbox" style="gap:14px"><span class="b" style="background:#fff;width:48px;height:280px"></span><span class="b" style="background:#fff;width:48px;height:280px"></span><span class="b" style="background:#fff;width:48px;height:280px"></span></span>
+          <span class="markbox" style="gap:14px"><span class="b" style="background:#fff;opacity:0.4;width:48px;height:280px"></span><span class="b" style="background:#fff;opacity:0.4;width:48px;height:280px"></span><span class="b" style="background:#fff;opacity:0.4;width:48px;height:280px"></span></span>
+          <span class="markbox" style="gap:14px"><span class="b" style="background:#fff;opacity:0.18;width:48px;height:280px"></span><span class="b" style="background:#fff;opacity:0.18;width:48px;height:280px"></span><span class="b" style="background:#fff;opacity:0.18;width:48px;height:280px"></span></span>
+        </div>
+        <span class="label" style="color:rgba(255,255,255,0.7)">07.1 · Большой паттерн «уходящих панелей»</span>
+      </div>
+
+      <div class="grid-2" style="margin-top: 16px;">
+        <!-- Vertical bar pattern -->
+        <div class="frame" style="min-height: 320px; padding: 0;">
+          <div style="display:grid; grid-template-columns: repeat(24, 1fr); gap: 4px; width: 100%; height: 100%; padding: 32px;">
+            <!-- Generate bars with varying heights -->
+            <script>document.write(Array.from({length:24},(_,i)=>{
+              const h = [70,90,40,90,90,55,90,30,90,90,80,55,90,90,90,60,90,90,45,90,90,90,75,90][i];
+              const c = i===4||i===5||i===6 ? 'var(--navy)' : i===14 ? 'var(--red)' : 'var(--graphite)';
+              const op = i%4===0 ? 0.3 : 1;
+              return `<div style="background:${c}; height:${h}%; opacity:${op}; align-self:end;"></div>`;
+            }).join(''));</script>
+          </div>
+          <span class="label">07.2 · Лента-эквалайзер · применима в&nbsp;разделителях</span>
+        </div>
+
+        <!-- Diagonal -->
+        <div class="frame" style="min-height: 320px; padding: 0; overflow: hidden;">
+          <div style="display: flex; gap: 12px; transform: rotate(-12deg) scale(1.4); align-items: center;">
+            <span class="markbox" style="gap:6px"><span class="b" style="width:18px;height:140px"></span><span class="b" style="width:18px;height:140px"></span><span class="b" style="width:18px;height:140px"></span></span>
+            <span class="markbox" style="gap:6px"><span class="b" style="width:18px;height:140px;background:var(--graphite)"></span><span class="b" style="width:18px;height:140px;background:var(--graphite)"></span><span class="b" style="width:18px;height:140px;background:var(--graphite)"></span></span>
+            <span class="markbox" style="gap:6px"><span class="b" style="width:18px;height:140px;opacity:0.3"></span><span class="b" style="width:18px;height:140px;opacity:0.3"></span><span class="b" style="width:18px;height:140px;opacity:0.3"></span></span>
+            <span class="markbox" style="gap:6px"><span class="b" style="width:18px;height:140px"></span><span class="b" style="width:18px;height:140px"></span><span class="b" style="width:18px;height:140px"></span></span>
+            <span class="markbox" style="gap:6px"><span class="b" style="width:18px;height:140px;background:var(--red)"></span><span class="b" style="width:18px;height:140px;background:var(--red)"></span><span class="b" style="width:18px;height:140px;background:var(--red)"></span></span>
+          </div>
+          <span class="label">07.3 · Диагональная лента · обложки</span>
+        </div>
+      </div>
+
+      <!-- Concrete texture line / cutaway -->
+      <div class="grid-3" style="margin-top: 16px;">
+        <div class="frame concrete" style="min-height: 200px;">
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; width: 70%;">
+            <div style="background: var(--navy-deep); height: 120px;"></div>
+            <div style="background: var(--paper); height: 120px; display: flex; align-items: center; justify-content: center; font-size: 9px; color: var(--graphite-500); letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700;">PIR 120</div>
+            <div style="background: var(--navy); height: 120px;"></div>
+          </div>
+          <span class="label">07.4 · Чертёж панели в&nbsp;разрезе</span>
+        </div>
+        <div class="frame" style="min-height: 200px;">
+          <div style="font-size: 56px; font-weight: 900; letter-spacing: -0.04em; color: var(--graphite); line-height: 0.92; text-align: left; align-self: stretch; padding: 0 24px;">
+            <span style="color: var(--navy)">3</span>-слойная<br/>панель.<br/><span style="font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; color: var(--graphite-500);">120 мм утеплителя</span>
+          </div>
+          <span class="label">07.5 · Тип-объект с&nbsp;числовым акцентом</span>
+        </div>
+        <div class="frame" style="min-height: 200px; background: var(--graphite); border-color: var(--graphite);">
+          <div style="display: flex; gap: 10px; align-items: flex-end;">
+            <span class="markbox" style="gap:5px"><span class="b" style="background:var(--navy);width:22px;height:60px"></span><span class="b" style="background:var(--navy);width:22px;height:60px"></span><span class="b" style="background:var(--navy);width:22px;height:60px"></span></span>
+            <span class="markbox" style="gap:5px"><span class="b" style="background:#fff;width:22px;height:100px"></span><span class="b" style="background:#fff;width:22px;height:100px"></span><span class="b" style="background:#fff;width:22px;height:100px"></span></span>
+            <span class="markbox" style="gap:5px"><span class="b" style="background:var(--red);width:22px;height:140px"></span><span class="b" style="background:var(--red);width:22px;height:140px"></span><span class="b" style="background:var(--red);width:22px;height:140px"></span></span>
+          </div>
+          <span class="label" style="color: rgba(255,255,255,0.6)">07.6 · Цветовая вариация знака — крайний случай</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08 · Icons -->
+    <section class="section" id="icons" data-screen-label="08 Icons" style="background: var(--paper-2);">
+      <div class="s-header">
+        <div class="num">08</div>
+        <div>
+          <div class="kicker">Иконография</div>
+          <h2>Линейная,<br/><em>чертёжная</em>, на&nbsp;модуле 24.</h2>
+          <p class="sub">Все иконки — на&nbsp;сетке 24×24, обводка 1.5&nbsp;px, без скруглений и&nbsp;декоративных элементов. Стиль читается как&nbsp;инженерный чертёж: чёткие углы, чистая геометрия, никаких градиентов.</p>
+        </div>
+      </div>
+
+      <div class="icon-grid">
+        <div class="icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="4" height="18"/><rect x="10" y="3" width="4" height="18"/><rect x="17" y="3" width="4" height="18"/></svg>
+          <span>Панель</span>
+        </div>
+        <div class="icon">
+          <svg viewBox="0 0 24 24"><path d="M3 21 L12 4 L21 21 Z"/><path d="M3 21 L21 21" /></svg>
+          <span>Дом</span>
+        </div>
+        <div class="icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="9" width="18" height="12"/><path d="M3 9 L12 3 L21 9"/><rect x="10" y="13" width="4" height="8"/></svg>
+          <span>Объект</span>
+        </div>
+        <div class="icon">
+          <svg viewBox="0 0 24 24"><path d="M4 12 L11 19 L20 5"/></svg>
+          <span>Готово</span>
+        </div>
+        <div class="icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7 V13 L16 15"/></svg>
+          <span>Срок</span>
+        </div>
+        <div class="icon">
+          <svg viewBox="0 0 24 24"><path d="M12 3 L20 7 V13 C20 17.5 16.5 20.5 12 22 C7.5 20.5 4 17.5 4 13 V7 Z"/></svg>
+          <span>Гарантия</span>
+        </div>
+        <div class="icon">
+          <svg viewBox="0 0 24 24"><path d="M3 21 H21"/><path d="M5 21 V11 L12 6 L19 11 V21"/><rect x="9" y="14" width="6" height="7"/></svg>
+          <span>Завод</span>
+        </div>
+        <div class="icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12 H21 M12 3 C15 6 16 9 16 12 C16 15 15 18 12 21 C9 18 8 15 8 12 C8 9 9 6 12 3 Z"/></svg>
+          <span>Регионы</span>
+        </div>
+        <div class="icon">
+          <svg viewBox="0 0 24 24"><path d="M12 3 L4 7 L4 13 C4 17 8 20 12 21 C16 20 20 17 20 13 V7 Z"/><path d="M9 13 V11 C9 9.5 10 8 12 8 C14 8 15 9.5 15 11 V13 M8 13 H16 V18 H8 Z"/></svg>
+          <span>Стандарт</span>
+        </div>
+        <div class="icon">
+          <svg viewBox="0 0 24 24"><path d="M3 7 H21 V20 H3 Z"/><path d="M8 7 V4 H16 V7"/><path d="M3 12 H21"/></svg>
+          <span>Документ</span>
+        </div>
+        <div class="icon">
+          <svg viewBox="0 0 24 24"><path d="M3 21 H21 M5 21 V8 L12 4 L19 8 V21"/><path d="M9 12 H15 V21"/></svg>
+          <span>Этаж</span>
+        </div>
+        <div class="icon">
+          <svg viewBox="0 0 24 24"><path d="M3 17 L9 11 L13 15 L21 7"/><path d="M14 7 H21 V14"/></svg>
+          <span>Эффективность</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 09 · Photo -->
+    <section class="section" id="photo" data-screen-label="09 Photo">
+      <div class="s-header">
+        <div class="num">09</div>
+        <div>
+          <div class="kicker">Фотография</div>
+          <h2>Документально.<br/>Без&nbsp;<em>лака</em> и&nbsp;стока.</h2>
+          <p class="sub">Только настоящие сцены: производственная площадка, бригада в&nbsp;спецодежде, монтаж панели, готовый дом, портреты партнёров. Свет — естественный, цветокоррекция — нейтральная, контраст средний. Никаких ярких фильтров и&nbsp;«рекламной улыбки».</p>
+        </div>
+      </div>
+
+      <div class="grid-3" style="gap: 16px;">
+        <div class="photo" style="aspect-ratio: 4/3;"><img src="assets/logo_2026_23.png" alt="Сотрудник на стройке"/><span class="cap">9.1 · Поле · площадка</span></div>
+        <div class="photo" style="aspect-ratio: 4/3;"><img src="assets/logo_2026_16.png" alt="Спецодежда" /><span class="cap">9.2 · Спецодежда</span></div>
+        <div class="photo" style="aspect-ratio: 4/3;"><img src="assets/logo_2026_7.png" alt="Брендированный автомобиль" /><span class="cap">9.3 · Транспорт</span></div>
+      </div>
+
+      <div class="grid-3" style="margin-top: 32px;">
+        <div class="card">
+          <div class="cap">Что снимаем</div>
+          <h4>Реальные люди, реальные площадки</h4>
+          <p>Партнёры и&nbsp;бригады в&nbsp;спецодежде с&nbsp;логотипом. Объекты в&nbsp;процессе монтажа: каркас, кран, панель в&nbsp;стропах, бетонный двор завода.</p>
+        </div>
+        <div class="card">
+          <div class="cap">Как обрабатываем</div>
+          <h4>Нейтральная коррекция</h4>
+          <p>Баланс белого — холодноватый, до&nbsp;+200K к&nbsp;тёплому. Тени глубокие, света без выбивания. Никаких HDR, оранжево-бирюзы, наклонов.</p>
+        </div>
+        <div class="card">
+          <div class="cap">Чего избегаем</div>
+          <h4>Стоковый «успех»</h4>
+          <p>Запрещены постановочные рукопожатия, идеальные офисы, рендеры зданий вместо фото, преувеличенные эмоции, групповые «корпоративы».</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10 · Grid -->
+    <section class="section" id="grid" data-screen-label="10 Grid" style="background: var(--paper-2);">
+      <div class="s-header">
+        <div class="num">10</div>
+        <div>
+          <div class="kicker">Сетка и&nbsp;ритм</div>
+          <h2>12 колонок,<br/><em>модуль 8&nbsp;px</em>.</h2>
+          <p class="sub">Базовая сетка — 12 колонок, желоб 24&nbsp;px, поля 80&nbsp;px на&nbsp;десктопе. Базовый модуль для&nbsp;отступов — 8&nbsp;px. Высота строк ровно кратна модулю.</p>
+        </div>
+      </div>
+
+      <div class="frame" style="padding: 24px; min-height: 320px;">
+        <div style="width: 100%; display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; height: 280px;">
+          <div style="grid-column: span 12; background: var(--navy); height: 64px; display: flex; align-items: center; padding: 0 20px; color: #fff; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700;">Header · 12 col</div>
+          <div style="grid-column: span 8; background: var(--concrete); display: flex; align-items: center; padding: 0 20px; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--graphite-500); font-weight: 700;">Content · 8 col</div>
+          <div style="grid-column: span 4; background: var(--navy-100); display: flex; align-items: center; padding: 0 20px; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--navy-deep); font-weight: 700;">Aside · 4</div>
+          <div style="grid-column: span 4; background: var(--cement); display: flex; align-items: center; padding: 0 20px; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--graphite); font-weight: 700;">Card · 4</div>
+          <div style="grid-column: span 4; background: var(--cement); display: flex; align-items: center; padding: 0 20px; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--graphite); font-weight: 700;">Card · 4</div>
+          <div style="grid-column: span 4; background: var(--cement); display: flex; align-items: center; padding: 0 20px; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--graphite); font-weight: 700;">Card · 4</div>
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-top: 32px;">
+        <div>
+          <div class="kicker" style="font-size: 12px; color: var(--navy); font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 16px;">Брейкпойнты</div>
+          <div class="kv"><div class="k">XS · mobile</div><div class="v">≤ 480 · 4 col · gutter 16</div></div>
+          <div class="kv"><div class="k">SM · phablet</div><div class="v">481–768 · 6 col · gutter 20</div></div>
+          <div class="kv"><div class="k">MD · tablet</div><div class="v">769–1024 · 8 col · gutter 24</div></div>
+          <div class="kv"><div class="k">LG · desktop</div><div class="v">1025–1440 · 12 col · gutter 24</div></div>
+          <div class="kv"><div class="k">XL · wide</div><div class="v">≥ 1441 · 12 col · gutter 32</div></div>
+        </div>
+        <div>
+          <div class="kicker" style="font-size: 12px; color: var(--navy); font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 16px;">Шкала отступов · модуль 8&nbsp;px</div>
+          <div style="display: grid; grid-template-columns: 50px 50px 50px 50px 50px 50px 50px 50px; gap: 12px; align-items: end;">
+            <div style="height: 4px; background: var(--navy);" title="4"></div>
+            <div style="height: 8px; background: var(--navy);"></div>
+            <div style="height: 12px; background: var(--navy);"></div>
+            <div style="height: 16px; background: var(--navy);"></div>
+            <div style="height: 24px; background: var(--navy);"></div>
+            <div style="height: 32px; background: var(--navy);"></div>
+            <div style="height: 48px; background: var(--navy);"></div>
+            <div style="height: 64px; background: var(--navy);"></div>
+          </div>
+          <div style="display: grid; grid-template-columns: 50px 50px 50px 50px 50px 50px 50px 50px; gap: 12px; margin-top: 8px; font-size: 11px; color: var(--graphite-500); font-weight: 600; letter-spacing: 0.04em;">
+            <div>4</div><div>8</div><div>12</div><div>16</div><div>24</div><div>32</div><div>48</div><div>64</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11 · Components -->
+    <section class="section" id="components" data-screen-label="11 Components">
+      <div class="s-header">
+        <div class="num">11</div>
+        <div>
+          <div class="kicker">UI · компоненты</div>
+          <h2>Базовый набор<br/>для <em>сайта и&nbsp;презентаций</em>.</h2>
+          <p class="sub">Компоненты — квадратные, без скруглений, без теней. Контурные и&nbsp;залитые версии. Hover-состояния — потемнение/осветление на&nbsp;7&nbsp;% или смена фона на&nbsp;Navy&nbsp;50.</p>
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="grid-2" style="gap: 16px;">
+        <div class="frame" style="min-height: 220px; flex-direction: column; gap: 14px; align-items: flex-start; padding: 36px;">
+          <div class="note">11.1 · Кнопки</div>
+          <button class="btn">Заказать панель <span class="arrow"></span></button>
+          <button class="btn secondary">Каталог проектов</button>
+          <button class="btn ghost">Скачать каталог · PDF</button>
+          <button class="btn danger">Срочный запрос</button>
+          <div style="display: flex; gap: 8px; margin-top: 8px;">
+            <button class="btn sm">Sm primary</button>
+            <button class="btn sm secondary">Sm secondary</button>
+            <button class="btn sm ghost">Sm ghost</button>
+          </div>
+        </div>
+        <div class="frame" style="min-height: 220px; flex-direction: column; gap: 16px; align-items: stretch; padding: 36px;">
+          <div class="note">11.2 · Поля ввода</div>
+          <div class="field">
+            <label>ФИО</label>
+            <input type="text" value="Боев Антон Сергеевич" />
+          </div>
+          <div class="field" style="display:grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div class="field"><label>Телефон</label><input type="text" value="+7 ___ ___ __ __"/></div>
+            <div class="field"><label>Регион</label>
+              <select><option>Московская область</option><option>Тверская</option></select>
+            </div>
+          </div>
+          <div class="field"><label>Площадь дома, м²</label><input type="text" value="180"/><span class="help">от 80 до 600 м²</span></div>
+        </div>
+      </div>
+
+      <!-- Badges + tags -->
+      <div class="grid-2" style="gap: 16px; margin-top: 16px;">
+        <div class="frame" style="min-height: 200px; flex-direction: column; gap: 14px; align-items: flex-start; padding: 36px;">
+          <div class="note">11.3 · Бейджи и&nbsp;статусы</div>
+          <div class="tag-row">
+            <span class="badge"><span class="dot"></span>В производстве</span>
+            <span class="badge solid">Готово к&nbsp;монтажу</span>
+            <span class="badge">Серия КП-3</span>
+            <span class="badge red"><span class="dot"></span>Срочно</span>
+            <span class="badge red solid">Сертифицировано</span>
+            <span class="badge" style="color: var(--graphite-500); border-color: var(--graphite-300);">Архив</span>
+          </div>
+        </div>
+        <div class="frame" style="min-height: 200px; flex-direction: column; gap: 12px; align-items: flex-start; padding: 36px;">
+          <div class="note">11.4 · Метки и&nbsp;числовые акценты</div>
+          <div style="display: flex; gap: 24px; align-items: baseline;">
+            <div><div style="font-size:56px;font-weight:900;line-height:0.9;letter-spacing:-0.03em;color:var(--navy)">3×</div><div class="note" style="margin-top:8px">Быстрее монтажа</div></div>
+            <div><div style="font-size:56px;font-weight:900;line-height:0.9;letter-spacing:-0.03em;color:var(--graphite)">120<span style="font-size:24px;color:var(--graphite-500)">мм</span></div><div class="note" style="margin-top:8px">Утеплитель</div></div>
+            <div><div style="font-size:56px;font-weight:900;line-height:0.9;letter-spacing:-0.03em;color:var(--red)">−40<span style="font-size:24px;">%</span></div><div class="note" style="margin-top:8px">Тепло-потерь</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cards -->
+      <div class="grid-3" style="margin-top: 16px;">
+        <div class="card">
+          <div class="num">Проект · 011</div>
+          <div style="aspect-ratio: 4/3; background: var(--concrete); margin: -28px -28px 0; display: flex; align-items: center; justify-content: center;">
+            <span class="markbox sz-md"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+          </div>
+          <div style="padding-top: 16px;">
+            <span class="badge solid">Готово</span>
+            <h4 style="margin-top:12px">Дом «Север-180»</h4>
+            <p>2 этажа · 180&nbsp;м² · трёхслойная панель 320&nbsp;мм. Срок монтажа коробки — 14&nbsp;дней.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="num">Проект · 012</div>
+          <div style="aspect-ratio: 4/3; background: var(--navy); margin: -28px -28px 0; display: flex; align-items: center; justify-content: center;">
+            <span class="markbox sz-md"><span class="b" style="background:#fff"></span><span class="b" style="background:#fff"></span><span class="b" style="background:#fff"></span></span>
+          </div>
+          <div style="padding-top: 16px;">
+            <span class="badge">В&nbsp;производстве</span>
+            <h4 style="margin-top:12px">Таун-хаус «Кладово»</h4>
+            <p>4 секции · общая&nbsp;площадь 640&nbsp;м². Энергокласс А++, отопление — тепловой&nbsp;насос.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="num">Услуга · 003</div>
+          <div style="aspect-ratio: 4/3; background: var(--graphite); margin: -28px -28px 0; display: flex; align-items: center; justify-content: center;">
+            <span class="markbox sz-md"><span class="b" style="background:#fff"></span><span class="b" style="background:#fff"></span><span class="b" style="background:#fff"></span></span>
+          </div>
+          <div style="padding-top: 16px;">
+            <span class="badge red solid">Под ключ</span>
+            <h4 style="margin-top:12px">Проект → монтаж</h4>
+            <p>Полный цикл: расчёт, изготовление панелей, доставка, монтаж, отделка. Один договор, один менеджер.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12 · Applications -->
+    <section class="section" id="applications" data-screen-label="12 Applications" style="background: var(--paper-2);">
+      <div class="s-header">
+        <div class="num">12</div>
+        <div>
+          <div class="kicker">Носители</div>
+          <h2>От спецодежды<br/>до <em>фирменного бланка</em>.</h2>
+          <p class="sub">Логотип работает на&nbsp;твёрдых поверхностях (металл, бетон), на&nbsp;ткани и&nbsp;в&nbsp;цифровых интерфейсах. Расположение — по&nbsp;модульной сетке. На&nbsp;ткани — только белая или цветная заливка без&nbsp;градиентов.</p>
+        </div>
+      </div>
+
+      <div class="grid-3" style="gap: 16px;">
+        <div class="app">
+          <div class="body" style="background: var(--red); padding: 0;">
+            <img src="assets/logo_2026_17.png" alt="Спецовка"/>
+          </div>
+          <div class="meta"><b>12.1 · Спецодежда</b><span>Полевой стандарт</span></div>
+        </div>
+        <div class="app">
+          <div class="body" style="background: #1A2C4B; padding: 0;">
+            <img src="assets/logo_2026_20.png" alt="Худи и каска"/>
+          </div>
+          <div class="meta"><b>12.2 · Кэжуал / офис</b><span>Худи · футболка</span></div>
+        </div>
+        <div class="app">
+          <div class="body" style="background: var(--concrete); padding: 0;">
+            <img src="assets/logo_2026_7.png" alt="Авто"/>
+          </div>
+          <div class="meta"><b>12.3 · Транспорт</b><span>Брендинг авто</span></div>
+        </div>
+      </div>
+
+      <!-- Letterhead + social -->
+      <div class="grid-2" style="gap: 16px; margin-top: 16px;">
+        <div class="frame" style="min-height: 540px; padding: 36px; background: var(--concrete);">
+          <div class="letterhead">
+            <div class="header">
+              <div class="lockup size-sm">
+                <span class="marks"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+                <span class="word dark"><span>FIN</span><span>STROY</span><span>PANEL</span></span>
+              </div>
+              <div class="corp">
+                ООО «ФинСтройПанель»<br/>
+                ИНН 7707083893<br/>
+                +7 495 123 45 67<br/>
+                info@finstroypanel.ru
+              </div>
+            </div>
+            <div class="body">
+              <h5>Исх. № 26-04-118 от&nbsp;15.05.2026</h5>
+              <p>Уважаемый Сергей Петрович,</p>
+              <p>Направляем коммерческое предложение по&nbsp;поставке трёхслойных железобетонных панелей для&nbsp;объекта «Загородный посёлок Северный» в&nbsp;объёме 1&nbsp;240&nbsp;м².</p>
+              <p>Срок изготовления — 28 рабочих дней с&nbsp;момента согласования спецификации. Гарантия на&nbsp;конструкцию — 25&nbsp;лет.</p>
+              <p>С&nbsp;уважением,<br/>Управляющий партнёр · Боев&nbsp;А.С.</p>
+            </div>
+            <div class="footer">
+              <span>finstroypanel.ru</span>
+              <span>© 2026 · ФСП</span>
+            </div>
+          </div>
+          <span class="label">12.4 · Фирменный бланк A4</span>
+        </div>
+
+        <div class="frame" style="min-height: 540px; padding: 36px; flex-direction: column; gap: 18px; align-items: stretch;">
+          <div class="note">12.5 · Соцсети · 1080×1080</div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <div style="aspect-ratio: 1; background: var(--navy); padding: 18px; display: flex; flex-direction: column; justify-content: space-between;">
+              <span class="markbox" style="gap:3px"><span class="b" style="background:#fff;width:10px;height:42px"></span><span class="b" style="background:#fff;width:10px;height:42px"></span><span class="b" style="background:#fff;width:10px;height:42px"></span></span>
+              <div style="color:#fff; font-weight:800; font-size: 22px; line-height: 1.05; letter-spacing:-0.02em;">14 дней<br/>от&nbsp;фундамента до&nbsp;коробки.</div>
+              <div style="font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.6); font-weight: 600;">FSP · ФСП · ENG-EFF</div>
+            </div>
+            <div style="aspect-ratio: 1; background: var(--paper); padding: 18px; display: flex; flex-direction: column; justify-content: space-between; border: 1px solid var(--cement);">
+              <div class="lockup size-sm"><span class="marks"><span class="b"></span><span class="b"></span><span class="b"></span></span><span class="word dark" style="font-size:11px"><span>ФИН</span><span>СТРОЙ</span><span>ПАНЕЛЬ</span></span></div>
+              <div style="color: var(--graphite); font-weight: 800; font-size: 26px; line-height: 1.05; letter-spacing: -0.025em;">−40 % <span style="color: var(--graphite-500); font-weight: 500; font-size: 13px;">теплопотерь vs кирпич</span></div>
+              <div style="font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--graphite-500); font-weight: 600;">Энергокласс А++</div>
+            </div>
+            <div style="aspect-ratio: 1; background: var(--red); padding: 18px; display: flex; flex-direction: column; justify-content: space-between;">
+              <div style="color:#fff; font-weight:900; font-size: 56px; line-height: 0.9; letter-spacing:-0.04em;">3</div>
+              <div style="color:#fff; font-weight: 700; font-size: 16px; line-height: 1.2;">слоя.<br/>Одна стена.</div>
+              <div class="markbox" style="gap:3px"><span class="b" style="background:#fff;width:8px;height:30px"></span><span class="b" style="background:#fff;width:8px;height:30px"></span><span class="b" style="background:#fff;width:8px;height:30px"></span></div>
+            </div>
+            <div style="aspect-ratio: 1; background: var(--graphite); padding: 18px; display: flex; flex-direction: column; justify-content: space-between;">
+              <div style="font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--graphite-300); font-weight: 600;">Кейс · 026</div>
+              <div style="color:#fff; font-weight:800; font-size: 18px; line-height: 1.1; letter-spacing:-0.01em;">Дом 180&nbsp;м² в&nbsp;Истре. Заехали через 47&nbsp;дней.</div>
+              <span class="markbox" style="gap:3px; align-self: flex-end;"><span class="b" style="background:var(--navy);width:10px;height:40px"></span><span class="b" style="background:var(--navy);width:10px;height:40px"></span><span class="b" style="background:var(--navy);width:10px;height:40px"></span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- More applications: hard hat, business card -->
+      <div class="grid-3" style="gap: 16px; margin-top: 16px;">
+        <div class="frame" style="min-height: 280px; padding: 36px; background: var(--concrete);">
+          <!-- Business card -->
+          <div style="width: 280px; aspect-ratio: 1.75/1; background: #fff; padding: 18px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 0 var(--cement);">
+            <div class="lockup size-sm"><span class="marks"><span class="b"></span><span class="b"></span><span class="b"></span></span><span class="word dark" style="font-size:12px"><span>FIN</span><span>STROY</span><span>PANEL</span></span></div>
+            <div>
+              <div style="font-size: 13px; font-weight: 700; color: var(--graphite); letter-spacing: -0.005em;">Боев Антон Сергеевич</div>
+              <div style="font-size: 10px; color: var(--graphite-500); font-weight: 500; letter-spacing: 0.04em; margin-top: 2px;">Управляющий партнёр</div>
+              <div style="font-size: 10px; color: var(--graphite-700); font-weight: 500; margin-top: 8px;">+7 495 123 45 67 · boev@finstroypanel.ru</div>
+            </div>
+          </div>
+          <span class="label">12.6 · Визитка 85×55</span>
+        </div>
+
+        <div class="frame dark" style="min-height: 280px; padding: 36px;">
+          <!-- Hard hat sticker -->
+          <div style="background: var(--white); width: 220px; padding: 16px 24px; display: flex; align-items: center; gap: 12px;">
+            <span class="markbox" style="gap:3px"><span class="b" style="width:10px;height:36px"></span><span class="b" style="width:10px;height:36px"></span><span class="b" style="width:10px;height:36px"></span></span>
+            <span class="word dark" style="font-weight: 800; line-height: 0.96; font-size: 11px; color: var(--graphite-700);">
+              <span style="display:block">FIN</span><span style="display:block">STROY</span><span style="display:block">PANEL</span>
+            </span>
+          </div>
+          <span class="label" style="color: rgba(255,255,255,0.6)">12.7 · Стикер на каску</span>
+        </div>
+
+        <div class="frame" style="min-height: 280px; padding: 0; background: linear-gradient(180deg, #cfd5dc, #aab2bb); overflow: hidden;">
+          <!-- Banner -->
+          <div style="width:100%; height: 100%; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; background: rgba(255,255,255,0.5);">
+            <div class="lockup size-sm"><span class="marks"><span class="b"></span><span class="b"></span><span class="b"></span></span><span class="word dark" style="font-size:11px"><span>FIN</span><span>STROY</span><span>PANEL</span></span></div>
+            <div style="font-weight: 900; letter-spacing: -0.02em; line-height: 0.96; color: var(--graphite); font-size: 22px;">Строим тут.<br/>Сдача — июль&nbsp;2026.</div>
+            <div style="font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--graphite-500); font-weight: 700;">Заказ · +7 495 123 45 67</div>
+          </div>
+          <span class="label">12.8 · Стройплощадка · баннер 3×2 м</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 13 · Voice -->
+    <section class="section" id="voice" data-screen-label="13 Voice">
+      <div class="s-header">
+        <div class="num">13</div>
+        <div>
+          <div class="kicker">Tone of voice</div>
+          <h2>Инженер,<br/>а&nbsp;не&nbsp;<em>маркетолог.</em></h2>
+          <p class="sub">Голос ФСП — спокойный, конкретный, технически грамотный. Мы&nbsp;не&nbsp;продаём «мечту»: мы&nbsp;продаём <b>панели</b>, <b>сроки</b> и&nbsp;<b>энергетическую эффективность</b>. Цифры, ГОСТы, материалы — всегда честно.</p>
+        </div>
+      </div>
+
+      <div class="voice">
+        <div class="pair">
+          <h4>Заголовки</h4>
+          <div class="line"><span class="tag">Да</span><div class="t">«Дом 180&nbsp;м² за&nbsp;47&nbsp;дней монтажа»</div></div>
+          <div class="line"><span class="tag no">Нет</span><div class="t">«Дом вашей мечты — быстро и&nbsp;легко»</div></div>
+          <div class="line"><span class="tag">Да</span><div class="t">«120&nbsp;мм утеплителя в&nbsp;каждой панели»</div></div>
+          <div class="line"><span class="tag no">Нет</span><div class="t">«Самые тёплые дома в&nbsp;России»</div></div>
+        </div>
+        <div class="pair">
+          <h4>Описание материалов</h4>
+          <div class="line"><span class="tag">Да</span><div class="t">«Несущий слой — бетон М400, утеплитель — PIR 120&nbsp;мм»</div></div>
+          <div class="line"><span class="tag no">Нет</span><div class="t">«Используем только премиальные материалы»</div></div>
+          <div class="line"><span class="tag">Да</span><div class="t">«Соответствует ГОСТ&nbsp;31310-2015»</div></div>
+          <div class="line"><span class="tag no">Нет</span><div class="t">«Высочайшее качество, проверенное годами»</div></div>
+        </div>
+        <div class="pair">
+          <h4>CTA — призывы</h4>
+          <div class="line"><span class="tag">Да</span><div class="t">«Заказать расчёт панелей за&nbsp;3&nbsp;дня»</div></div>
+          <div class="line"><span class="tag no">Нет</span><div class="t">«Превратите вашу мечту в&nbsp;реальность!»</div></div>
+          <div class="line"><span class="tag">Да</span><div class="t">«Скачать каталог проектов · PDF, 4.2&nbsp;МБ»</div></div>
+          <div class="line"><span class="tag no">Нет</span><div class="t">«Узнать больше о&nbsp;нашей компании»</div></div>
+        </div>
+        <div class="pair">
+          <h4>Голос в&nbsp;соцсетях</h4>
+          <div class="line"><span class="tag">Да</span><div class="t">«Сегодня залили 1&nbsp;240&nbsp;м² панелей. Партия едет в&nbsp;Истру.»</div></div>
+          <div class="line"><span class="tag no">Нет</span><div class="t">«Поздравляем всех с&nbsp;понедельником! Хорошей рабочей недели 😊»</div></div>
+          <div class="line"><span class="tag">Да</span><div class="t">«Кейс №&nbsp;026: дом 180&nbsp;м², 47 дней монтажа, теплопотери&nbsp;−40%»</div></div>
+          <div class="line"><span class="tag no">Нет</span><div class="t">«Делимся радостью — построили ещё один шикарный дом 💙»</div></div>
+        </div>
+      </div>
+
+      <div class="callout" style="margin-top: 32px;">
+        Эмодзи в коммуникациях ФСП не&nbsp;используются. Восклицательные знаки — только в&nbsp;предупреждениях по&nbsp;технике безопасности.
+      </div>
+    </section>
+
+    <!-- 14 · Colophon -->
+    <section class="section" id="colophon" data-screen-label="14 Colophon" style="background: var(--graphite); color: var(--cement); border-bottom: 0;">
+      <div class="s-header">
+        <div class="num" style="color: var(--graphite-300);">14</div>
+        <div>
+          <div class="kicker" style="color: var(--navy-200);">Контакты и&nbsp;файлы</div>
+          <h2 style="color: var(--white)">Документ <em style="color: var(--navy-200);">живой</em>.<br/>Версия v1.0&nbsp;·&nbsp;май&nbsp;2026.</h2>
+          <p class="sub" style="color: var(--graphite-300);">Перед использованием сверяйтесь с&nbsp;актуальной версией. Все&nbsp;исходники (CDR, PDF, PNG, SVG) и&nbsp;шрифты — в&nbsp;корпоративном облаке. По&nbsp;вопросам бренда: <b style="color: var(--white)">brand@finstroypanel.ru</b></p>
+        </div>
+      </div>
+
+      <div class="grid-3" style="gap: 32px;">
+        <div>
+          <h6 style="margin: 0 0 12px; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--graphite-300); font-weight: 600;">Юр. лицо</h6>
+          <p style="margin: 0; line-height: 1.7; font-size: 14px; color: var(--cement);">ООО «ФинСтройПанель»<br/>ИНН 7707083893<br/>ОГРН 1027700067328<br/>г.&nbsp;Москва · ул. Ленина, 1</p>
+        </div>
+        <div>
+          <h6 style="margin: 0 0 12px; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--graphite-300); font-weight: 600;">Команда бренда</h6>
+          <p style="margin: 0; line-height: 1.7; font-size: 14px; color: var(--cement);">Антон Боев — управляющий партнёр<br/>brand@finstroypanel.ru<br/>+7 495 123 45 67<br/>finstroypanel.ru</p>
+        </div>
+        <div>
+          <h6 style="margin: 0 0 12px; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--graphite-300); font-weight: 600;">Файлы</h6>
+          <p style="margin: 0; line-height: 1.7; font-size: 14px; color: var(--cement);">Логотип · CDR, SVG, PNG<br/>Шрифт · Montserrat (всё семейство)<br/>Цвета · ASE, CSS-токены<br/>Фотобанк · raw + retoush</p>
+        </div>
+      </div>
+
+      <div style="margin-top: 64px; padding-top: 32px; border-top: 1px solid #444; display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap;">
+        <div class="lockup size-md mono-light">
+          <span class="marks"><span class="b" style="background:#fff"></span><span class="b" style="background:#fff"></span><span class="b" style="background:#fff"></span></span>
+          <span class="word light"><span>FIN</span><span>STROY</span><span>PANEL<span class="reg" style="color: var(--graphite-300)">®</span></span></span>
+        </div>
+        <div style="font-size: 11px; color: var(--graphite-300); letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600;">
+          © 2026 ФинСтройПанель · All rights reserved
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+// Highlight current section in sidebar nav
+(function(){
+  const sections = [...document.querySelectorAll('.section')];
+  const links = [...document.querySelectorAll('#sideNav a')];
+  const byId = Object.fromEntries(links.map(a => [a.getAttribute('href').slice(1), a]));
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting && e.intersectionRatio > 0.3) {
+        links.forEach(l => l.classList.remove('active'));
+        const link = byId[e.target.id];
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { threshold: [0.3, 0.5, 0.7], rootMargin: "-20% 0px -40% 0px" });
+  sections.forEach(s => io.observe(s));
+})();
+</script>
+
+</body>
+</html>
