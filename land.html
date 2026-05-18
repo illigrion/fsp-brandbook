@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<title>Рекламные лендинги · ФСП</title>
+<link rel="stylesheet" href="landing.css" />
+<style>
+  body{ background: var(--paper); padding: 48px 32px 64px; }
+  .idx-wrap{ max-width: 1080px; margin: 0 auto; }
+  .idx-head{ display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: end; margin-bottom: 32px; padding-bottom: 18px; border-bottom: 1px solid var(--cement); }
+  .idx-head .mk{ display: inline-flex; gap: 4px; }
+  .idx-head .mk .b{ background: var(--navy); width: 9px; height: 36px; }
+  .idx-head h1{ margin: 0; font-size: 32px; font-weight: 900; letter-spacing: -0.025em; line-height: 1; color: var(--graphite); }
+  .idx-head .kicker{ font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--navy); font-weight: 700; margin-bottom: 6px; }
+  .idx-grid{ display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .idx-card{ background: #fff; border: 1px solid var(--cement); display: flex; flex-direction: column; text-decoration: none; transition: transform .25s, box-shadow .25s; }
+  .idx-card:hover{ transform: translateY(-3px); box-shadow: 0 16px 32px -16px rgba(20,30,50,0.15); }
+  .idx-card .ph{ aspect-ratio: 16/10; background: var(--concrete); overflow: hidden; position: relative; }
+  .idx-card .ph img{ width: 100%; height: 100%; object-fit: cover; }
+  .idx-card .ph .tag{ position: absolute; top: 14px; left: 14px; padding: 5px 11px; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; background: rgba(255,255,255,0.95); color: var(--graphite); }
+  .idx-card .body{ padding: 22px; display: flex; flex-direction: column; gap: 14px; }
+  .idx-card .meta{ font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--graphite-500); font-weight: 600; }
+  .idx-card h2{ margin: 0; font-size: 24px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.05; color: var(--graphite); }
+  .idx-card p{ margin: 0; font-size: 13px; line-height: 1.5; color: var(--graphite-500); }
+  .idx-card .row{ display: flex; justify-content: space-between; align-items: end; padding-top: 14px; border-top: 1px solid var(--cement); }
+  .idx-card .price b{ font-size: 22px; font-weight: 800; letter-spacing: -0.02em; color: var(--graphite); }
+  .idx-card .price span{ display: block; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--graphite-500); font-weight: 600; margin-top: 2px; }
+  .idx-card .open{ font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--navy); font-weight: 700; }
+  .idx-card .open::after{ content: " →"; }
+</style>
+</head>
+<body>
+<div class="idx-wrap">
+  <div class="idx-head">
+    <span class="mk"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+    <div>
+      <div class="kicker">FSP · рекламные лендинги</div>
+      <h1>Лендинги под&nbsp;объявления</h1>
+    </div>
+  </div>
+
+  <div class="idx-grid">
+    <a class="idx-card" href="oiva.html">
+      <div class="ph">
+        <img src="assets/project_06.jpeg" alt="Oiva"/>
+        <span class="tag">Вариант A · split</span>
+      </div>
+      <div class="body">
+        <div class="meta">FP-7 · Финская серия</div>
+        <h2>«Oiva» · 193&nbsp;м²</h2>
+        <p>Классический split-лейаут: фото слева, форма + цена справа. Лучше для&nbsp;«читающего» трафика.</p>
+        <div class="row">
+          <div class="price"><b>от 20.4&nbsp;млн&nbsp;₽</b><span>тёплый контур</span></div>
+          <span class="open">Открыть</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="idx-card" href="max.html">
+      <div class="ph">
+        <img src="assets/project_01.jpeg" alt="Max"/>
+        <span class="tag">Вариант B · full-bleed</span>
+      </div>
+      <div class="body">
+        <div class="meta">FP-4 · Резиденция</div>
+        <h2>«Max» · 207&nbsp;м²</h2>
+        <p>Кинематографический полноэкранный фон с&nbsp;плавающей формой. Лучше для&nbsp;премиум-сегмента и&nbsp;ретаргета.</p>
+        <div class="row">
+          <div class="price"><b>от 22.3&nbsp;млн&nbsp;₽</b><span>тёплый контур</span></div>
+          <span class="open">Открыть</span>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+</body>
+</html>

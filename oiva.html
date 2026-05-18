@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<title>Oiva · FP-7 · Энергоэффективный дом 193 м² · ФСП</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Финский дом Oiva площадью 193 м² из трёхслойных железобетонных панелей. Тёплый контур от 20.4 млн ₽. Монтаж — 18 дней. Гарантия 25 лет." />
+<link rel="stylesheet" href="landing.css" />
+</head>
+<body class="landing" data-screen-label="Landing · Oiva">
+
+<header class="bar">
+  <a class="brand" href="design.html">
+    <span class="mk"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+    <span class="word"><span>ФИН</span><span>СТРОЙ</span><span>ПАНЕЛЬ</span></span>
+  </a>
+  <div class="bar-right">
+    <div class="ph"><small>Москва · 9:00–21:00</small>+7 495 123 45 67</div>
+    <a class="btn-mini" href="tel:+74951234567">Перезвонить за&nbsp;15&nbsp;мин</a>
+  </div>
+</header>
+
+<main class="split">
+  <!-- LEFT · photo with gallery -->
+  <div class="ph-col">
+    <div class="gallery" id="gal">
+      <div class="slides">
+        <img class="slide on" src="assets/oiva_render_01.jpeg" alt="Oiva · рендер 1" data-kind="render"/>
+        <img class="slide" src="assets/oiva_render_02.jpeg" alt="Oiva · рендер 2" data-kind="render"/>
+        <img class="slide plan" src="assets/oiva_floorplan.jpeg" alt="Oiva · план" data-kind="plan"/>
+      </div>
+      <div class="gal-grad"></div>
+      <button class="nav prev" aria-label="Назад">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter">
+          <polyline points="15 6 9 12 15 18"/>
+        </svg>
+      </button>
+      <button class="nav next" aria-label="Вперёд">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter">
+          <polyline points="9 6 15 12 9 18"/>
+        </svg>
+      </button>
+      <div class="gal-top">
+        <div class="tabs">
+          <button class="gtab on" data-target="0">Рендер 1</button>
+          <button class="gtab" data-target="1">Рендер 2</button>
+          <button class="gtab" data-target="2">План</button>
+        </div>
+        <span class="badge red">Новинка</span>
+      </div>
+    </div>
+
+    <div class="ph-bottom">
+      <div class="lockup">
+        <span class="mk-big"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+        <div>
+          <div class="series">Серия FP-7 · Oiva</div>
+          <div class="model">Одноэтажный<br/>дом-резиденция</div>
+        </div>
+      </div>
+      <div class="metrics">
+        <div><b>189,7<i>м²</i></b><span>Площадь</span></div>
+        <div><b>3+1</b><span>Спальни</span></div>
+        <div><b>2</b><span>Карпорт</span></div>
+        <div><b>А++</b><span>Класс</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT · form panel -->
+  <aside class="form-col">
+    <div class="kicker">FP-7 · Финская премиум-серия</div>
+    <h1>«Oiva».<br/>189,7&nbsp;м² <em>без&nbsp;компромиссов.</em></h1>
+
+    <ul class="bullets">
+      <li><span class="x"></span><span class="txt"><b>3 спальни + мастер-зона</b> с гардеробной 14,4&nbsp;м² и ванной.</span></li>
+      <li><span class="x"></span><span class="txt"><b>Кухня-гостиная 48&nbsp;м²</b>, сауна, крытый карпорт на&nbsp;2 авто.</span></li>
+      <li><span class="x"></span><span class="txt"><b>Стена 260&nbsp;мм</b> — два слоя бетона + 120&nbsp;мм PIR. Энергокласс А++.</span></li>
+      <li><span class="x"></span><span class="txt"><b>Гарантия 25&nbsp;лет</b> на&nbsp;несущую конструкцию. ГОСТ 31310-2024.</span></li>
+    </ul>
+
+    <div class="price">
+      <div class="price-line">
+        <div>
+          <span class="from">Тёплый контур · от</span>
+          <span class="amount">20.4<sub>млн&nbsp;₽</sub></span>
+        </div>
+        <div class="ipoteka">
+          <span class="from">В&nbsp;ипотеку · от</span>
+          <span class="rate">198 000&nbsp;₽<sub>/мес</sub></span>
+        </div>
+      </div>
+      <div class="price-note">Цена включает: ДК + фундамент + кровля + окна ПВХ + герметизация швов. НДС учтён.</div>
+    </div>
+
+    <form class="form" onsubmit="event.preventDefault(); this.classList.add('sent'); this.querySelector('.sent-msg').focus();">
+      <div class="row-2">
+        <input type="text" name="name" placeholder="Имя" required />
+        <input type="tel" name="phone" placeholder="+7 ___ ___ __ __" required />
+      </div>
+      <button type="submit" class="cta">
+        Получить полный расчёт<span class="ar"></span>
+      </button>
+      <label class="agree">
+        <input type="checkbox" checked />
+        <span>Согласен с&nbsp;<a href="#">политикой обработки персональных данных</a> и&nbsp;получением расчёта на&nbsp;e-mail.</span>
+      </label>
+      <div class="sent-msg" tabindex="-1">
+        <b>Спасибо!</b> Менеджер позвонит в&nbsp;течение 15&nbsp;минут с&nbsp;понедельника по&nbsp;воскресенье 9:00–21:00.
+      </div>
+    </form>
+
+    <div class="trust">
+      <div>
+        <b>320+</b>
+        <span>сданных<br/>объектов</span>
+      </div>
+      <div>
+        <b>25&nbsp;лет</b>
+        <span>гарантии на&nbsp;<br/>конструкцию</span>
+      </div>
+      <div>
+        <b>А++</b>
+        <span>энерго-<br/>класс</span>
+      </div>
+    </div>
+
+    <script>
+    (function(){
+      const gal = document.getElementById('gal'); if(!gal) return;
+      const slides = [...gal.querySelectorAll('.slide')];
+      const tabs = [...gal.querySelectorAll('.gtab')];
+      let idx = 0;
+      function go(n){
+        idx = (n + slides.length) % slides.length;
+        slides.forEach((s,i)=>s.classList.toggle('on', i===idx));
+        tabs.forEach((t,i)=>t.classList.toggle('on', i===idx));
+        gal.classList.toggle('is-plan', slides[idx].dataset.kind==='plan');
+      }
+      tabs.forEach((t,i)=>t.addEventListener('click', ()=>go(i)));
+      gal.querySelector('.prev').addEventListener('click', ()=>go(idx-1));
+      gal.querySelector('.next').addEventListener('click', ()=>go(idx+1));
+    })();
+    </script>
+  </aside>
+</main>
+
+</body>
+</html>
