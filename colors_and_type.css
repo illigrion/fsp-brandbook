@@ -1,0 +1,190 @@
+/* ============================================================
+   ФСП · FINSTROYPANEL — Design Tokens
+   Colors + Type · v1.0 · May 2026
+   Extracted verbatim from FSP Design System.html
+   ============================================================ */
+
+/* ── Webfont · Montserrat (local) ── */
+@font-face { font-family: "Montserrat"; src: url("fonts/Montserrat-Thin.ttf") format("truetype"); font-weight: 100; font-style: normal; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("fonts/Montserrat-ThinItalic.ttf") format("truetype"); font-weight: 100; font-style: italic; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("fonts/Montserrat-ExtraLight.ttf") format("truetype"); font-weight: 200; font-style: normal; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("fonts/Montserrat-ExtraLightItalic.ttf") format("truetype"); font-weight: 200; font-style: italic; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("fonts/Montserrat-Light.ttf") format("truetype"); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("fonts/Montserrat-LightItalic.ttf") format("truetype"); font-weight: 300; font-style: italic; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("fonts/Montserrat-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("fonts/Montserrat-Italic.ttf") format("truetype"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("fonts/Montserrat-Medium.ttf") format("truetype"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("fonts/Montserrat-MediumItalic.ttf") format("truetype"); font-weight: 500; font-style: italic; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("fonts/Montserrat-SemiBold.ttf") format("truetype"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("fonts/Montserrat-SemiBoldItalic.ttf") format("truetype"); font-weight: 600; font-style: italic; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("fonts/Montserrat-Bold.ttf") format("truetype"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("fonts/Montserrat-BoldItalic.ttf") format("truetype"); font-weight: 700; font-style: italic; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("fonts/Montserrat-ExtraBold.ttf") format("truetype"); font-weight: 800; font-style: normal; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("fonts/Montserrat-ExtraBoldItalic.ttf") format("truetype"); font-weight: 800; font-style: italic; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("fonts/Montserrat-Black.ttf") format("truetype"); font-weight: 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("fonts/Montserrat-BlackItalic.ttf") format("truetype"); font-weight: 900; font-style: italic; font-display: swap; }
+
+:root {
+
+  /* ── Brand · Primary ──────────────────────────────────── */
+  --navy:        #2D4F91;  /* Primary identifier (Pantone 287 C) */
+  --navy-deep:   #1F3A6E;  /* Hover / pressed / dark surfaces */
+  --navy-200:    #A8B6D5;  /* Mid-tint · also "bar-light" in new logo */
+  --navy-100:    #D7DFEE;  /* Backgrounds, badges */
+  --navy-50:     #EBF0F9;  /* Lightest tint · secondary btn hover */
+
+  /* New-logo graduated bars (assets/new_logo_render.png) */
+  --bar-light:   #A8B6D5;  /* Bar 1 (leftmost) */
+  --bar-mid:     #5979B5;  /* Bar 2 */
+  --bar-dark:    #2D4F91;  /* Bar 3 (rightmost) */
+
+  /* ── Graphite · text + dark surfaces ──────────────────── */
+  --graphite:     #2A2A2D;  /* Body text, headings */
+  --graphite-700: #434242;  /* Wordmark body */
+  --graphite-500: #6E6E70;  /* Secondary text · captions */
+  --graphite-300: #A8A8A8;  /* Tertiary · disabled · labels on dark */
+
+  /* ── Neutrals · concrete / cement / paper ─────────────── */
+  --concrete:    #ECECEA;  /* Card backgrounds, fills */
+  --cement:      #C9C8C3;  /* Hairline borders (1px solid) — DEFAULT */
+  --paper:       #F7F6F2;  /* Body / canvas background */
+  --paper-2:     #FAFAF7;  /* Alternating section background */
+  --white:       #FFFFFF;
+
+  /* ── Signal Red · accents + don'ts ──────────────────── */
+  --red:         #C0071A;  /* Pantone 186 C · spec. only */
+  --red-50:      #FDECEE;
+
+  /* ── Semantic tokens ─────────────────────────────────── */
+  --bg:           var(--paper);
+  --bg-alt:       var(--paper-2);
+  --bg-card:      var(--white);
+  --fg:           var(--graphite);
+  --fg-muted:     var(--graphite-500);
+  --fg-faint:     var(--graphite-300);
+  --border:       var(--cement);          /* 1px solid var(--border) */
+  --link:         var(--navy);
+  --link-hover:   var(--navy-deep);
+  --accent:       var(--navy);
+  --danger:       var(--red);
+
+  /* ── Type stack ──────────────────────────────────────── */
+  --font-sans: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; /* @kind font */
+  --font-mono: "Montserrat", ui-monospace, "SF Mono", Menlo, monospace; /* @kind font */
+    /* Note: brand uses tabular Montserrat for numerals; no separate mono. */
+
+  /* Weights */
+  --w-light:      300; /* @kind font */
+  --w-regular:    400; /* @kind font */
+  --w-medium:     500; /* @kind font */
+  --w-semibold:   600; /* @kind font */
+  --w-bold:       700; /* @kind font */
+  --w-extrabold:  800; /* @kind font */
+  --w-black:      900; /* @kind font */
+
+  /* ── Type scale (px / line-height / tracking) ────────── */
+  --t-d1-size: 92px;  --t-d1-lh: 0.92 /* @kind other */; --t-d1-tr: -0.035em /* @kind other */;  --t-d1-w: 900 /* @kind font */;
+  --t-d2-size: 64px;  --t-d2-lh: 0.96 /* @kind other */; --t-d2-tr: -0.025em /* @kind other */;  --t-d2-w: 800 /* @kind font */;
+  --t-h1-size: 44px;  --t-h1-lh: 1.04 /* @kind other */; --t-h1-tr: -0.02em /* @kind other */;   --t-h1-w: 800 /* @kind font */;
+  --t-h2-size: 32px;  --t-h2-lh: 1.10 /* @kind other */; --t-h2-tr: -0.015em /* @kind other */;  --t-h2-w: 700 /* @kind font */;
+  --t-h3-size: 22px;  --t-h3-lh: 1.20 /* @kind other */; --t-h3-tr: -0.005em /* @kind other */;  --t-h3-w: 700 /* @kind font */;
+  --t-body-l: 20px;   --t-body-l-lh: 1.55 /* @kind other */;
+  --t-body:   16px;   --t-body-lh:   1.60 /* @kind other */;
+  --t-small:  14px;   --t-small-lh:  1.55 /* @kind other */;
+  --t-cap:    12px;   --t-cap-lh:    1.50 /* @kind other */;   /* UPPER · tracking +12% */
+  --t-micro:  10px;                          /* tags, plate stamps */
+
+  /* ── Spacing scale · 8px base module ─────────────────── */
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  24px;
+  --space-6:  32px;
+  --space-7:  48px;
+  --space-8:  64px;
+  --space-9:  96px;
+  --space-10: 128px;
+
+  --gutter: clamp(24px, 5vw, 80px); /* @kind spacing */
+  --side-w: 280px; /* @kind spacing */
+
+  /* ── Radii — SQUARE BY DEFAULT ───────────────────────── */
+  --radius-0:  0px;   /* DEFAULT — buttons, cards, inputs */
+  --radius-1:  0px;
+  /* Brand is uncompromisingly square. Do not introduce rounding. */
+
+  /* ── Borders ─────────────────────────────────────────── */
+  --hairline: 1px solid var(--cement);
+  --rule:     1px solid var(--graphite);    /* heavier division */
+  --hairline-on-dark: 1px solid rgba(255,255,255,0.15); /* @kind other */
+
+  /* ── Shadow — used SPARINGLY (cards in motion only) ──── */
+  --shadow-hover: 0 16px 32px -16px rgba(20, 30, 50, 0.15);
+  /* No drop-shadows on logos, type, or static surfaces. */
+
+  /* ── Motion ──────────────────────────────────────────── */
+  --t-fast:  120ms ease; /* @kind other */
+  --t-base:  150ms ease; /* @kind other */
+  --t-slow:  250ms ease; /* @kind other */
+  --ease-card: cubic-bezier(.2,.7,.2,1); /* @kind other */
+
+  /* ── Pattern proportions · brand 60/30/8/2 ───────────── */
+  /* 60% paper · 30% graphite · 8% navy · 2% red */
+}
+
+/* ── Element defaults ──────────────────────────────────── */
+html, body {
+  margin: 0; padding: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  font-weight: var(--w-regular);
+  font-size: var(--t-body);
+  line-height: var(--t-body-lh);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+* { box-sizing: border-box; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  color: var(--fg);
+  font-weight: var(--w-extrabold);
+  letter-spacing: -0.02em;
+}
+h1 { font-size: var(--t-h1-size); line-height: var(--t-h1-lh); letter-spacing: var(--t-h1-tr); font-weight: var(--t-h1-w); }
+h2 { font-size: var(--t-h2-size); line-height: var(--t-h2-lh); letter-spacing: var(--t-h2-tr); font-weight: var(--t-h2-w); }
+h3 { font-size: var(--t-h3-size); line-height: var(--t-h3-lh); letter-spacing: var(--t-h3-tr); font-weight: var(--t-h3-w); }
+p  { margin: 0; line-height: var(--t-body-lh); }
+
+a  { color: var(--link); text-decoration: none; transition: color var(--t-base); }
+a:hover { color: var(--link-hover); }
+
+/* Utility type classes — match brand book conventions */
+.t-display-1 { font-size: var(--t-d1-size); line-height: var(--t-d1-lh); letter-spacing: var(--t-d1-tr); font-weight: var(--t-d1-w); }
+.t-display-2 { font-size: var(--t-d2-size); line-height: var(--t-d2-lh); letter-spacing: var(--t-d2-tr); font-weight: var(--t-d2-w); }
+.t-h1   { font-size: var(--t-h1-size); line-height: var(--t-h1-lh); letter-spacing: var(--t-h1-tr); font-weight: var(--t-h1-w); }
+.t-h2   { font-size: var(--t-h2-size); line-height: var(--t-h2-lh); letter-spacing: var(--t-h2-tr); font-weight: var(--t-h2-w); }
+.t-h3   { font-size: var(--t-h3-size); line-height: var(--t-h3-lh); letter-spacing: var(--t-h3-tr); font-weight: var(--t-h3-w); }
+.t-body-l { font-size: var(--t-body-l); line-height: var(--t-body-l-lh); font-weight: var(--w-regular); }
+.t-body { font-size: var(--t-body); line-height: var(--t-body-lh); font-weight: var(--w-regular); }
+.t-cap {
+  font-size: var(--t-cap); line-height: var(--t-cap-lh);
+  font-weight: var(--w-medium);
+  text-transform: uppercase; letter-spacing: 0.12em;
+}
+.t-eyebrow {
+  font-size: 11px; font-weight: var(--w-bold);
+  text-transform: uppercase; letter-spacing: 0.2em;
+  color: var(--accent);
+}
+.t-tnum {
+  font-feature-settings: "tnum";
+  font-variant-numeric: tabular-nums;
+}
+
+/* Helpers */
+.upper { text-transform: uppercase; letter-spacing: 0.08em; }
+.tight { letter-spacing: -0.02em; }
+.mono  { font-feature-settings: "tnum"; font-variant-numeric: tabular-nums; }
