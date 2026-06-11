@@ -1,11 +1,23 @@
-/* ─── Fonts (relative to landing/) ─── */
-@font-face { font-family:"Montserrat"; src:url("fonts/Montserrat-Light.ttf") format("truetype");    font-weight:300; font-display:swap; }
-@font-face { font-family:"Montserrat"; src:url("fonts/Montserrat-Regular.ttf") format("truetype");  font-weight:400; font-display:swap; }
-@font-face { font-family:"Montserrat"; src:url("fonts/Montserrat-Medium.ttf") format("truetype");   font-weight:500; font-display:swap; }
-@font-face { font-family:"Montserrat"; src:url("fonts/Montserrat-SemiBold.ttf") format("truetype"); font-weight:600; font-display:swap; }
-@font-face { font-family:"Montserrat"; src:url("fonts/Montserrat-Bold.ttf") format("truetype");     font-weight:700; font-display:swap; }
-@font-face { font-family:"Montserrat"; src:url("fonts/Montserrat-ExtraBold.ttf") format("truetype");font-weight:800; font-display:swap; }
-@font-face { font-family:"Montserrat"; src:url("fonts/Montserrat-Black.ttf") format("truetype");    font-weight:900; font-display:swap; }
+/* Fonts (local) */
+@font-face { font-family: "Montserrat"; src: url("fonts/Montserrat-Thin.ttf") format("truetype"); font-weight: 100; font-style: normal; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("fonts/Montserrat-ThinItalic.ttf") format("truetype"); font-weight: 100; font-style: italic; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("fonts/Montserrat-ExtraLight.ttf") format("truetype"); font-weight: 200; font-style: normal; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("fonts/Montserrat-ExtraLightItalic.ttf") format("truetype"); font-weight: 200; font-style: italic; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("fonts/Montserrat-Light.ttf") format("truetype"); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("fonts/Montserrat-LightItalic.ttf") format("truetype"); font-weight: 300; font-style: italic; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("fonts/Montserrat-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("fonts/Montserrat-Italic.ttf") format("truetype"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("fonts/Montserrat-Medium.ttf") format("truetype"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("fonts/Montserrat-MediumItalic.ttf") format("truetype"); font-weight: 500; font-style: italic; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("fonts/Montserrat-SemiBold.ttf") format("truetype"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("fonts/Montserrat-SemiBoldItalic.ttf") format("truetype"); font-weight: 600; font-style: italic; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("fonts/Montserrat-Bold.ttf") format("truetype"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("fonts/Montserrat-BoldItalic.ttf") format("truetype"); font-weight: 700; font-style: italic; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("fonts/Montserrat-ExtraBold.ttf") format("truetype"); font-weight: 800; font-style: normal; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("fonts/Montserrat-ExtraBoldItalic.ttf") format("truetype"); font-weight: 800; font-style: italic; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("fonts/Montserrat-Black.ttf") format("truetype"); font-weight: 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("fonts/Montserrat-BlackItalic.ttf") format("truetype"); font-weight: 900; font-style: italic; font-display: swap; }
+
 
 :root{
   --navy:#2D4F91; --navy-deep:#1F3A6E; --navy-50:#EBF0F9; --navy-100:#D7DFEE; --navy-200:#A8B6D5;
@@ -384,3 +396,15 @@ body.vb .bar.bar-on-dark .btn-mini:hover{ background: var(--paper); }
   .vb-foot .t-item{ border-right: 0; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 12px; }
   .vb-foot .t-item:last-child{ border-bottom: 0; }
 }
+
+/* ─── NEW LOGO: graduated bars ─── */
+:root { --bar-light:#A8B6D5; --bar-mid:#5979B5; --bar-dark:#2D4F91; }
+.mk .b:nth-child(1), .mk-corner .b:nth-child(1), .mk-big .b:nth-child(1){ background: var(--bar-light) !important; }
+.mk .b:nth-child(2), .mk-corner .b:nth-child(2), .mk-big .b:nth-child(2){ background: var(--bar-mid)   !important; }
+.mk .b:nth-child(3), .mk-corner .b:nth-child(3), .mk-big .b:nth-child(3){ background: var(--bar-dark)  !important; }
+.mk.light .b:nth-child(1){ background: rgba(255,255,255,0.55) !important; }
+.mk.light .b:nth-child(2){ background: rgba(255,255,255,0.78) !important; }
+.mk.light .b:nth-child(3){ background: #fff !important; }
+.bar-on-dark .mk .b:nth-child(1){ background: rgba(255,255,255,0.55) !important; }
+.bar-on-dark .mk .b:nth-child(2){ background: rgba(255,255,255,0.78) !important; }
+.bar-on-dark .mk .b:nth-child(3){ background: #fff !important; }

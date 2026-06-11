@@ -6,11 +6,66 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="description" content="Финский дом Oiva площадью 193 м² из трёхслойных железобетонных панелей. Тёплый контур от 20.4 млн ₽. Монтаж — 18 дней. Гарантия 25 лет." />
 <link rel="stylesheet" href="landing.css" />
+<style id="__brand-bars">
+/* ─────── NEW LOGO: graduated bars (light → medium → dark) ─────── */
+:root {
+  --bar-light: #A8B6D5;
+  --bar-mid:   #5979B5;
+  --bar-dark:  #2D4F91;
+}
+.mk .b:nth-child(1), .markbox .b:nth-child(1), .marks .b:nth-child(1),
+.mk-tote .b:nth-child(1), .mk-mug .b:nth-child(1), .mk-tape .b:nth-child(1),
+.mk-rul .b:nth-child(1), .mk-bk .b:nth-child(1), .mk-bd .b:nth-child(1),
+.mk-corner .b:nth-child(1), .mk-big .b:nth-child(1),
+.brand .mark .b:nth-child(1) { background: var(--bar-light) !important; }
+.mk .b:nth-child(2), .markbox .b:nth-child(2), .marks .b:nth-child(2),
+.mk-tote .b:nth-child(2), .mk-mug .b:nth-child(2), .mk-tape .b:nth-child(2),
+.mk-rul .b:nth-child(2), .mk-bk .b:nth-child(2), .mk-bd .b:nth-child(2),
+.mk-corner .b:nth-child(2), .mk-big .b:nth-child(2),
+.brand .mark .b:nth-child(2) { background: var(--bar-mid) !important; }
+.mk .b:nth-child(3), .markbox .b:nth-child(3), .marks .b:nth-child(3),
+.mk-tote .b:nth-child(3), .mk-mug .b:nth-child(3), .mk-tape .b:nth-child(3),
+.mk-rul .b:nth-child(3), .mk-bk .b:nth-child(3), .mk-bd .b:nth-child(3),
+.mk-corner .b:nth-child(3), .mk-big .b:nth-child(3),
+.brand .mark .b:nth-child(3) { background: var(--bar-dark) !important; }
+
+/* On dark/navy/red backgrounds — invert: light → opaque white graduating */
+.frame.dark .marks .b:nth-child(1), .frame.navy .marks .b:nth-child(1), .frame.red .marks .b:nth-child(1),
+.mono-light .marks .b:nth-child(1), .red-bg .marks .b:nth-child(1),
+.lockup.mono-light .marks .b:nth-child(1), .lockup.red-bg .marks .b:nth-child(1) {
+  background: rgba(255,255,255,0.55) !important;
+}
+.frame.dark .marks .b:nth-child(2), .frame.navy .marks .b:nth-child(2), .frame.red .marks .b:nth-child(2),
+.mono-light .marks .b:nth-child(2), .red-bg .marks .b:nth-child(2),
+.lockup.mono-light .marks .b:nth-child(2), .lockup.red-bg .marks .b:nth-child(2) {
+  background: rgba(255,255,255,0.78) !important;
+}
+.frame.dark .marks .b:nth-child(3), .frame.navy .marks .b:nth-child(3), .frame.red .marks .b:nth-child(3),
+.mono-light .marks .b:nth-child(3), .red-bg .marks .b:nth-child(3),
+.lockup.mono-light .marks .b:nth-child(3), .lockup.red-bg .marks .b:nth-child(3) {
+  background: #fff !important;
+}
+
+/* Mark-only on dark frames (mark blocks without .marks wrapper) */
+.frame.dark .markbox .b:nth-child(1), .frame.navy .markbox .b:nth-child(1) { background: rgba(255,255,255,0.55) !important; }
+.frame.dark .markbox .b:nth-child(2), .frame.navy .markbox .b:nth-child(2) { background: rgba(255,255,255,0.78) !important; }
+.frame.dark .markbox .b:nth-child(3), .frame.navy .markbox .b:nth-child(3) { background: #fff !important; }
+
+/* Mono dark stroke (.mono-dark) — graphite graduation */
+.mono-dark .marks .b:nth-child(1), .lockup.mono-dark .marks .b:nth-child(1) { background: #A8A8A8 !important; }
+.mono-dark .marks .b:nth-child(2), .lockup.mono-dark .marks .b:nth-child(2) { background: #6E6E70 !important; }
+.mono-dark .marks .b:nth-child(3), .lockup.mono-dark .marks .b:nth-child(3) { background: #2A2A2D !important; }
+
+/* Light-on-dark .mk variants (used in cover, hero overlays, footer) */
+.mk.light .b:nth-child(1), .lockup.mono-light .marks .b:nth-child(1) { background: rgba(255,255,255,0.55) !important; }
+.mk.light .b:nth-child(2) { background: rgba(255,255,255,0.78) !important; }
+.mk.light .b:nth-child(3) { background: #fff !important; }
+</style>
 </head>
 <body class="landing" data-screen-label="Landing · Oiva">
 
 <header class="bar">
-  <a class="brand" href="design.html">
+  <a class="brand" href="fsp-brandbook/design.html">
     <span class="mk"><span class="b"></span><span class="b"></span><span class="b"></span></span>
     <span class="word"><span>ФИН</span><span>СТРОЙ</span><span>ПАНЕЛЬ</span></span>
   </a>

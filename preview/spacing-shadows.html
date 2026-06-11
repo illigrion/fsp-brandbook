@@ -1,0 +1,10 @@
+<!doctype html>
+<!-- @dsCard group="Spacing" name="Spacing · Shadows (hover only)" subtitle="Тени — только на hover карточек" viewport="700x220" --><html lang="ru"><head><meta charset="utf-8"/><meta name="viewport" content="width=700"/><link rel="stylesheet" href="card.css"/><style>body{height:220px;overflow:hidden;}
+.wrap{padding:22px 28px;height:100%;display:flex;flex-direction:column;gap:14px;justify-content:center;}
+.note{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--graphite-500);font-weight:700;}
+.row{display:flex;gap:24px;align-items:center;}
+.tile{width:140px;height:100px;background:#fff;border:1px solid var(--cement);display:flex;align-items:center;justify-content:center;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--graphite-500);font-weight:700;}
+.hover{box-shadow:0 16px 32px -16px rgba(20,30,50,0.15);transform:translateY(-3px);}
+.cap{font-size:11px;color:var(--graphite-700);font-weight:600;line-height:1.5;}
+.cap b{color:var(--graphite);font-weight:700;}
+</style></head><body><div class="wrap"><div class="note">Тени — только на hover карточек</div><div class="row"><div class="tile">Rest</div><div class="tile hover">Hover</div><div class="cap"><b>0 16px 32px -16px rgba(20,30,50,0.15)</b><br/>+ translateY(-3px) · 250 ms cubic-bezier(.2,.7,.2,1)</div></div></div></body></html>

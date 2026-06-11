@@ -1,0 +1,73 @@
+/* preview/card.css — shared shell for design-system cards */
+@font-face { font-family: "Montserrat"; src: url("../fonts/Montserrat-Thin.ttf") format("truetype"); font-weight: 100; font-style: normal; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("../fonts/Montserrat-ThinItalic.ttf") format("truetype"); font-weight: 100; font-style: italic; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("../fonts/Montserrat-ExtraLight.ttf") format("truetype"); font-weight: 200; font-style: normal; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("../fonts/Montserrat-ExtraLightItalic.ttf") format("truetype"); font-weight: 200; font-style: italic; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("../fonts/Montserrat-Light.ttf") format("truetype"); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("../fonts/Montserrat-LightItalic.ttf") format("truetype"); font-weight: 300; font-style: italic; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("../fonts/Montserrat-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("../fonts/Montserrat-Italic.ttf") format("truetype"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("../fonts/Montserrat-Medium.ttf") format("truetype"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("../fonts/Montserrat-MediumItalic.ttf") format("truetype"); font-weight: 500; font-style: italic; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("../fonts/Montserrat-SemiBold.ttf") format("truetype"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("../fonts/Montserrat-SemiBoldItalic.ttf") format("truetype"); font-weight: 600; font-style: italic; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("../fonts/Montserrat-Bold.ttf") format("truetype"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("../fonts/Montserrat-BoldItalic.ttf") format("truetype"); font-weight: 700; font-style: italic; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("../fonts/Montserrat-ExtraBold.ttf") format("truetype"); font-weight: 800; font-style: normal; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("../fonts/Montserrat-ExtraBoldItalic.ttf") format("truetype"); font-weight: 800; font-style: italic; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("../fonts/Montserrat-Black.ttf") format("truetype"); font-weight: 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("../fonts/Montserrat-BlackItalic.ttf") format("truetype"); font-weight: 900; font-style: italic; font-display: swap; }
+
+:root{
+  --navy:#2D4F91; --navy-deep:#1F3A6E; --navy-50:#EBF0F9; --navy-100:#D7DFEE; --navy-200:#A8B6D5;
+  --graphite:#2A2A2D; --graphite-700:#434242; --graphite-500:#6E6E70; --graphite-300:#A8A8A8;
+  --concrete:#ECECEA; --cement:#C9C8C3; --paper:#F7F6F2; --paper-2:#FAFAF7; --white:#fff; --red:#C0071A;
+  --bar-light:#A8B6D5; --bar-mid:#5979B5; --bar-dark:#2D4F91;
+}
+*{ box-sizing:border-box; }
+html, body { margin:0; padding:0; background: var(--paper); color: var(--graphite); font-family:"Montserrat", system-ui, sans-serif; -webkit-font-smoothing:antialiased; }
+img{ display:block; max-width:100%; }
+.upper{ text-transform:uppercase; letter-spacing:0.18em; font-weight:700; }
+.tnum{ font-feature-settings:"tnum"; font-variant-numeric:tabular-nums; }
+
+/* ─── III mark — CANONICAL PROPORTIONS 2 : 2 : 3 ───
+   bar1 = bar2 (narrow, light/mid navy)
+   bar3 = 1.5× wider (dark navy)
+   gap  = 1 unit, height = 8 units
+*/
+.mk{ display:inline-flex; align-items:stretch; }
+.mk .b{ display:inline-block; background: var(--bar-dark); }
+.mk .b:nth-child(1){ background: var(--bar-light); }
+.mk .b:nth-child(2){ background: var(--bar-mid); }
+.mk .b:nth-child(3){ background: var(--bar-dark); }
+
+.mk.light .b:nth-child(1){ background: rgba(255,255,255,0.55); }
+.mk.light .b:nth-child(2){ background: rgba(255,255,255,0.78); }
+.mk.light .b:nth-child(3){ background: #fff; }
+
+.mk.mono  .b:nth-child(1){ background: var(--graphite-300); }
+.mk.mono  .b:nth-child(2){ background: var(--graphite-500); }
+.mk.mono  .b:nth-child(3){ background: var(--graphite); }
+
+/* Size presets — width ratio 2:2:3, gap = 1 unit, height = 8 units */
+.mk.s  { gap: 3px; }
+.mk.s  .b{ height: 28px; }
+.mk.s  .b:nth-child(1), .mk.s .b:nth-child(2){ width: 7px; }
+.mk.s  .b:nth-child(3){ width: 11px; }
+
+.mk.m  { gap: 5px; }
+.mk.m  .b{ height: 56px; }
+.mk.m  .b:nth-child(1), .mk.m .b:nth-child(2){ width: 14px; }
+.mk.m  .b:nth-child(3){ width: 21px; }
+
+.mk.l  { gap: 7px; }
+.mk.l  .b{ height: 88px; }
+.mk.l  .b:nth-child(1), .mk.l .b:nth-child(2){ width: 22px; }
+.mk.l  .b:nth-child(3){ width: 33px; }
+
+.mk.xl { gap: 11px; }
+.mk.xl .b{ height: 132px; }
+.mk.xl .b:nth-child(1), .mk.xl .b:nth-child(2){ width: 33px; }
+.mk.xl .b:nth-child(3){ width: 50px; }
+
+.note{ font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:var(--graphite-500); font-weight:700; }

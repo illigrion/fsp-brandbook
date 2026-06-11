@@ -1,0 +1,16 @@
+<!doctype html>
+<!-- @dsCard group="Spacing" name="Spacing · Motion / Timing" subtitle="120 / 150 / 250 ms · ease" viewport="700x180" --><html lang="ru"><head><meta charset="utf-8"/><meta name="viewport" content="width=700"/><link rel="stylesheet" href="card.css"/><style>body{height:180px;overflow:hidden;}
+.wrap{padding:20px 28px;height:100%;display:flex;flex-direction:column;gap:10px;justify-content:center;}
+.note{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--graphite-500);font-weight:700;}
+.tbl{display:grid;grid-template-columns:120px 100px 1fr;gap:0;font-size:12px;}
+.tbl > div{padding:9px 0;border-top:1px solid var(--cement);}
+.tbl > div:nth-last-child(-n+3){border-bottom:1px solid var(--cement);}
+.tbl .k{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--graphite-500);font-weight:700;}
+.tbl .v{font-size:12px;font-feature-settings:"tnum";color:var(--graphite);font-weight:600;}
+.tbl .d{font-size:11px;color:var(--graphite-700);}
+</style></head><body><div class="wrap"><div class="note">Motion · 120–250 ms · ease</div><div class="tbl">
+<div class="k">Fast</div><div class="v">120 ms</div><div class="d">Hover на ссылках, иконках</div>
+<div class="k">Base</div><div class="v">150 ms</div><div class="d">Кнопки, фокус полей, фоны</div>
+<div class="k">Slow</div><div class="v">250 ms</div><div class="d">Карточки · cubic-bezier(.2,.7,.2,1)</div>
+<div class="k">Image</div><div class="v">500 ms</div><div class="d">Scale 1→1.04 на photo-cards</div>
+</div></div></body></html>

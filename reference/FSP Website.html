@@ -1,0 +1,1233 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<title>ФСП · Сайт · 3 экрана</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+@font-face { font-family:"Montserrat"; src:url("fonts/Montserrat-Light.ttf") format("truetype");    font-weight:300; font-display:swap; }
+@font-face { font-family:"Montserrat"; src:url("fonts/Montserrat-Regular.ttf") format("truetype");  font-weight:400; font-display:swap; }
+@font-face { font-family:"Montserrat"; src:url("fonts/Montserrat-Medium.ttf") format("truetype");   font-weight:500; font-display:swap; }
+@font-face { font-family:"Montserrat"; src:url("fonts/Montserrat-SemiBold.ttf") format("truetype"); font-weight:600; font-display:swap; }
+@font-face { font-family:"Montserrat"; src:url("fonts/Montserrat-Bold.ttf") format("truetype");     font-weight:700; font-display:swap; }
+@font-face { font-family:"Montserrat"; src:url("fonts/Montserrat-ExtraBold.ttf") format("truetype");font-weight:800; font-display:swap; }
+@font-face { font-family:"Montserrat"; src:url("fonts/Montserrat-Black.ttf") format("truetype");    font-weight:900; font-display:swap; }
+
+:root{
+  --navy:#2D4F91; --navy-deep:#1F3A6E; --navy-50:#EBF0F9; --navy-100:#D7DFEE; --navy-200:#A8B6D5;
+  --graphite:#2A2A2D; --graphite-700:#434242; --graphite-500:#6E6E70; --graphite-300:#A8A8A8;
+  --concrete:#ECECEA; --cement:#C9C8C3; --paper:#F7F6F2; --paper-2:#FAFAF7; --white:#fff; --red:#C0071A;
+  --gutter: clamp(24px, 4vw, 56px);
+}
+
+*{ box-sizing:border-box; }
+html, body { margin:0; padding:0; background: var(--paper); color: var(--graphite); }
+body{ font-family:"Montserrat", system-ui, sans-serif; font-weight:400; -webkit-font-smoothing:antialiased; }
+img{ display:block; max-width:100%; }
+a{ color:inherit; text-decoration:none; }
+button{ font:inherit; cursor:pointer; }
+
+/* III mark */
+.mk{ display:inline-flex; gap:3px; align-items:stretch; }
+.mk .b{ background: var(--navy); }
+.mk.s   .b{ width:6px; height:24px; }
+.mk.m   .b{ width:10px; height:40px; gap:4px; }
+.mk.m{ gap:4px; }
+.mk.l   .b{ width:18px; height:72px; }
+.mk.l{ gap:6px; }
+.mk.xl  .b{ width:34px; height:140px; }
+.mk.xl{ gap:10px; }
+.mk.light .b{ background:#fff; }
+.mk.red   .b{ background: var(--red); }
+
+/* ───────── Nav ───────── */
+.nav{
+  position: sticky; top:0; z-index: 50;
+  background: rgba(247,246,242,0.92);
+  backdrop-filter: blur(8px) saturate(1.05); -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--cement);
+}
+.nav-inner{
+  height: 72px; padding: 0 var(--gutter);
+  display: grid; grid-template-columns: auto 1fr auto; gap: 48px; align-items: center;
+}
+.nav-brand{ display:flex; align-items:center; gap:12px; }
+.nav-brand .word{ font-weight:800; line-height:0.96; font-size:11px; letter-spacing:0.01em; color:var(--graphite); }
+.nav-brand .word span{ display:block; }
+.nav-links{ display:flex; gap:36px; align-items:center; }
+.nav-links a{ font-size:13px; font-weight:600; letter-spacing:0.04em; color: var(--graphite-700); transition: color .15s; }
+.nav-links a:hover{ color: var(--navy); }
+.nav-links a.active{ color: var(--navy); }
+.nav-right{ display:flex; gap:20px; align-items:center; }
+.nav-phone{ font-size: 15px; font-weight: 700; font-feature-settings:"tnum"; letter-spacing:0.02em; color: var(--graphite); }
+.nav-phone small{ display:block; font-size: 9px; letter-spacing:0.2em; text-transform:uppercase; color: var(--graphite-500); font-weight:600; margin-bottom:2px; }
+.btn{
+  display:inline-flex; align-items:center; gap:10px;
+  padding: 13px 22px; font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  background: var(--navy); color: #fff; border: 1px solid var(--navy); transition: background .15s;
+}
+.btn:hover{ background: var(--navy-deep); }
+.btn.ghost{ background: transparent; color: var(--graphite); border-color: var(--graphite); }
+.btn.ghost:hover{ background: var(--graphite); color: #fff; }
+.btn.light{ background:#fff; color: var(--graphite); border-color:#fff; }
+.btn.light:hover{ background: var(--paper); }
+.btn.arrow .ar{ width:18px; height:1px; background: currentColor; position: relative; }
+.btn.arrow .ar::after{ content:""; position:absolute; right:0; top:-3.5px; width:8px; height:8px; border-top:1px solid currentColor; border-right:1px solid currentColor; transform: rotate(45deg); }
+.btn.sm{ padding: 9px 16px; font-size: 11px; }
+
+/* ───────── Section: screen ───────── */
+.screen{
+  min-height: 100vh;
+  padding: 56px var(--gutter) 56px;
+  position: relative;
+  display: grid;
+  align-content: start;
+}
+
+/* ─── 1 · Hero ─── */
+#hero{
+  padding: 40px var(--gutter) 0;
+  background: var(--paper);
+  display: grid; grid-template-rows: 1fr auto;
+  min-height: calc(100vh - 72px);
+}
+.hero-grid{
+  display: grid; grid-template-columns: 1.05fr 1fr;
+  gap: 56px; align-items: stretch;
+  padding-top: 40px;
+}
+.hero-left{
+  display: flex; flex-direction: column; justify-content: space-between;
+  padding-bottom: 24px;
+}
+.hero-tag{
+  display: inline-flex; align-items: center; gap: 14px;
+  padding: 8px 14px; border: 1px solid var(--cement); background: var(--white);
+  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--graphite-700); font-weight: 600;
+  width: fit-content;
+}
+.hero-tag .dot{ width:8px; height:8px; background: var(--navy); }
+.hero-title{
+  margin: 28px 0 0;
+  font-size: clamp(48px, 6vw, 92px);
+  font-weight: 900; line-height: 0.92; letter-spacing: -0.035em;
+  color: var(--graphite);
+}
+.hero-title em{ font-style: normal; color: var(--navy); }
+.hero-title .word-img{
+  display: inline-block;
+  background: var(--navy); color: #fff;
+  padding: 0 14px 6px;
+  line-height: 0.98;
+}
+.hero-lead{
+  margin: 32px 0 0; max-width: 50ch;
+  font-size: 18px; line-height: 1.55; color: var(--graphite-700); font-weight: 400;
+}
+.hero-ctas{ display: flex; gap: 16px; margin-top: 36px; align-items: center; flex-wrap: wrap; }
+.hero-meta{ display: grid; grid-template-columns: repeat(3, max-content); column-gap: 48px; margin-top: 44px; align-items: end; }
+.hero-meta div{ display: flex; flex-direction: column; gap: 8px; }
+.hero-meta div b{ display: inline-flex; align-items: baseline; font-size: 36px; font-weight: 800; letter-spacing: -0.02em; line-height: 1; color: var(--graphite); }
+.hero-meta div b em{ font-style: normal; color: var(--navy); }
+.hero-meta div b sub{ position: static; vertical-align: baseline; font-size: 14px; font-weight: 700; color: var(--graphite-500); margin-left: 4px; letter-spacing: 0; }
+.hero-meta div span{ font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--graphite-500); font-weight: 600; line-height: 1.3; }
+
+/* Photo column */
+.hero-photo{
+  position: relative; min-height: 540px; overflow: hidden;
+  background: var(--graphite-300);
+  display: flex; align-items: flex-end;
+}
+.hero-photo img{ position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hero-photo .frame-overlay{
+  position: relative; z-index: 2; width: 100%; padding: 22px 24px 24px;
+  background: rgba(20, 25, 35, 0.78);
+  backdrop-filter: blur(10px) saturate(1.1);
+  -webkit-backdrop-filter: blur(10px) saturate(1.1);
+  color: #fff;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.hero-photo .frame-overlay .row{ display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; }
+.hero-photo .frame-overlay .obj{ font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600; color: rgba(255,255,255,0.8); }
+.hero-photo .frame-overlay .obj b{ display: block; color: #fff; font-weight: 800; font-size: 18px; letter-spacing: -0.01em; text-transform: none; margin-bottom: 4px; }
+.hero-photo .frame-overlay .meta{ display: flex; gap: 20px; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.8); font-weight: 600; }
+.hero-photo .frame-overlay .meta b{ color: #fff; }
+
+.hero-marks{
+  position: absolute; top: 24px; left: 24px; z-index: 2;
+}
+.hero-marks .mk .b{ background: #fff; }
+
+.hero-pager{
+  position: absolute; right: 24px; top: 24px; z-index: 2;
+  display: flex; flex-direction: column; gap: 6px; align-items: flex-end;
+  color: #fff; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700;
+}
+.hero-pager .dots{ display: flex; gap: 4px; }
+.hero-pager .dots span{ width: 22px; height: 2px; background: rgba(255,255,255,0.4); }
+.hero-pager .dots span.on{ background: #fff; }
+
+/* Hero value props strip */
+.hero-strip{
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--cement);
+  margin-top: 48px;
+}
+.hero-strip .it{
+  padding: 28px 32px;
+  display: grid; grid-template-columns: 28px 1fr; gap: 14px; align-items: start;
+  border-right: 1px solid var(--cement);
+}
+.hero-strip .it:first-child{ padding-left: 0; }
+.hero-strip .it:last-child{ border-right: 0; padding-right: 0; }
+.hero-strip .it .n{ font-size: 10px; letter-spacing: 0.18em; color: var(--navy); font-weight: 700; padding-top: 4px; }
+.hero-strip .it h4{ margin: 0 0 6px; font-size: 17px; font-weight: 700; letter-spacing: -0.005em; color: var(--graphite); }
+.hero-strip .it p{ margin: 0; font-size: 13px; color: var(--graphite-500); line-height: 1.5; }
+
+/* ─── 2 · Projects ─── */
+#projects{ background: var(--paper-2); }
+.sect-head{
+  display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: end;
+  padding-top: 40px;
+  border-bottom: 1px solid var(--cement);
+  padding-bottom: 28px;
+  margin-bottom: 40px;
+}
+.sect-head .kicker{ font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--navy); font-weight: 700; margin-bottom: 10px; }
+.sect-head h2{ margin: 0; font-size: clamp(36px, 5vw, 68px); font-weight: 800; line-height: 0.96; letter-spacing: -0.025em; color: var(--graphite); }
+.sect-head h2 em{ font-style: normal; color: var(--navy); }
+.sect-head .actions{ display: flex; gap: 12px; align-items: center; }
+.tab-row{ display: flex; gap: 0; align-items: stretch; margin-bottom: 32px; flex-wrap: wrap; }
+.tab{
+  padding: 14px 22px; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+  border: 1px solid var(--cement); border-right: 0; background: var(--white); color: var(--graphite-700);
+  display: inline-flex; gap: 10px; align-items: center;
+}
+.tab:last-child{ border-right: 1px solid var(--cement); }
+.tab.on{ background: var(--graphite); color: #fff; border-color: var(--graphite); }
+.tab .cnt{ font-size: 10px; color: var(--graphite-500); font-weight: 600; }
+.tab.on .cnt{ color: var(--graphite-300); }
+
+.proj-count{
+  display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 16px;
+  margin: 4px 0 18px;
+}
+.proj-count .lbl{ font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--graphite-500); font-weight: 700; }
+.proj-count .lbl b{ color: var(--graphite); font-weight: 800; }
+.proj-count .sort{ font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--graphite-700); font-weight: 600; display: inline-flex; align-items: center; gap: 8px; }
+.proj-count .sort select{ font: inherit; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; padding: 7px 30px 7px 12px; border: 1px solid var(--cement); background: var(--white); appearance: none; -webkit-appearance: none; background-image: linear-gradient(45deg, transparent 48%, var(--graphite) 48% 52%, transparent 52%), linear-gradient(-45deg, transparent 48%, var(--graphite) 48% 52%, transparent 52%); background-size: 6px 4px, 6px 4px; background-position: calc(100% - 14px) 55%, calc(100% - 8px) 55%; background-repeat: no-repeat; cursor: pointer; }
+
+.proj-grid{
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+}
+.proj-grid .more-tile{
+  background: var(--graphite); color: #fff;
+  display: flex; flex-direction: column; justify-content: space-between;
+  padding: 28px;
+  position: relative; overflow: hidden;
+  transition: background .15s;
+  text-decoration: none;
+}
+.proj-grid .more-tile:hover{ background: var(--navy-deep); }
+.proj-grid .more-tile::before{
+  content: ""; position: absolute; right: -10px; top: 30%;
+  width: 140px; height: 60%;
+  background: repeating-linear-gradient(90deg, var(--navy) 0 18px, transparent 18px 28px);
+  opacity: 0.32; pointer-events: none;
+}
+.proj-grid .more-tile .num{ font-size: 88px; font-weight: 900; line-height: 0.86; letter-spacing: -0.04em; color: #fff; position: relative; z-index: 1; }
+.proj-grid .more-tile .num em{ font-style: normal; color: var(--navy-200); }
+.proj-grid .more-tile .lbl{ font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--navy-200); font-weight: 700; margin-top: 6px; position: relative; z-index: 1; }
+.proj-grid .more-tile h3{ margin: 0; font-size: 22px; font-weight: 800; letter-spacing: -0.015em; line-height: 1.1; color: #fff; position: relative; z-index: 1; }
+.proj-grid .more-tile .cta-line{ display: flex; align-items: center; gap: 12px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.15); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #fff; font-weight: 700; position: relative; z-index: 1; }
+.proj-grid .more-tile .cta-line .arr{ width: 24px; height: 1px; background: currentColor; position: relative; margin-left: auto; }
+.proj-grid .more-tile .cta-line .arr::after{ content: ""; position: absolute; right: 0; top: -3.5px; width: 8px; height: 8px; border-top: 1px solid currentColor; border-right: 1px solid currentColor; transform: rotate(45deg); }
+.proj{
+  background: var(--white); border: 1px solid var(--cement); display: flex; flex-direction: column;
+  transition: transform .25s, box-shadow .25s;
+}
+.proj:hover{ transform: translateY(-3px); box-shadow: 0 16px 32px -16px rgba(20,30,50,0.15); }
+.proj .ph{
+  aspect-ratio: 4/3; background: var(--concrete); position: relative; overflow: hidden;
+  display: flex; align-items: flex-end; padding: 16px;
+}
+.proj .ph > img{
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;
+  transition: transform .5s ease;
+}
+.proj:hover .ph > img{ transform: scale(1.04); }
+.proj .ph .badge{
+  position: relative; z-index: 2;
+  padding: 5px 11px; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700;
+  background: rgba(255,255,255,0.95); color: var(--graphite);
+  backdrop-filter: blur(4px);
+}
+.proj .ph .badge.red{ background: var(--red); color: #fff; }
+.proj .ph .mk-corner{
+  position: absolute; top: 14px; left: 14px; z-index: 2;
+  display: inline-flex; gap: 3px;
+}
+.proj .ph .mk-corner .b{ background: #fff; width: 5px; height: 22px; box-shadow: 0 1px 4px rgba(0,0,0,0.2); }
+.proj .body{ padding: 22px 22px 26px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+.proj .body .meta{ display: flex; justify-content: space-between; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--graphite-500); font-weight: 600; }
+.proj .body h3{ margin: 0; font-size: 22px; font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; color: var(--graphite); }
+.proj .body .specs{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; padding-top: 8px; border-top: 1px solid var(--cement); margin-top: auto; }
+.proj .body .specs div{ display: flex; flex-direction: column; gap: 2px; }
+.proj .body .specs b{ font-size: 16px; font-weight: 700; color: var(--graphite); }
+.proj .body .specs span{ font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--graphite-500); font-weight: 600; }
+.proj .body .specs b em{ color: var(--navy); font-style: normal; }
+.proj .body .row{ display: flex; justify-content: space-between; align-items: center; padding-top: 14px; border-top: 1px solid var(--cement); margin-top: 2px; }
+.proj .body .row .price b{ font-size: 22px; font-weight: 800; letter-spacing: -0.02em; color: var(--graphite); }
+.proj .body .row .price span{ display: block; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--graphite-500); font-weight: 600; margin-top: 2px; }
+.proj .body .row .arrow{
+  width: 36px; height: 36px; border: 1px solid var(--cement);
+  display: inline-flex; align-items: center; justify-content: center;
+  color: var(--graphite); position: relative;
+  transition: background .15s, color .15s, border-color .15s;
+}
+.proj:hover .body .row .arrow{ background: var(--navy); border-color: var(--navy); color: #fff; }
+.proj .body .row .arrow::before{
+  content: ""; width: 18px; height: 1px; background: currentColor; display: block;
+}
+.proj .body .row .arrow::after{
+  content: ""; position: absolute; left: 50%; top: 50%;
+  width: 7px; height: 7px;
+  border-top: 1px solid currentColor; border-right: 1px solid currentColor;
+  transform: translate(2px, -50%) rotate(45deg);
+}
+
+/* Stats band */
+.stats-band{
+  margin-top: 56px; padding: 40px 0; border-top: 1px solid var(--cement); border-bottom: 1px solid var(--cement);
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px;
+}
+.stats-band .st b{ display: block; font-size: 64px; font-weight: 900; line-height: 0.92; letter-spacing: -0.04em; color: var(--graphite); }
+.stats-band .st b em{ font-style: normal; color: var(--navy); }
+.stats-band .st b sub{ font-size: 18px; font-weight: 700; vertical-align: baseline; color: var(--graphite-500); margin-left: 2px; }
+.stats-band .st span{ display: block; margin-top: 14px; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--graphite-500); font-weight: 600; line-height: 1.5; }
+
+/* ─── 3 · Technology + CTA ─── */
+#tech{ background: var(--paper); }
+.tech-grid{
+  display: grid; grid-template-columns: 0.95fr 1fr; gap: 56px; align-items: start;
+  padding-top: 24px;
+}
+.tech-vis{
+  background: var(--graphite); color: #fff; padding: 40px;
+  display: flex; flex-direction: column; gap: 24px; min-height: 480px;
+  position: relative; overflow: hidden;
+}
+.tech-vis .lbl{ font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--navy-200); font-weight: 700; }
+.tech-vis h3{ margin: 0; font-size: 34px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.05; }
+.tech-vis h3 em{ font-style: normal; color: var(--navy-200); }
+.tech-vis .layers{
+  margin-top: 24px;
+  display: grid; grid-template-columns: 1fr 1.2fr 1fr; gap: 4px; height: 220px;
+}
+.tech-vis .layers .ly{ display: flex; flex-direction: column; justify-content: space-between; padding: 16px; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; line-height: 1.4; }
+.tech-vis .layers .ly .name{ color: rgba(255,255,255,0.8); }
+.tech-vis .layers .ly .thick{ font-size: 22px; font-weight: 900; letter-spacing: -0.02em; line-height: 1; }
+.tech-vis .layers .l1{ background: var(--navy); }
+.tech-vis .layers .l2{ background: var(--paper); color: var(--graphite); }
+.tech-vis .layers .l2 .name{ color: var(--graphite-500); }
+.tech-vis .layers .l3{ background: var(--navy-deep); }
+.tech-vis .annot{
+  display: grid; grid-template-columns: 1fr 1.2fr 1fr; gap: 4px; margin-top: 6px;
+  font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.45); font-weight: 600;
+}
+.tech-vis .annot div{ text-align: center; padding: 4px 0; }
+.tech-vis .tally{ display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: end; margin-top: auto; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.15); }
+.tech-vis .tally .col{ display: flex; flex-direction: column; gap: 10px; }
+.tech-vis .tally .col.right{ align-items: flex-end; text-align: right; }
+.tech-vis .tally .num{ display: inline-flex; align-items: baseline; font-size: 56px; font-weight: 900; letter-spacing: -0.04em; line-height: 1; color: #fff; }
+.tech-vis .tally .num.accent{ color: var(--navy-200); }
+.tech-vis .tally .num u{ text-decoration: none; font-size: 16px; font-weight: 700; letter-spacing: 0; color: rgba(255,255,255,0.55); margin-left: 4px; text-transform: uppercase; }
+.tech-vis .tally .lbl{ font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.6); font-weight: 700; }
+
+/* Process steps */
+.process h2{ margin: 0 0 8px; font-size: clamp(36px, 4.5vw, 56px); font-weight: 800; letter-spacing: -0.025em; line-height: 0.98; color: var(--graphite); }
+.process h2 em{ font-style: normal; color: var(--navy); }
+.process > p{ margin: 0 0 32px; max-width: 56ch; font-size: 16px; color: var(--graphite-500); line-height: 1.6; }
+.steps{ display: grid; grid-template-columns: 1fr; gap: 0; border-top: 1px solid var(--cement); }
+.step{
+  display: grid; grid-template-columns: 64px 1fr auto; gap: 24px; align-items: center;
+  padding: 22px 0; border-bottom: 1px solid var(--cement);
+}
+.step .n{ font-size: 28px; font-weight: 900; letter-spacing: -0.02em; color: var(--graphite-300); line-height: 1; }
+.step.on .n{ color: var(--navy); }
+.step h4{ margin: 0 0 4px; font-size: 18px; font-weight: 700; letter-spacing: -0.005em; color: var(--graphite); }
+.step p{ margin: 0; font-size: 13px; color: var(--graphite-500); line-height: 1.5; max-width: 60ch; }
+.step .dur{ font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--graphite-500); font-weight: 700; }
+.step.on .dur{ color: var(--navy); }
+
+/* Footer CTA band */
+.cta-band{
+  margin-top: 56px;
+  background: var(--graphite); color: #fff;
+  padding: 56px var(--gutter);
+  margin-left: calc(-1 * var(--gutter)); margin-right: calc(-1 * var(--gutter));
+  display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px; align-items: end;
+  position: relative; overflow: hidden;
+}
+.cta-band::before{
+  content:""; position: absolute; right: -40px; top: 50%; transform: translateY(-50%);
+  width: 280px; height: 280px;
+  background:
+    repeating-linear-gradient(90deg, var(--navy) 0 28px, transparent 28px 42px);
+  opacity: 0.18;
+}
+.cta-band h3{ margin: 0; font-size: clamp(32px, 4vw, 56px); font-weight: 900; letter-spacing: -0.03em; line-height: 0.98; color: #fff; }
+.cta-band h3 em{ font-style: normal; color: var(--navy-200); }
+.cta-band p{ margin: 16px 0 0; font-size: 15px; color: var(--graphite-300); max-width: 50ch; line-height: 1.6; }
+.cta-form{ display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.cta-form input{
+  font: inherit; font-size: 14px; padding: 14px 16px;
+  border: 1px solid #555; background: transparent; color: #fff; outline: none;
+}
+.cta-form input::placeholder{ color: var(--graphite-300); }
+.cta-form input:focus{ border-color: var(--navy-200); }
+.cta-form button{
+  grid-column: span 2;
+  padding: 16px 24px; font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+  background: var(--navy); color: #fff; border: 0; transition: background .15s;
+}
+.cta-form button:hover{ background: var(--navy-deep); }
+.cta-form .agree{ grid-column: span 2; font-size: 11px; color: var(--graphite-300); letter-spacing: 0.04em; }
+.cta-form .agree a{ color: var(--navy-200); border-bottom: 1px dashed currentColor; }
+
+/* News */
+#news{ background: var(--paper-2); padding-bottom: 80px; }
+.news-grid{ display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 16px; }
+.news{ background: var(--white); border: 1px solid var(--cement); display: flex; flex-direction: column; transition: transform .25s, box-shadow .25s; }
+.news:hover{ transform: translateY(-3px); box-shadow: 0 16px 32px -16px rgba(20,30,50,0.15); }
+.news .ph{ aspect-ratio: 16/10; background: var(--concrete); overflow: hidden; position: relative; }
+.news .ph img{ width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+.news:hover .ph img{ transform: scale(1.04); }
+.news .ph .tag{ position: absolute; top: 14px; left: 14px; padding: 5px 11px; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; background: rgba(255,255,255,0.95); color: var(--graphite); }
+.news .ph .tag.navy{ background: var(--navy); color: #fff; }
+.news .ph .tag.red{ background: var(--red); color: #fff; }
+.news .body{ padding: 22px 22px 24px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+.news .body .meta{ font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--graphite-500); font-weight: 600; display: flex; gap: 14px; }
+.news .body .meta b{ color: var(--graphite); font-weight: 700; }
+.news .body h3{ margin: 0; font-size: 20px; font-weight: 800; line-height: 1.18; letter-spacing: -0.015em; color: var(--graphite); }
+.news.feature .body h3{ font-size: 28px; line-height: 1.08; }
+.news .body p{ margin: 0; font-size: 13px; color: var(--graphite-500); line-height: 1.55; }
+.news .body .row{ display: flex; justify-content: space-between; align-items: center; padding-top: 14px; border-top: 1px solid var(--cement); margin-top: auto; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: var(--navy); }
+.news .body .row .arr{ width: 14px; height: 1px; background: currentColor; position: relative; }
+.news .body .row .arr::after{ content:""; position: absolute; right: 0; top: -3px; width: 7px; height: 7px; border-top: 1px solid currentColor; border-right: 1px solid currentColor; transform: rotate(45deg); }
+@media (max-width: 1100px){ .news-grid{ grid-template-columns: 1fr 1fr; } .news.feature{ grid-column: span 2; } }
+@media (max-width: 700px){ .news-grid{ grid-template-columns: 1fr; } .news.feature{ grid-column: span 1; } }
+
+/* Footer */
+.foot{ background: var(--graphite); color: var(--cement); padding: 0; }
+.foot-cta{
+  background: var(--graphite);
+  padding: 72px var(--gutter) 56px;
+  display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: end;
+  border-bottom: 1px solid #1a1a1c;
+  position: relative; overflow: hidden;
+}
+.foot-cta h3{ margin: 0; font-size: clamp(36px, 4.6vw, 68px); font-weight: 900; letter-spacing: -0.035em; line-height: 0.94; color: #fff; }
+.foot-cta h3 em{ font-style: normal; color: var(--navy-200); }
+.foot-cta .right{ display: flex; flex-direction: column; gap: 16px; align-items: flex-end; }
+.foot-cta .right .ph{ font-size: 30px; font-weight: 800; letter-spacing: -0.01em; color: #fff; text-align: right; line-height: 1; }
+.foot-cta .right .ph small{ display: block; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--graphite-300); font-weight: 600; margin-bottom: 8px; }
+.foot-cta .right .btn-row{ display: flex; gap: 10px; }
+.foot-cta .right .btn-row .btn.light{ background: #fff; color: var(--graphite); border-color: #fff; }
+.foot-cta .right .btn-row .btn.light:hover{ background: var(--paper); }
+.foot-cta .right .btn-row .btn.ghost{ color: #fff; border-color: rgba(255,255,255,0.4); background: transparent; }
+.foot-cta .right .btn-row .btn.ghost:hover{ background: rgba(255,255,255,0.08); border-color: #fff; }
+
+.foot-main{
+  padding: 56px var(--gutter) 48px;
+  display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr 1.1fr; gap: 40px;
+}
+.foot-main .brand-col{ display: flex; flex-direction: column; gap: 16px; padding-right: 24px; }
+.foot-main .brand-col .mk-big{ display: inline-flex; gap: 6px; margin-bottom: 4px; }
+.foot-main .brand-col .mk-big .b{ background: #fff; width: 14px; height: 56px; }
+.foot-main .brand-col .name{ font-size: 14px; font-weight: 800; letter-spacing: 0.04em; color: #fff; line-height: 1.35; }
+.foot-main .brand-col .name small{ display: block; font-weight: 500; color: var(--graphite-300); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; margin-top: 6px; }
+.foot-main .brand-col p{ margin: 0; font-size: 13px; color: var(--graphite-300); line-height: 1.65; max-width: 36ch; }
+.foot-main .brand-col .badges{ display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+.foot-main .brand-col .badges span{ font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; padding: 6px 10px; border: 1px solid rgba(255,255,255,0.2); color: var(--graphite-300); font-weight: 600; }
+.foot-main h6{ margin: 0 0 18px; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: #fff; font-weight: 700; }
+.foot-main ul{ list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 11px; }
+.foot-main ul a{ font-size: 13px; color: var(--graphite-300); transition: color .15s; }
+.foot-main ul a:hover{ color: #fff; }
+.foot-main .contact-col p{ margin: 0 0 14px; font-size: 13px; line-height: 1.55; color: var(--cement); }
+.foot-main .contact-col p b{ color: #fff; font-weight: 700; display: block; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 4px; color: var(--graphite-300); }
+.foot-main .contact-col .phone{ font-size: 22px; font-weight: 800; letter-spacing: -0.01em; color: #fff; line-height: 1; margin: 0 0 4px; }
+.foot-main .contact-col .email{ font-size: 13px; color: var(--cement); border-bottom: 1px solid rgba(255,255,255,0.2); display: inline-block; margin-bottom: 18px; padding-bottom: 1px; }
+.foot-main .contact-col .email:hover{ color: #fff; border-color: #fff; }
+.foot-main .contact-col .hours{ font-size: 11px; letter-spacing: 0.1em; color: var(--graphite-300); font-weight: 500; line-height: 1.7; }
+.foot-main .contact-col .hours b{ display: inline; color: #fff; font-weight: 700; }
+
+.foot-pat{ position: relative; padding: 18px 0; border-top: 1px solid #1a1a1c; overflow: hidden; }
+.foot-pat .strips{ display: flex; padding: 0 var(--gutter); }
+.foot-pat .strips .grp{ display: inline-flex; gap: 5px; margin-right: 18px; }
+.foot-pat .strips .grp .b{ width: 7px; height: 32px; background: var(--navy); }
+.foot-pat .strips .grp.f2 .b{ background: #4a4a4d; }
+.foot-pat .strips .grp.f3 .b{ background: var(--navy-deep); }
+.foot-pat .strips .grp.f4 .b{ background: #6a6a6d; }
+
+.foot-legal{
+  padding: 22px var(--gutter);
+  background: #1f1f21;
+  display: grid; grid-template-columns: 1fr auto auto; gap: 32px; align-items: center;
+  font-size: 11px; color: var(--graphite-300); letter-spacing: 0.04em;
+}
+.foot-legal .copy b{ color: #fff; font-weight: 700; }
+.foot-legal .legal-links{ display: flex; gap: 24px; }
+.foot-legal .legal-links a:hover{ color: #fff; }
+.foot-legal .socials{ display: flex; gap: 6px; }
+.foot-legal .socials a{
+  width: 34px; height: 34px; border: 1px solid rgba(255,255,255,0.18);
+  display: inline-flex; align-items: center; justify-content: center;
+  color: var(--graphite-300); transition: background .15s, color .15s, border-color .15s;
+}
+.foot-legal .socials a:hover{ background: var(--navy); color: #fff; border-color: var(--navy); }
+.foot-legal .socials a svg{ width: 14px; height: 14px; }
+@media (max-width: 1100px){
+  .foot-cta{ grid-template-columns: 1fr; }
+  .foot-cta .right{ align-items: flex-start; }
+  .foot-cta .right .ph{ text-align: left; }
+  .foot-main{ grid-template-columns: 1fr 1fr; }
+  .foot-main .brand-col{ grid-column: span 2; padding-right: 0; }
+  .foot-legal{ grid-template-columns: 1fr; gap: 16px; }
+  .foot-legal .legal-links{ flex-wrap: wrap; gap: 14px; }
+}
+
+/* Scroll dots floating */
+.dots-side{
+  position: fixed; right: 24px; top: 50%; transform: translateY(-50%); z-index: 40;
+  display: flex; flex-direction: column; gap: 14px; align-items: center;
+}
+.dots-side a{ display: flex; align-items: center; gap: 8px; color: var(--graphite-500); font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700; }
+.dots-side a .d{ width: 8px; height: 8px; border: 1px solid var(--graphite-500); }
+.dots-side a.on{ color: var(--navy); }
+.dots-side a.on .d{ background: var(--navy); border-color: var(--navy); }
+.dots-side a span{ opacity: 0; transition: opacity .15s; }
+.dots-side a:hover span, .dots-side a.on span{ opacity: 1; }
+@media (max-width: 1100px){ .dots-side{ display: none; } }
+
+/* Responsive collapse */
+@media (max-width: 1100px){
+  .hero-grid{ grid-template-columns: 1fr; }
+  .hero-photo{ min-height: 360px; }
+  .hero-strip{ grid-template-columns: 1fr 1fr; }
+  .hero-strip .it{ border-right: 0; border-bottom: 1px solid var(--cement); padding: 20px 0; }
+  .proj-grid{ grid-template-columns: 1fr 1fr; }
+  .stats-band{ grid-template-columns: 1fr 1fr; gap: 24px; }
+  .tech-grid{ grid-template-columns: 1fr; }
+  .cta-band{ grid-template-columns: 1fr; gap: 32px; }
+  .nav-links{ display: none; }
+}
+</style>
+<style id="__brand-bars">
+/* ─────── NEW LOGO: graduated bars (light → medium → dark) ─────── */
+:root {
+  --bar-light: #A8B6D5;
+  --bar-mid:   #5979B5;
+  --bar-dark:  #2D4F91;
+}
+.mk .b:nth-child(1), .markbox .b:nth-child(1), .marks .b:nth-child(1),
+.mk-tote .b:nth-child(1), .mk-mug .b:nth-child(1), .mk-tape .b:nth-child(1),
+.mk-rul .b:nth-child(1), .mk-bk .b:nth-child(1), .mk-bd .b:nth-child(1),
+.mk-corner .b:nth-child(1), .mk-big .b:nth-child(1),
+.brand .mark .b:nth-child(1) { background: var(--bar-light) !important; }
+.mk .b:nth-child(2), .markbox .b:nth-child(2), .marks .b:nth-child(2),
+.mk-tote .b:nth-child(2), .mk-mug .b:nth-child(2), .mk-tape .b:nth-child(2),
+.mk-rul .b:nth-child(2), .mk-bk .b:nth-child(2), .mk-bd .b:nth-child(2),
+.mk-corner .b:nth-child(2), .mk-big .b:nth-child(2),
+.brand .mark .b:nth-child(2) { background: var(--bar-mid) !important; }
+.mk .b:nth-child(3), .markbox .b:nth-child(3), .marks .b:nth-child(3),
+.mk-tote .b:nth-child(3), .mk-mug .b:nth-child(3), .mk-tape .b:nth-child(3),
+.mk-rul .b:nth-child(3), .mk-bk .b:nth-child(3), .mk-bd .b:nth-child(3),
+.mk-corner .b:nth-child(3), .mk-big .b:nth-child(3),
+.brand .mark .b:nth-child(3) { background: var(--bar-dark) !important; }
+
+/* On dark/navy/red backgrounds — invert: light → opaque white graduating */
+.frame.dark .marks .b:nth-child(1), .frame.navy .marks .b:nth-child(1), .frame.red .marks .b:nth-child(1),
+.mono-light .marks .b:nth-child(1), .red-bg .marks .b:nth-child(1),
+.lockup.mono-light .marks .b:nth-child(1), .lockup.red-bg .marks .b:nth-child(1) {
+  background: rgba(255,255,255,0.55) !important;
+}
+.frame.dark .marks .b:nth-child(2), .frame.navy .marks .b:nth-child(2), .frame.red .marks .b:nth-child(2),
+.mono-light .marks .b:nth-child(2), .red-bg .marks .b:nth-child(2),
+.lockup.mono-light .marks .b:nth-child(2), .lockup.red-bg .marks .b:nth-child(2) {
+  background: rgba(255,255,255,0.78) !important;
+}
+.frame.dark .marks .b:nth-child(3), .frame.navy .marks .b:nth-child(3), .frame.red .marks .b:nth-child(3),
+.mono-light .marks .b:nth-child(3), .red-bg .marks .b:nth-child(3),
+.lockup.mono-light .marks .b:nth-child(3), .lockup.red-bg .marks .b:nth-child(3) {
+  background: #fff !important;
+}
+
+/* Mark-only on dark frames (mark blocks without .marks wrapper) */
+.frame.dark .markbox .b:nth-child(1), .frame.navy .markbox .b:nth-child(1) { background: rgba(255,255,255,0.55) !important; }
+.frame.dark .markbox .b:nth-child(2), .frame.navy .markbox .b:nth-child(2) { background: rgba(255,255,255,0.78) !important; }
+.frame.dark .markbox .b:nth-child(3), .frame.navy .markbox .b:nth-child(3) { background: #fff !important; }
+
+/* Mono dark stroke (.mono-dark) — graphite graduation */
+.mono-dark .marks .b:nth-child(1), .lockup.mono-dark .marks .b:nth-child(1) { background: #A8A8A8 !important; }
+.mono-dark .marks .b:nth-child(2), .lockup.mono-dark .marks .b:nth-child(2) { background: #6E6E70 !important; }
+.mono-dark .marks .b:nth-child(3), .lockup.mono-dark .marks .b:nth-child(3) { background: #2A2A2D !important; }
+
+/* Light-on-dark .mk variants (used in cover, hero overlays, footer) */
+.mk.light .b:nth-child(1), .lockup.mono-light .marks .b:nth-child(1) { background: rgba(255,255,255,0.55) !important; }
+.mk.light .b:nth-child(2) { background: rgba(255,255,255,0.78) !important; }
+.mk.light .b:nth-child(3) { background: #fff !important; }
+</style>
+</head>
+<body>
+
+
+
+<!-- ─── Nav ─── -->
+<header class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">
+      <span class="mk m"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+      <span class="word"><span>ФИН</span><span>СТРОЙ</span><span>ПАНЕЛЬ</span></span>
+    </div>
+    <nav class="nav-links">
+      <a href="#projects" class="active">Проекты</a>
+      <a href="#tech">Технология</a>
+      <a href="#">Производство</a>
+      <a href="#">Кейсы</a>
+      <a href="#news">Новости</a>
+      <a href="#">О компании</a>
+      <a href="#">Контакты</a>
+    </nav>
+    <div class="nav-right">
+      <div class="nav-phone"><small>Москва · 9:00–21:00</small>+7 495 123 45 67</div>
+      <button class="btn arrow">Заказать расчёт<span class="ar"></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- ───────────────────────────── -->
+<!-- 1 · HERO -->
+<!-- ───────────────────────────── -->
+<section id="hero" class="screen" data-screen-label="01 Hero">
+  <div class="hero-grid">
+    <div class="hero-left">
+      <div>
+        <span class="hero-tag"><span class="dot"></span>Сезон 2026 · набор объектов открыт</span>
+        <h1 class="hero-title">
+          Энерго<br/>
+          эффективные<br/>
+          дома <em>из&nbsp;железо&shy;бетона.</em>
+        </h1>
+        <p class="hero-lead">
+          Производим и&nbsp;монтируем трёхслойные железобетонные панели. От&nbsp;расчёта до&nbsp;готовой коробки&nbsp;— <b>47&nbsp;дней</b> в&nbsp;среднем. Гарантия на&nbsp;конструкцию&nbsp;— 25&nbsp;лет.
+        </p>
+        <div class="hero-ctas">
+          <button class="btn arrow">Подобрать проект<span class="ar"></span></button>
+          <button class="btn ghost">Скачать каталог · PDF</button>
+        </div>
+      </div>
+      <div class="hero-meta">
+        <div><b>320<em>+</em></b><span>домов сдано</span></div>
+        <div><b>&minus;40<sub>%</sub></b><span>теплопотерь</span></div>
+        <div><b>25<sub>лет</sub></b><span>гарантия</span></div>
+      </div>
+    </div>
+
+    <div class="hero-photo">
+      <div class="hero-marks"><span class="mk l light"><span class="b"></span><span class="b"></span><span class="b"></span></span></div>
+      <div class="hero-pager">
+        <span>01 / 04</span>
+        <div class="dots"><span class="on"></span><span></span><span></span><span></span></div>
+      </div>
+      <img src="assets/project_03.jpeg" alt="Объект ФСП"/>
+      <div class="frame-overlay">
+        <div class="row">
+          <div class="obj">
+            <b>Esteri · FP-3 · посёлок «Сосновый»</b>
+            Сдан май 2026 · 1 этаж · 106&nbsp;м²
+          </div>
+          <div class="meta">
+            <div>Монтаж<br/><b>12 дней</b></div>
+            <div>Утеплитель<br/><b>120 мм</b></div>
+            <div>Энергокласс<br/><b>А++</b></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Value props strip -->
+  <div class="hero-strip">
+    <div class="it">
+      <div class="n">01</div>
+      <div><h4>Заводская точность</h4><p>Панели изготовлены в&nbsp;цеху с&nbsp;допуском ±1&nbsp;мм. На&nbsp;площадке&nbsp;— только сборка.</p></div>
+    </div>
+    <div class="it">
+      <div class="n">02</div>
+      <div><h4>Скорость в&nbsp;3 раза выше</h4><p>Коробка дома 180&nbsp;м² монтируется за&nbsp;14 рабочих дней. Никакого «мокрого» этапа.</p></div>
+    </div>
+    <div class="it">
+      <div class="n">03</div>
+      <div><h4>Энергокласс А++</h4><p>120&nbsp;мм утеплителя PIR между двумя слоями железобетона. Класс А++ из&nbsp;коробки.</p></div>
+    </div>
+    <div class="it">
+      <div class="n">04</div>
+      <div><h4>Один договор</h4><p>Расчёт, производство, доставка, монтаж&nbsp;— один менеджер, фиксированная&nbsp;смета.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────────────────────── -->
+<!-- 2 · PROJECTS -->
+<!-- ───────────────────────────── -->
+<section id="projects" class="screen" data-screen-label="02 Projects">
+  <div class="sect-head">
+    <div>
+      <div class="kicker">Готовые проекты</div>
+      <h2>37 моделей.<br/>Срок производства&nbsp;— <em>28 дней.</em></h2>
+    </div>
+    <div class="actions">
+      <button class="btn ghost">Индивидуальный проект</button>
+      <button class="btn arrow">Все проекты<span class="ar"></span></button>
+    </div>
+  </div>
+
+  <div class="tab-row">
+    <button class="tab on">Все <span class="cnt">· 37</span></button>
+    <button class="tab">До 100 м² <span class="cnt">· 5</span></button>
+    <button class="tab">100–150 м² <span class="cnt">· 14</span></button>
+    <button class="tab">150–200 м² <span class="cnt">· 12</span></button>
+    <button class="tab">От 200 м² <span class="cnt">· 6</span></button>
+    <button class="tab">Финские серии <span class="cnt">· 8</span></button>
+  </div>
+
+  <div class="proj-count">
+    <div class="lbl">Показано <b>8</b> из <b>37</b> проектов</div>
+    <label class="sort">Сортировка
+      <select>
+        <option>По популярности</option>
+        <option>По цене — от меньшей</option>
+        <option>По площади — от меньшей</option>
+        <option>По сроку монтажа</option>
+      </select>
+    </label>
+  </div>
+
+  <div class="proj-grid">
+    <!-- Project 1 — FP-1 Valo -->
+    <article class="proj">
+      <div class="ph">
+        <img src="assets/project_02.jpeg" alt="FP-1 Valo У 139"/>
+        <span class="mk-corner"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+        <span class="badge">Готов к&nbsp;монтажу</span>
+      </div>
+      <div class="body">
+        <div class="meta"><span>Серия FP-1 · Valo</span><span>А++</span></div>
+        <h3>Valo&nbsp;У&nbsp;139</h3>
+        <div class="specs">
+          <div><b>139<em>м²</em></b><span>Площадь</span></div>
+          <div><b>1</b><span>Этаж</span></div>
+          <div><b>14<em>дн</em></b><span>Монтаж</span></div>
+        </div>
+        <div class="row">
+          <div class="price"><b>от 12.2 млн ₽</b><span>тёплый контур</span></div>
+          <span class="arrow"></span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Project 2 — FP-3 Esteri -->
+    <article class="proj">
+      <div class="ph">
+        <img src="assets/project_03.jpeg" alt="FP-3 Esteri"/>
+        <span class="mk-corner"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+        <span class="badge">Хит финской линейки</span>
+      </div>
+      <div class="body">
+        <div class="meta"><span>Серия FP-3 · Esteri</span><span>А++</span></div>
+        <h3>Esteri</h3>
+        <div class="specs">
+          <div><b>106<em>м²</em></b><span>Площадь</span></div>
+          <div><b>1</b><span>Этаж</span></div>
+          <div><b>12<em>дн</em></b><span>Монтаж</span></div>
+        </div>
+        <div class="row">
+          <div class="price"><b>от 11.6 млн ₽</b><span>тёплый контур</span></div>
+          <span class="arrow"></span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Project 3 — FP-4 Эгоист -->
+    <article class="proj">
+      <div class="ph">
+        <img src="assets/project_05.jpeg" alt="FP-4 Эгоист"/>
+        <span class="mk-corner"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+        <span class="badge red">Хит сезона</span>
+      </div>
+      <div class="body">
+        <div class="meta"><span>Серия FP-4 · Эгоист</span><span>А++</span></div>
+        <h3>Эгоист</h3>
+        <div class="specs">
+          <div><b>148<em>м²</em></b><span>Площадь</span></div>
+          <div><b>2</b><span>Этажа</span></div>
+          <div><b>16<em>дн</em></b><span>Монтаж</span></div>
+        </div>
+        <div class="row">
+          <div class="price"><b>от 16.9 млн ₽</b><span>тёплый контур</span></div>
+          <span class="arrow"></span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Project 4 — FP-7 Oiva -->
+    <article class="proj">
+      <div class="ph">
+        <img src="assets/project_06.jpeg" alt="FP-7 Oiva"/>
+        <span class="mk-corner"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+        <span class="badge">В производстве</span>
+      </div>
+      <div class="body">
+        <div class="meta"><span>Серия FP-7 · Oiva</span><span>А++</span></div>
+        <h3>Oiva</h3>
+        <div class="specs">
+          <div><b>193<em>м²</em></b><span>Площадь</span></div>
+          <div><b>2</b><span>Этажа</span></div>
+          <div><b>18<em>дн</em></b><span>Монтаж</span></div>
+        </div>
+        <div class="row">
+          <div class="price"><b>от 20.4 млн ₽</b><span>тёплый контур</span></div>
+          <span class="arrow"></span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Project 5 — FP-1 Мечта -->
+    <article class="proj">
+      <div class="ph">
+        <img src="assets/project_04.jpeg" alt="FP-1 Мечта"/>
+        <span class="mk-corner"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+        <span class="badge">Готов к&nbsp;монтажу</span>
+      </div>
+      <div class="body">
+        <div class="meta"><span>Серия FP-1 · Мечта</span><span>А++</span></div>
+        <h3>Мечта</h3>
+        <div class="specs">
+          <div><b>220<em>м²</em></b><span>Площадь</span></div>
+          <div><b>2</b><span>Этажа</span></div>
+          <div><b>17<em>дн</em></b><span>Монтаж</span></div>
+        </div>
+        <div class="row">
+          <div class="price"><b>от 22.6 млн ₽</b><span>тёплый контур</span></div>
+          <span class="arrow"></span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Project 6 — FP-3 Феликс 2.0 -->
+    <article class="proj">
+      <div class="ph">
+        <img src="assets/project_02.jpeg" alt="FP-3 Феликс 2.0"/>
+        <span class="mk-corner"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+        <span class="badge">В производстве</span>
+      </div>
+      <div class="body">
+        <div class="meta"><span>Серия FP-3 · Феликс 2.0</span><span>А++</span></div>
+        <h3>Феликс 2.0</h3>
+        <div class="specs">
+          <div><b>110<em>м²</em></b><span>Площадь</span></div>
+          <div><b>1</b><span>Этаж</span></div>
+          <div><b>13<em>дн</em></b><span>Монтаж</span></div>
+        </div>
+        <div class="row">
+          <div class="price"><b>от 12.2 млн ₽</b><span>тёплый контур</span></div>
+          <span class="arrow"></span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Project 7 — FP-5 Pilvi -->
+    <article class="proj">
+      <div class="ph">
+        <img src="assets/project_05.jpeg" alt="FP-5 Pilvi"/>
+        <span class="mk-corner"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+        <span class="badge">Готов к&nbsp;монтажу</span>
+      </div>
+      <div class="body">
+        <div class="meta"><span>Серия FP-5 · Pilvi</span><span>А++</span></div>
+        <h3>Pilvi</h3>
+        <div class="specs">
+          <div><b>164<em>м²</em></b><span>Площадь</span></div>
+          <div><b>2</b><span>Этажа</span></div>
+          <div><b>15<em>дн</em></b><span>Монтаж</span></div>
+        </div>
+        <div class="row">
+          <div class="price"><b>от 15.1 млн ₽</b><span>тёплый контур</span></div>
+          <span class="arrow"></span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Project 8 — FP-4 Max -->
+    <article class="proj">
+      <div class="ph">
+        <img src="assets/project_01.jpeg" alt="FP-4 Max"/>
+        <span class="mk-corner"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+        <span class="badge red">Премиум</span>
+      </div>
+      <div class="body">
+        <div class="meta"><span>Серия FP-4 · Max</span><span>А++</span></div>
+        <h3>Max</h3>
+        <div class="specs">
+          <div><b>207<em>м²</em></b><span>Площадь</span></div>
+          <div><b>2</b><span>Этажа</span></div>
+          <div><b>18<em>дн</em></b><span>Монтаж</span></div>
+        </div>
+        <div class="row">
+          <div class="price"><b>от 22.3 млн ₽</b><span>тёплый контур</span></div>
+          <span class="arrow"></span>
+        </div>
+      </div>
+    </article>
+
+    <!-- All projects tile -->
+    <a class="more-tile" href="#">
+      <div>
+        <div class="num"><em>29</em></div>
+        <div class="lbl">проектов ещё</div>
+      </div>
+      <h3>Откройте каталог<br/>всех 37&nbsp;моделей</h3>
+      <div class="cta-line">Перейти в&nbsp;каталог<span class="arr"></span></div>
+    </a>
+  </div>
+
+  <div class="stats-band">
+    <div class="st"><b>320<em>+</em></b><span>Сданных объектов<br/>в Московской области</span></div>
+    <div class="st"><b>47<sub>дн</sub></b><span>Средний срок<br/>от заказа до сдачи</span></div>
+    <div class="st"><b>−40<em>%</em></b><span>Теплопотерь vs<br/>кирпичный аналог</span></div>
+    <div class="st"><b>25<sub>лет</sub></b><span>Гарантия на&nbsp;несущую<br/>конструкцию</span></div>
+  </div>
+</section>
+
+<!-- ───────────────────────────── -->
+<!-- 3 · TECHNOLOGY -->
+<!-- ───────────────────────────── -->
+<section id="tech" class="screen" data-screen-label="03 Technology">
+  <div class="sect-head">
+    <div>
+      <div class="kicker">Технология</div>
+      <h2>Один материал.<br/><em>Один договор.</em> Один срок.</h2>
+    </div>
+    <div class="actions">
+      <button class="btn ghost">Сравнить с&nbsp;каркасным домом</button>
+    </div>
+  </div>
+
+  <div class="tech-grid">
+    <!-- Tech visual: 3-layer cutaway -->
+    <aside class="tech-vis">
+      <div class="lbl">Трёхслойная панель · в&nbsp;разрезе</div>
+      <h3>3 слоя.<br/><em>Одна стена.</em></h3>
+      <div class="layers">
+        <div class="ly l1">
+          <span class="name">Слой 01<br/>Несущий</span>
+          <span>
+            <span class="thick">80<small style="font-size:13px;letter-spacing:0">мм</small></span>
+            <br/>Бетон М400
+          </span>
+        </div>
+        <div class="ly l2">
+          <span class="name">Слой 02<br/>Утеплитель</span>
+          <span>
+            <span class="thick">120<small style="font-size:13px;letter-spacing:0">мм</small></span>
+            <br/>PIR
+          </span>
+        </div>
+        <div class="ly l3">
+          <span class="name">Слой 03<br/>Фасадный</span>
+          <span>
+            <span class="thick">60<small style="font-size:13px;letter-spacing:0">мм</small></span>
+            <br/>Бетон + фактура
+          </span>
+        </div>
+      </div>
+      <div class="annot">
+        <div>← Улица</div>
+        <div>Граница тепла</div>
+        <div>Внутри →</div>
+      </div>
+      <div class="tally">
+        <div class="col">
+          <span class="num">260<u>мм</u></span>
+          <span class="lbl">Толщина стены</span>
+        </div>
+        <div class="col right">
+          <span class="num accent">0.18<u>Вт·м/К</u></span>
+          <span class="lbl">Теплопроводность</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Process -->
+    <div class="process">
+      <div class="kicker" style="font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--navy);font-weight:700;margin-bottom:10px;">Процесс · 4 этапа</div>
+      <h2>47 дней<br/>от&nbsp;звонка до&nbsp;<em>заезда.</em></h2>
+      <p>Каждый этап&nbsp;— одна ответственность. Менеджер ведёт&nbsp;вас от&nbsp;первого расчёта до&nbsp;подписания акта&nbsp;сдачи.</p>
+      <div class="steps">
+        <div class="step on">
+          <span class="n">01</span>
+          <div><h4>Расчёт и&nbsp;проект</h4><p>Замеры участка, выбор серии или индивидуальный проект, фиксация сметы.</p></div>
+          <span class="dur">3 дня</span>
+        </div>
+        <div class="step">
+          <span class="n">02</span>
+          <div><h4>Производство панелей</h4><p>Изготовление в&nbsp;цеху с&nbsp;допуском ±1&nbsp;мм. Контроль ОТК на&nbsp;каждой партии.</p></div>
+          <span class="dur">28 дней</span>
+        </div>
+        <div class="step">
+          <span class="n">03</span>
+          <div><h4>Доставка и&nbsp;монтаж</h4><p>Транспортировка спецтранспортом, монтаж краном, заделка швов.</p></div>
+          <span class="dur">14 дней</span>
+        </div>
+        <div class="step">
+          <span class="n">04</span>
+          <div><h4>Сдача под ключ</h4><p>Инженерные системы, отделка по&nbsp;опции, гарантийный пакет на&nbsp;25&nbsp;лет.</p></div>
+          <span class="dur">2 дня</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA dark band -->
+  <div class="cta-band">
+    <div>
+      <h3>Готовы построить дом?<br/><em>Перезвоним за&nbsp;15 минут.</em></h3>
+      <p>Расскажите про&nbsp;участок и&nbsp;желаемый метраж&nbsp;— подготовим расчёт по&nbsp;трём проектам и&nbsp;сравним с&nbsp;кирпичом по&nbsp;цене и&nbsp;теплу.</p>
+    </div>
+    <form class="cta-form" onsubmit="event.preventDefault(); alert('Спасибо! Свяжемся в течение 15 минут.');">
+      <input type="text" placeholder="Имя"/>
+      <input type="tel" placeholder="+7 ___ ___ __ __"/>
+      <input type="text" placeholder="Регион участка" style="grid-column: span 2;"/>
+      <button type="submit">Заказать расчёт</button>
+      <div class="agree">Нажимая «Заказать расчёт», вы соглашаетесь с&nbsp;<a href="#">политикой обработки персональных данных</a>.</div>
+    </form>
+  </div>
+</section>
+
+<!-- ─── News ─── -->
+<section id="news" class="screen" data-screen-label="04 News">
+  <div class="sect-head">
+    <div>
+      <div class="kicker">Новости и&nbsp;кейсы</div>
+      <h2>Что у&nbsp;нас<br/>на&nbsp;<em>площадке.</em></h2>
+    </div>
+    <div class="actions">
+      <button class="btn ghost">Telegram-канал</button>
+      <button class="btn arrow">Все новости<span class="ar"></span></button>
+    </div>
+  </div>
+
+  <div class="news-grid">
+    <!-- Featured -->
+    <article class="news feature">
+      <div class="ph">
+        <img src="assets/project_04.jpeg" alt="Серия КП-4"/>
+        <span class="tag navy">Анонс · серия КП-4</span>
+      </div>
+      <div class="body">
+        <div class="meta"><b>15 мая 2026</b><span>5 мин чтения</span></div>
+        <h3>Запустили новую серию КП-4: панели с&nbsp;интегрированной фасадной фактурой</h3>
+        <p>Серия КП-4 — это четыре типовых решения для&nbsp;участков от&nbsp;6&nbsp;соток. Фасадный слой панели изготавливается сразу&nbsp;с&nbsp;нужной фактурой&nbsp;— штукатурка, бетон-лофт или&nbsp;планкен. Заводская готовность исключает «мокрые» работы&nbsp;на&nbsp;участке.</p>
+        <div class="row"><span>Читать материал</span><span class="arr"></span></div>
+      </div>
+    </article>
+
+    <!-- News 2 -->
+    <article class="news">
+      <div class="ph">
+        <img src="assets/project_02.jpeg" alt="Зимний монтаж"/>
+        <span class="tag">Кейс</span>
+      </div>
+      <div class="body">
+        <div class="meta"><b>02 мая 2026</b><span>Монтаж</span></div>
+        <h3>Сдали «Лес-112» за&nbsp;42&nbsp;дня&nbsp;— при&nbsp;−18°C</h3>
+        <p>Зимний монтаж не&nbsp;замедляет цикл: панель приходит на&nbsp;участок готовой, швы герметизируются полиуретаном.</p>
+        <div class="row"><span>Смотреть кейс</span><span class="arr"></span></div>
+      </div>
+    </article>
+
+    <!-- News 3 -->
+    <article class="news">
+      <div class="ph">
+        <img src="assets/logo_2026_7.png" alt="Сертификация"/>
+        <span class="tag red">Сертификация</span>
+      </div>
+      <div class="body">
+        <div class="meta"><b>21 апреля 2026</b><span>Документы</span></div>
+        <h3>Получили сертификат ГОСТ 31310-2024 на&nbsp;всю линейку панелей</h3>
+        <p>Новый стандарт ужесточает требования по&nbsp;теплопроводности. Наши панели прошли испытания с&nbsp;запасом 18%.</p>
+        <div class="row"><span>Скачать сертификат · PDF</span><span class="arr"></span></div>
+      </div>
+    </article>
+
+    <!-- News 4 -->
+    <article class="news">
+      <div class="ph">
+        <img src="assets/project_06.jpeg" alt="Производство"/>
+        <span class="tag">Производство</span>
+      </div>
+      <div class="body">
+        <div class="meta"><b>08 апреля 2026</b><span>Завод</span></div>
+        <h3>Запустили вторую линию: +1&nbsp;800&nbsp;м²&nbsp;панелей в&nbsp;месяц</h3>
+        <p>Расширение цеха в&nbsp;Подольске сокращает срок производства партии до&nbsp;21&nbsp;дня вместо&nbsp;28.</p>
+        <div class="row"><span>Посмотреть цех</span><span class="arr"></span></div>
+      </div>
+    </article>
+
+    <!-- News 5 -->
+    <article class="news">
+      <div class="ph">
+        <img src="assets/project_03.jpeg" alt="Партнёрство"/>
+        <span class="tag">Партнёрство</span>
+      </div>
+      <div class="body">
+        <div class="meta"><b>27 марта 2026</b><span>Регионы</span></div>
+        <h3>Открыли представительство в&nbsp;Твери</h3>
+        <p>Теперь расчёт и&nbsp;замеры на&nbsp;участке доступны без&nbsp;поездки в&nbsp;Москву. Логистика&nbsp;— до&nbsp;200&nbsp;км.</p>
+        <div class="row"><span>Контакты офиса</span><span class="arr"></span></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="foot">
+  <!-- Big CTA -->
+  <div class="foot-cta">
+    <h3>Подберём дом<br/>под ваш участок<em>.</em></h3>
+    <div class="right">
+      <div class="ph"><small>Москва · 9:00–21:00 · без выходных</small>+7 495 123 45 67</div>
+      <div class="btn-row">
+        <button class="btn light arrow">Заказать расчёт<span class="ar"></span></button>
+        <button class="btn ghost">Telegram</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main columns -->
+  <div class="foot-main">
+    <div class="brand-col">
+      <span class="mk-big"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+      <div class="name">ФИНСТРОЙПАНЕЛЬ<sup style="font-size:0.5em;font-weight:600;vertical-align:super;margin-left:2px;">®</sup><small>Энергоэффективные дома</small></div>
+      <p>Производим и&nbsp;монтируем трёхслойные железобетонные панели для индивидуальных домов. От расчёта до&nbsp;готовой коробки — 47&nbsp;дней. Гарантия 25&nbsp;лет.</p>
+      <div class="badges">
+        <span>ГОСТ 31310-2024</span>
+        <span>ISO 9001</span>
+        <span>НОПРИЗ · НОСТРОЙ</span>
+      </div>
+    </div>
+
+    <div>
+      <h6>Каталог</h6>
+      <ul>
+        <li><a href="#projects">Все проекты</a></li>
+        <li><a href="#">Финские серии</a></li>
+        <li><a href="#">FP-1 · Valo</a></li>
+        <li><a href="#">FP-3 · Esteri</a></li>
+        <li><a href="#">FP-4 · Эгоист</a></li>
+        <li><a href="#">FP-7 · Oiva</a></li>
+        <li><a href="#">Индивидуальный проект</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h6>Компания</h6>
+      <ul>
+        <li><a href="#tech">Технология</a></li>
+        <li><a href="#">Производство</a></li>
+        <li><a href="#">Команда</a></li>
+        <li><a href="#news">Новости</a></li>
+        <li><a href="#">Кейсы</a></li>
+        <li><a href="#">Сертификаты</a></li>
+        <li><a href="#">Пресс о&nbsp;нас</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h6>Клиентам</h6>
+      <ul>
+        <li><a href="#">Как построить</a></li>
+        <li><a href="#">Расчёт стоимости</a></li>
+        <li><a href="#">Ипотека · рассрочка</a></li>
+        <li><a href="#">Гарантия</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Скачать каталог · PDF</a></li>
+      </ul>
+    </div>
+
+    <div class="contact-col">
+      <h6>Контакты</h6>
+      <div class="phone">+7 495 123 45 67</div>
+      <a class="email" href="mailto:info@finstroypanel.ru">info@finstroypanel.ru</a>
+      <p><b>Офис · Москва</b>ул. Ленина, 1<br/>БЦ «Север», этаж 7</p>
+      <p><b>Завод · Подольск</b>ул. Цеховая, 12</p>
+      <div class="hours"><b>Пн–Пт</b> · 9:00–21:00<br/><b>Сб–Вс</b> · 10:00–18:00</div>
+    </div>
+  </div>
+
+  <!-- Pattern strip -->
+  <div class="foot-pat" aria-hidden="true">
+    <div class="strips">
+      <span class="grp"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+      <span class="grp f2"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+      <span class="grp f3"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+      <span class="grp"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+      <span class="grp f4"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+      <span class="grp f2"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+      <span class="grp"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+      <span class="grp f3"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+      <span class="grp"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+      <span class="grp f4"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+      <span class="grp f2"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+      <span class="grp"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+    </div>
+  </div>
+
+  <!-- Legal -->
+  <div class="foot-legal">
+    <div class="copy">© 2026 <b>ООО «ФинСтройПанель»</b> · ИНН 7707083893 · ОГРН 1027700067328</div>
+    <div class="legal-links">
+      <a href="#">Политика о&nbsp;перс. данных</a>
+      <a href="#">Публичная оферта</a>
+      <a href="#">Реквизиты</a>
+      <a href="#">Карта сайта</a>
+    </div>
+    <div class="socials">
+      <a href="#" title="Telegram" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.9 15.2l-.4 4.3c.5 0 .8-.2 1.1-.5l2.6-2.4 5.4 4c1 .5 1.7.2 2-.9L23 5.3c.3-1.4-.5-2-1.5-1.6L1.7 11.2c-1.3.5-1.3 1.2-.2 1.5l5 1.6L18.4 7c.5-.4 1-.2.6.2"/></svg></a>
+      <a href="#" title="VK" aria-label="VK"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.8 17h-1.5c-.6 0-.7-.3-.7-.7v-3.8c0-.6-.2-.7-.5-.7-.6 0-1.5 1-2.2 2.5-.8 1.7-1.6 2.7-2.2 2.7H4.3c-.6 0-1-.3-1-1V6.7c0-.6.3-.7.8-.7h1.5c.5 0 .7.2.7.8 0 1.7 1 5 2.4 5 .4 0 .6-.2.6-.9V8c-.1-1-.4-1.1-.4-1.5 0-.3.2-.6.6-.6h3c.5 0 .6.3.6.8v3.6c0 .5.2.7.4.7.4 0 .7-.2 1.5-1 .7-1 1.5-2.2 1.7-3 .2-.5.5-.7 1-.7h1.7c.5 0 .7.3.5.9-.4 1-1.3 2.5-1.9 3.3-.5.6-.5 1 0 1.5.4.4 1.6 1.6 2 2.4.3.7.1 1.3-.6 1.3h-1.5c-.6 0-.8-.3-1.4-1.2-.6-.7-1.3-1.8-1.7-1.8s-.5.2-.5.8v1.4c0 .6-.2.9-.8.9z"/></svg></a>
+      <a href="#" title="YouTube" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 7.6c-.2-1.6-.8-2.3-2.4-2.5C17.1 4.7 12 4.7 12 4.7s-5.1 0-7.6.4C2.8 5.3 2.2 6 2 7.6 1.6 9 1.6 12 1.6 12s0 3 .4 4.4c.2 1.6.8 2.3 2.4 2.5 2.5.4 7.6.4 7.6.4s5.1 0 7.6-.4c1.6-.2 2.2-.9 2.4-2.5.4-1.4.4-4.4.4-4.4s0-3-.4-4.4zM10 15V9l5 3-5 3z"/></svg></a>
+      <a href="#" title="Dzen" aria-label="Dzen"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7 2 5 2 3.5 3.5S2 7 2 12s0 8.5 1.5 10S7 22 12 22s8.5 0 10-1.5S22 17 22 12s0-8.5-1.5-10S17 2 12 2zm0 7a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/></svg></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Side dots active state
+(function(){
+  const dots = [...document.querySelectorAll('#dots a')];
+  const sects = ['hero','projects','tech'].map(id => document.getElementById(id));
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting && e.intersectionRatio > 0.4){
+        dots.forEach(d => d.classList.remove('on'));
+        const i = sects.indexOf(e.target);
+        if (i >= 0 && dots[i]) dots[i].classList.add('on');
+      }
+    });
+  }, { threshold: [0.4, 0.6] });
+  sects.forEach(s => io.observe(s));
+})();
+</script>
+</body>
+</html>

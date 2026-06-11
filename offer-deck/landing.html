@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<title>От участка до ключей — загородный девелопмент под ключ</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<style>
+@font-face { font-family:"Montserrat"; src:url("fonts/Montserrat-Regular.ttf") format("truetype"); font-weight:400; font-display:swap; }
+@font-face { font-family:"Montserrat"; src:url("fonts/Montserrat-Medium.ttf") format("truetype"); font-weight:500; font-display:swap; }
+@font-face { font-family:"Montserrat"; src:url("fonts/Montserrat-SemiBold.ttf") format("truetype"); font-weight:600; font-display:swap; }
+@font-face { font-family:"Montserrat"; src:url("fonts/Montserrat-Bold.ttf") format("truetype"); font-weight:700; font-display:swap; }
+@font-face { font-family:"Montserrat"; src:url("fonts/Montserrat-ExtraBold.ttf") format("truetype"); font-weight:800; font-display:swap; }
+@font-face { font-family:"Montserrat"; src:url("fonts/Montserrat-Black.ttf") format("truetype"); font-weight:900; font-display:swap; }
+
+:root{
+  --navy:#2D4F91; --navy-deep:#1F3A6E; --navy-50:#EBF0F9; --navy-100:#D7DFEE; --navy-200:#A8B6D5;
+  --graphite:#2A2A2D; --graphite-700:#434242; --graphite-500:#6E6E70; --graphite-300:#A8A8A8;
+  --concrete:#ECECEA; --cement:#C9C8C3; --paper:#F7F6F2; --paper-2:#FAFAF7; --white:#fff; --red:#C0071A;
+  --bar-light:#A8B6D5; --bar-mid:#5979B5; --bar-dark:#2D4F91;
+  --gutter:clamp(20px,5vw,80px);
+}
+*{ box-sizing:border-box; }
+html,body{ margin:0; padding:0; background:var(--paper); color:var(--graphite); font-family:"Montserrat",system-ui,sans-serif; -webkit-font-smoothing:antialiased; }
+img{ display:block; max-width:100%; }
+a{ color:inherit; text-decoration:none; }
+button{ font:inherit; cursor:pointer; }
+
+/* III mark */
+.mk{ display:inline-flex; align-items:stretch; gap:3px; }
+.mk .b{ display:inline-block; }
+.mk .b:nth-child(1){ background:var(--bar-light); width:5px; }
+.mk .b:nth-child(2){ background:var(--bar-mid); width:5px; }
+.mk .b:nth-child(3){ background:var(--bar-dark); width:8px; }
+.mk .b{ height:34px; }
+.mk.light .b:nth-child(1){ background:rgba(255,255,255,0.55); }
+.mk.light .b:nth-child(2){ background:rgba(255,255,255,0.78); }
+.mk.light .b:nth-child(3){ background:#fff; }
+
+/* co-brand lockup */
+.lockup{ display:flex; align-items:center; gap:18px; }
+.lockup .slot{ display:flex; align-items:center; }
+.lockup .slot img{ height:30px; width:auto; object-fit:contain; }
+.lockup .slot.top img{ height:42px; }
+.lockup .slot.fsp{ gap:9px; }
+.lockup .slot.fsp .word{ display:flex; flex-direction:column; font-weight:800; font-size:11px; line-height:0.96; letter-spacing:-0.005em; color:var(--graphite); }
+.lockup .dv{ width:1px; height:40px; background:var(--cement); }
+.lockup.on-dark .slot.fsp .word{ color:#fff; }
+
+/* ───── Top bar ───── */
+.lp-top{
+  display:flex; justify-content:space-between; align-items:center; gap:16px;
+  padding:16px var(--gutter); border-bottom:1px solid var(--cement);
+  position:sticky; top:0; z-index:50;
+  background:rgba(247,246,242,0.92); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+}
+.lp-top .phone{ font-size:18px; font-weight:800; letter-spacing:0.01em; font-feature-settings:"tnum"; white-space:nowrap; }
+.lp-top .phone small{ display:block; font-size:9px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:var(--graphite-500); margin-bottom:2px; }
+
+/* ───── Hero ───── */
+.lp-hero{ position:relative; padding:clamp(36px,5vw,72px) var(--gutter) clamp(48px,5vw,80px); overflow:hidden; }
+.lp-hero .flight{ position:absolute; inset:0; pointer-events:none; z-index:0; }
+.hero-grid{ position:relative; z-index:2; display:grid; grid-template-columns:1.05fr 0.95fr; gap:clamp(32px,4vw,64px); align-items:start; }
+
+.eyebrow{ display:inline-flex; align-items:center; gap:12px; font-size:12px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--navy); margin-bottom:22px; }
+.eyebrow .mk .b{ height:18px; }
+.lp-hero h1{ margin:0; font-weight:900; font-size:clamp(40px,6vw,82px); line-height:0.94; letter-spacing:-0.035em; color:var(--graphite); }
+.lp-hero .sub{ margin:24px 0 0; font-size:clamp(17px,1.4vw,22px); font-weight:500; line-height:1.5; color:var(--graphite-700); max-width:560px; }
+.bullets{ list-style:none; margin:32px 0 0; padding:0; display:flex; flex-direction:column; }
+.bullets li{ position:relative; padding:16px 0 16px 38px; border-top:1px solid var(--cement); font-size:clamp(15px,1.2vw,19px); font-weight:600; line-height:1.35; color:var(--graphite); }
+.bullets li:last-child{ border-bottom:1px solid var(--cement); }
+.bullets li::before{ content:""; position:absolute; left:2px; top:22px; width:18px; height:3px; background:var(--navy); }
+.bullets li::after{ content:""; position:absolute; left:14px; top:17px; width:9px; height:9px; border-top:3px solid var(--navy); border-right:3px solid var(--navy); transform:rotate(45deg); }
+
+/* Quiz card */
+.quiz{ background:var(--white); border:1px solid var(--cement); padding:clamp(24px,2.4vw,36px); position:relative; }
+.quiz .qtitle{ font-size:24px; font-weight:800; letter-spacing:-0.015em; color:var(--graphite); }
+.quiz .qsteps{ margin-top:6px; font-size:11px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--graphite-500); }
+.qfield{ margin-top:22px; }
+.qfield > label{ display:block; font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--graphite-500); margin-bottom:10px; }
+.qfield .stepn{ color:var(--navy); }
+.chips{ display:flex; gap:8px; flex-wrap:wrap; }
+.chip{ padding:12px 18px; border:1px solid var(--cement); background:var(--white); font-size:15px; font-weight:600; color:var(--graphite-700); transition:background .15s,color .15s,border-color .15s; white-space:nowrap; }
+.chip:hover{ border-color:var(--navy); color:var(--navy); }
+.chip.on{ background:var(--navy); color:#fff; border-color:var(--navy); }
+.qinput{ width:100%; font:inherit; font-size:16px; padding:15px 16px; border:1px solid var(--cement); background:var(--white); color:var(--graphite); outline:none; border-radius:0; }
+.qinput:focus{ border-color:var(--navy); }
+.qrow2{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.cta{
+  margin-top:22px; width:100%; background:var(--red); color:#fff; border:0;
+  padding:20px 24px; font-size:16px; font-weight:800; letter-spacing:0.12em; text-transform:uppercase;
+  display:flex; align-items:center; justify-content:center; gap:14px; transition:background .15s;
+}
+.cta:hover{ background:#960512; }
+.cta .ar{ width:22px; height:2px; background:#fff; position:relative; }
+.cta .ar::after{ content:""; position:absolute; right:-1px; top:-5px; width:11px; height:11px; border-top:2px solid #fff; border-right:2px solid #fff; transform:rotate(45deg); }
+.finep{ margin-top:14px; font-size:12px; font-weight:500; letter-spacing:0.02em; color:var(--graphite-500); text-align:center; line-height:1.5; }
+.finep b{ color:var(--graphite-700); font-weight:700; }
+
+/* success state */
+.qdone{ display:none; flex-direction:column; gap:18px; text-align:center; padding:8px 0; }
+.quiz.done .qform{ display:none; }
+.quiz.done .qdone{ display:flex; }
+.qdone .ok{ width:64px; height:64px; border:2px solid var(--navy); align-self:center; display:flex; align-items:center; justify-content:center; }
+.qdone .ok svg{ width:34px; height:34px; stroke:var(--navy); fill:none; stroke-width:2.5; stroke-linecap:square; }
+.qdone h3{ margin:0; font-size:24px; font-weight:800; letter-spacing:-0.015em; }
+.qdone p{ margin:0; font-size:15px; font-weight:500; color:var(--graphite-500); line-height:1.5; }
+
+/* ───── Trust ───── */
+.lp-trust{ padding:clamp(48px,5vw,88px) var(--gutter); background:var(--paper-2); border-top:1px solid var(--cement); }
+.trust-h{ font-size:clamp(26px,3.2vw,44px); font-weight:800; letter-spacing:-0.025em; line-height:1.05; color:var(--graphite); margin:0 0 40px; }
+.trust-h em{ font-style:normal; color:var(--navy); }
+.cols{ display:grid; grid-template-columns:repeat(3,1fr); gap:0; border:1px solid var(--cement); background:var(--white); }
+.col{ padding:30px 28px; border-right:1px solid var(--cement); display:flex; flex-direction:column; gap:14px; }
+.col:last-child{ border-right:0; }
+.col .ci{ width:54px; height:54px; border:1px solid var(--cement); display:flex; align-items:center; justify-content:center; }
+.col .ci svg{ width:30px; height:30px; stroke:var(--navy); fill:none; stroke-width:1.5; stroke-linecap:square; stroke-linejoin:miter; }
+.col h4{ margin:0; font-size:20px; font-weight:800; letter-spacing:-0.01em; color:var(--graphite); }
+.col p{ margin:0; font-size:15px; font-weight:500; line-height:1.5; color:var(--graphite-500); }
+
+.anchors{ display:grid; grid-template-columns:repeat(4,1fr); gap:24px; margin-top:32px; padding:28px 0; border-top:1px solid var(--cement); border-bottom:1px solid var(--cement); }
+.anchors .a b{ display:block; font-size:clamp(30px,3.4vw,52px); font-weight:900; letter-spacing:-0.04em; color:var(--navy); line-height:0.9; font-feature-settings:"tnum"; }
+.anchors .a span{ display:block; margin-top:10px; font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--graphite-500); line-height:1.4; }
+
+.cases{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:32px; }
+.lpcase{ background:var(--white); border:1px solid var(--cement); display:flex; flex-direction:column; }
+.lpcase .ph{ position:relative; height:170px; background:var(--concrete); overflow:hidden; }
+.lpcase .ph img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.lpcase .ph .mk-corner{ position:absolute; top:12px; left:12px; z-index:2; display:inline-flex; gap:2px; }
+.lpcase .ph .mk-corner .b{ height:18px; }
+.lpcase .ph .mk-corner .b:nth-child(1){ width:4px; background:var(--bar-light); }
+.lpcase .ph .mk-corner .b:nth-child(2){ width:4px; background:var(--bar-mid); }
+.lpcase .ph .mk-corner .b:nth-child(3){ width:7px; background:var(--bar-dark); }
+.lpcase .cb{ padding:20px 22px; display:flex; flex-direction:column; gap:8px; }
+.lpcase .cn{ font-size:11px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--navy); }
+.lpcase h5{ margin:0; font-size:20px; font-weight:800; letter-spacing:-0.015em; color:var(--graphite); }
+.lpcase p{ margin:0; font-size:14px; font-weight:500; line-height:1.45; color:var(--graphite-500); }
+
+/* ───── CTA band ───── */
+.lp-cta{ position:relative; padding:clamp(48px,5vw,88px) var(--gutter); background:var(--navy); color:#fff; overflow:hidden; }
+.lp-cta .flight{ position:absolute; inset:0; pointer-events:none; }
+.cta-in{ position:relative; z-index:2; display:grid; grid-template-columns:1.1fr auto; gap:48px; align-items:center; }
+.cta-in h2{ margin:0; font-size:clamp(30px,4vw,56px); font-weight:900; letter-spacing:-0.03em; line-height:0.98; color:#fff; }
+.cta-in h2 em{ font-style:normal; color:var(--navy-200); }
+.cta-in p{ margin:16px 0 0; font-size:17px; font-weight:500; color:rgba(255,255,255,0.85); max-width:480px; line-height:1.5; }
+.cta-in .cta{ margin:0; width:auto; padding:20px 38px; background:#fff; color:var(--navy); }
+.cta-in .cta:hover{ background:var(--paper); }
+.cta-in .cta .ar{ background:var(--navy); }
+.cta-in .cta .ar::after{ border-top-color:var(--navy); border-right-color:var(--navy); }
+
+/* ───── Footer ───── */
+.lp-foot{ background:var(--graphite); color:var(--cement); padding:40px var(--gutter); display:flex; justify-content:space-between; align-items:center; gap:32px; flex-wrap:wrap; }
+.lp-foot .contacts{ font-size:14px; font-weight:600; line-height:1.8; text-align:right; }
+.lp-foot .contacts b{ color:#fff; font-weight:800; font-feature-settings:"tnum"; }
+.lp-foot .contacts a:hover{ color:#fff; }
+
+/* ───── Mobile ───── */
+@media (max-width:900px){
+  .hero-grid{ grid-template-columns:1fr; }
+  .quiz{ margin-top:8px; }
+  .cols{ grid-template-columns:1fr; }
+  .col{ border-right:0; border-bottom:1px solid var(--cement); }
+  .col:last-child{ border-bottom:0; }
+  .anchors{ grid-template-columns:1fr 1fr; gap:20px; }
+  .cases{ grid-template-columns:1fr; }
+  .cta-in{ grid-template-columns:1fr; gap:28px; }
+  .cta-in .cta{ width:100%; }
+  .lp-foot{ flex-direction:column; align-items:flex-start; }
+  .lp-foot .contacts{ text-align:left; }
+}
+@media (max-width:560px){
+  .lp-top .lockup .slot.lip, .lp-top .lockup .dv{ display:none; }
+  .lp-top{ padding:12px 20px; }
+  .lp-top .phone{ font-size:16px; }
+  .qrow2{ grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ───── Top bar ───── -->
+<header class="lp-top">
+  <div class="lockup">
+    <span class="slot lip"><img src="assets/lipatnikov-graphite.png" alt="Архитектор Липатников"/></span>
+    <span class="dv"></span>
+    <span class="slot fsp"><span class="mk"><span class="b"></span><span class="b"></span><span class="b"></span></span><span class="word"><span>ФИН</span><span>СТРОЙ</span><span>ПАНЕЛЬ</span></span></span>
+    <span class="dv"></span>
+    <span class="slot top"><img src="assets/toplivo-graphite.png" alt="Топливо Недвижимости"/></span>
+  </div>
+  <a class="phone" href="tel:+74994902812"><small>Звонок по России</small>+7 (499) 490-28-12</a>
+</header>
+
+<!-- ───── Screen 1 · Hero + form ───── -->
+<section class="lp-hero">
+  <svg class="flight" viewBox="0 0 1440 760" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs><linearGradient id="fl" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#2D4F91" stop-opacity="0"/><stop offset="1" stop-color="#2D4F91" stop-opacity="0.5"/></linearGradient></defs>
+    <path d="M -40 720 C 360 660, 760 520, 1040 360 S 1500 120, 1520 60" fill="none" stroke="url(#fl)" stroke-width="2.5"/>
+    <path d="M -40 720 C 360 660, 760 520, 1040 360 S 1500 120, 1520 60" fill="none" stroke="#2D4F91" stroke-width="2.5" stroke-dasharray="2 14" stroke-linecap="round" opacity="0.22"/>
+  </svg>
+
+  <div class="hero-grid">
+    <div class="hero-left">
+      <span class="eyebrow"><span class="mk"><span class="b"></span><span class="b"></span><span class="b"></span></span>Загородный девелопмент под ключ</span>
+      <h1>От участка<br/>до ключей</h1>
+      <p class="sub">Спроектируем, построим и продадим вашу загородную недвижимость под ключ — посёлок, базу отдыха или глэмпинг.</p>
+      <ul class="bullets">
+        <li>Единое окно — одна ответственность за результат</li>
+        <li>Дом за ~6 месяцев, посёлок в едином стиле</li>
+        <li>Продукт спроектирован под продажи с первого дня</li>
+      </ul>
+    </div>
+
+    <div class="quiz" id="quiz">
+      <form class="qform" id="qform" onsubmit="return submitQuiz(event)">
+        <div class="qtitle">Рассчитать проект</div>
+        <div class="qsteps">Бесплатно · 1 минута</div>
+
+        <div class="qfield">
+          <label><span class="stepn">01 ·</span> Тип объекта</label>
+          <div class="chips" id="typeChips">
+            <span class="chip on" data-v="Посёлок">Посёлок</span>
+            <span class="chip" data-v="База отдыха">База отдыха</span>
+            <span class="chip" data-v="Глэмпинг">Глэмпинг</span>
+            <span class="chip" data-v="Другое">Другое</span>
+          </div>
+        </div>
+
+        <div class="qfield">
+          <label><span class="stepn">02 ·</span> Площадь участка</label>
+          <input class="qinput" type="text" id="area" placeholder="Например, 2 га"/>
+        </div>
+
+        <div class="qfield">
+          <label><span class="stepn">03 ·</span> Имя и телефон</label>
+          <div class="qrow2">
+            <input class="qinput" type="text" id="name" placeholder="Имя"/>
+            <input class="qinput" type="tel" id="phone" placeholder="+7 ___ ___ __ __"/>
+          </div>
+        </div>
+
+        <button class="cta" type="submit">Получить расчёт и презентацию <span class="ar"></span></button>
+        <div class="finep">Бесплатно. Экспресс-оценка участка и экономика проекта.<br/>Сразу пришлём <b>презентацию проекта в PDF</b>.</div>
+      </form>
+
+      <div class="qdone">
+        <span class="ok"><svg viewBox="0 0 24 24"><path d="M4 12 L10 18 L20 6"/></svg></span>
+        <h3>Заявка принята</h3>
+        <p>Свяжемся в течение рабочего дня. Презентация проекта готова к просмотру.</p>
+        <a class="cta" href="FSP-offer.pdf" target="_blank" rel="noopener">Открыть презентацию · PDF <span class="ar"></span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── Screen 2 · Trust ───── -->
+<section class="lp-trust">
+  <h2 class="trust-h">Проектируем <em>·</em> Строим <em>·</em> Продаём</h2>
+
+  <div class="cols">
+    <div class="col">
+      <span class="ci"><svg viewBox="0 0 24 24"><path d="M4 20 L10 12 L14 16 L20 5"/><rect x="2.5" y="18.5" width="3" height="3" fill="#2D4F91" stroke="none"/><rect x="8.5" y="10.5" width="3" height="3" fill="#2D4F91" stroke="none"/><rect x="18.5" y="3.5" width="3" height="3" fill="#2D4F91" stroke="none"/></svg></span>
+      <h4>Архитектор Липатников</h4>
+      <p>Архитектура и концепция, мастер-план посёлка, изыскания и авторский надзор.</p>
+    </div>
+    <div class="col">
+      <span class="ci"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="4" height="18"/><rect x="10" y="3" width="4" height="18"/><rect x="17" y="3" width="4" height="18"/></svg></span>
+      <h4>ФинСтройПанель</h4>
+      <p>Генподряд, сборно-монолитная технология, до 300 домов в год в едином стиле.</p>
+    </div>
+    <div class="col">
+      <span class="ci"><svg viewBox="0 0 24 24"><path d="M13 2 L4 14 L11 14 L9 22 L20 9 L13 9 L13 2 Z"/></svg></span>
+      <h4>Топливо Недвижимости</h4>
+      <p>Упаковка продукта, маркетинг и система продаж — объект продаётся, а не стоит.</p>
+    </div>
+  </div>
+
+  <div class="anchors">
+    <div class="a"><b>250</b><span>домов построено</span></div>
+    <div class="a"><b>15</b><span>городов России</span></div>
+    <div class="a"><b>20+</b><span>лет архитектуры</span></div>
+    <div class="a"><b>175 000+</b><span>аудитории</span></div>
+  </div>
+
+  <div class="cases">
+    <div class="lpcase">
+      <div class="ph"><span class="mk-corner"><span class="b"></span><span class="b"></span><span class="b"></span></span><img src="assets/club100-hero.jpg" alt="Club 100"/></div>
+      <div class="cb"><span class="cn">Клубный посёлок · Новосибирск</span><h5>Club 100</h5><p>Закрытое сообщество · дом за 6–8 месяцев · единый дизайн-код.</p></div>
+    </div>
+    <div class="lpcase">
+      <div class="ph"><span class="mk-corner"><span class="b"></span><span class="b"></span><span class="b"></span></span><img src="assets/corner-kaltino.jpg" alt="Corner Kaltino"/></div>
+      <div class="cb"><span class="cn">Комьюнити · Санкт-Петербург</span><h5>Corner Kaltino</h5><p>54 дома · виллы 161–212 м² · класс А++ · единый стиль.</p></div>
+    </div>
+    <div class="lpcase">
+      <div class="ph"><span class="mk-corner"><span class="b"></span><span class="b"></span><span class="b"></span></span><img src="assets/negorod-aerial.jpg" alt="Негород Заневский"/></div>
+      <div class="cb"><span class="cn">Посёлок · Ленобласть</span><h5>Негород Заневский</h5><p>Приватный посёлок · дома 105–160 м² · от 6,03 млн ₽.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── Repeat CTA ───── -->
+<section class="lp-cta">
+  <svg class="flight" viewBox="0 0 1440 360" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs><linearGradient id="fl2" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#ffffff" stop-opacity="0"/><stop offset="1" stop-color="#ffffff" stop-opacity="0.4"/></linearGradient></defs>
+    <path d="M -40 320 C 360 280, 820 180, 1100 120 S 1480 30, 1520 10" fill="none" stroke="url(#fl2)" stroke-width="2.5"/>
+  </svg>
+  <div class="cta-in">
+    <div>
+      <h2>Рассчитаем <em>ваш проект</em>.</h2>
+      <p>Экспресс-оценка участка и экономика проекта — бесплатно. Презентация в PDF сразу после заявки.</p>
+    </div>
+    <button class="cta" type="button" onclick="goForm()">Оставить заявку <span class="ar"></span></button>
+  </div>
+</section>
+
+<!-- ───── Footer ───── -->
+<footer class="lp-foot">
+  <div class="lockup on-dark">
+    <span class="slot lip"><img src="assets/lipatnikov-white.png" alt="Архитектор Липатников"/></span>
+    <span class="dv"></span>
+    <span class="slot fsp"><span class="mk light"><span class="b"></span><span class="b"></span><span class="b"></span></span><span class="word"><span>ФИН</span><span>СТРОЙ</span><span>ПАНЕЛЬ</span></span></span>
+    <span class="dv"></span>
+    <span class="slot top"><img src="assets/toplivo-white.png" alt="Топливо Недвижимости"/></span>
+  </div>
+  <div class="contacts">
+    <b>+7 (499) 490-28-12</b> · fspanel.biz · lipatnikov.pro<br/>
+    @lipatnikov_architect · @finstroypanel · @realestatefuel
+  </div>
+</footer>
+
+<script>
+  // type chips
+  document.getElementById('typeChips').addEventListener('click', function(e){
+    const c = e.target.closest('.chip'); if(!c) return;
+    this.querySelectorAll('.chip').forEach(x=>x.classList.remove('on'));
+    c.classList.add('on');
+  });
+  function goForm(){
+    document.getElementById('quiz').scrollIntoView({behavior:'smooth', block:'center'});
+    const ph=document.getElementById('phone'); if(ph) setTimeout(()=>ph.focus(),500);
+  }
+  function submitQuiz(e){
+    e.preventDefault();
+    document.getElementById('quiz').classList.add('done');
+    // open the presentation PDF in a new tab
+    setTimeout(()=>{ window.open('FSP-offer.pdf','_blank','noopener'); }, 300);
+    return false;
+  }
+</script>
+</body>
+</html>

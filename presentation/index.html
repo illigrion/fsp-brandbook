@@ -1,0 +1,746 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<title>ФСП · Мобильная презентация</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<link rel="stylesheet" href="../colors_and_type.css"/>
+<script src="deck-stage.js"></script>
+<style>
+  /* ───── Stage and slide base ───── */
+  deck-stage { --w: 1010; --h: 1420; background: var(--graphite-300); }
+  body { background: var(--graphite-500); margin: 0; }
+
+  section {
+    width: 1010px;
+    height: 1420px;
+    position: relative;
+    overflow: hidden;
+    background: var(--paper);
+    color: var(--graphite);
+  }
+
+  /* ───── III mark — canonical 2 : 2 : 3, h=8 ───── */
+  .mk { display: inline-flex; align-items: stretch; }
+  .mk .b { display: inline-block; }
+  .mk .b:nth-child(1) { background: var(--bar-light); }
+  .mk .b:nth-child(2) { background: var(--bar-mid); }
+  .mk .b:nth-child(3) { background: var(--bar-dark); }
+  .mk.light .b:nth-child(1) { background: rgba(255,255,255,0.55); }
+  .mk.light .b:nth-child(2) { background: rgba(255,255,255,0.78); }
+  .mk.light .b:nth-child(3) { background: #fff; }
+  /* size · "logo" — header lockup */
+  .mk.logo { gap: 4px; }
+  .mk.logo .b { height: 60px; }
+  .mk.logo .b:nth-child(1), .mk.logo .b:nth-child(2) { width: 14px; }
+  .mk.logo .b:nth-child(3) { width: 21px; }
+
+  /* ───── Brand lockup (mark + 3-line wordmark) ───── */
+  .lockup { display: inline-flex; align-items: center; gap: 14px; }
+  .lockup .word {
+    display: inline-flex; flex-direction: column;
+    font-weight: 800; line-height: 0.96;
+    font-size: 17px; letter-spacing: -0.01em;
+    color: var(--graphite);
+  }
+  .lockup.light .word { color: #fff; }
+
+  /* ───── Header & footer (shared chrome) ───── */
+  .head {
+    position: absolute; left: 64px; right: 64px; top: 48px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .phone {
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 12px 28px;
+    background: #fff; color: var(--graphite);
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500; font-size: 20px; letter-spacing: 0.02em;
+    font-feature-settings: "tnum"; font-variant-numeric: tabular-nums;
+    border: 1px solid transparent;
+  }
+  .phone svg { width: 16px; height: 16px; fill: currentColor; }
+  .phone.outline { background: transparent; border-color: var(--cement); color: var(--graphite); }
+  .phone.on-dark { background: #fff; color: var(--graphite); }
+
+  .head-rule {
+    position: absolute; left: 64px; right: 64px; top: 132px; height: 1px;
+    background: var(--cement);
+  }
+  .head-rule.dark { background: rgba(255,255,255,0.18); }
+
+  .foot {
+    position: absolute; right: 64px; bottom: 56px;
+    font-size: 22px; font-weight: 700;
+    color: var(--graphite-500); opacity: 0.6;
+    text-decoration: underline;
+    letter-spacing: 0.01em;
+  }
+  .foot.on-dark { color: rgba(255,255,255,0.6); }
+  .foot-rule {
+    position: absolute; left: 64px; right: 64px; bottom: 118px; height: 1px;
+    background: var(--cement);
+  }
+  .foot-rule.dark { background: rgba(255,255,255,0.18); }
+  .page-num {
+    position: absolute; left: 64px; bottom: 56px;
+    font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase;
+    font-weight: 700; color: var(--graphite-500); opacity: 0.6;
+    font-feature-settings: "tnum";
+  }
+  .page-num.on-dark { color: rgba(255,255,255,0.6); }
+
+  /* ───── Geometric accent triangle ───── */
+  .tri { position: absolute; }
+  .tri svg { display: block; }
+
+  /* ───── Slide-specific styles ───── */
+
+  /* 01 — Cover */
+  .s-cover { background: var(--paper); }
+  .s-cover .hero {
+    position: absolute; left: 0; right: 0; top: 0; height: 720px;
+    background-image: linear-gradient(rgba(0,0,0,0) 0%, rgba(23,25,37,0.55) 100%), url(assets/hero-house.png);
+    background-size: cover; background-position: center;
+  }
+  .s-cover .head { color: #fff; }
+  .s-cover .phone { background: #fff; color: var(--graphite); }
+  .s-cover .tri-r {
+    position: absolute; right: 0; top: 680px; width: 200px; height: 142px;
+  }
+  .s-cover .title-block {
+    position: absolute; left: 64px; top: 780px; right: 64px;
+  }
+  .s-cover .title {
+    font-size: 88px; font-weight: 900; line-height: 0.94;
+    letter-spacing: -0.025em; color: var(--graphite); margin: 0;
+  }
+  .s-cover .subtitle {
+    margin-top: 32px;
+    font-size: 28px; font-weight: 500; line-height: 1.45;
+    color: var(--graphite-700); max-width: 720px;
+  }
+  .s-cover .features {
+    position: absolute; left: 64px; right: 64px; top: 1150px;
+    display: flex; flex-direction: column; gap: 18px;
+  }
+  .s-cover .feat {
+    display: flex; gap: 14px; align-items: baseline;
+    font-size: 22px; font-weight: 500; line-height: 1.4; color: var(--graphite);
+  }
+  .s-cover .feat::before {
+    content: ""; width: 8px; height: 8px; background: var(--navy);
+    flex: 0 0 8px; transform: translateY(2px);
+  }
+
+  /* 02 — Founder */
+  .s-founder { background: var(--navy); color: #fff; }
+  .s-founder .portrait {
+    position: absolute; right: 64px; top: 160px;
+    width: 320px; height: 480px; object-fit: cover;
+  }
+  .s-founder .name {
+    position: absolute; left: 64px; top: 180px;
+    font-size: 56px; font-weight: 800; letter-spacing: -0.02em; line-height: 1;
+    color: #fff;
+  }
+  .s-founder .role {
+    position: absolute; left: 64px; top: 256px;
+    font-size: 20px; font-weight: 500; letter-spacing: 0.06em;
+    text-transform: uppercase; color: rgba(255,255,255,0.7);
+  }
+  .s-founder .bio {
+    position: absolute; left: 64px; top: 360px; width: 530px;
+    display: flex; flex-direction: column; gap: 22px;
+    font-size: 22px; font-weight: 400; line-height: 1.55;
+    color: rgba(255,255,255,0.92);
+  }
+  .s-founder .social-block {
+    position: absolute; left: 64px; right: 64px; top: 990px;
+  }
+  .s-founder .social-head {
+    display: flex; gap: 28px; align-items: flex-start;
+    padding-bottom: 28px;
+    border-bottom: 1px solid rgba(255,255,255,0.18);
+    margin-bottom: 32px;
+  }
+  .s-founder .social-head svg { width: 44px; height: 38px; flex: 0 0 44px; opacity: 0.7; fill: #fff; }
+  .s-founder .social-head h3 {
+    margin: 0; font-size: 30px; font-weight: 500; line-height: 1.2;
+    color: #fff; letter-spacing: -0.005em; max-width: 760px;
+  }
+  .s-founder .links {
+    display: flex; flex-direction: column; gap: 24px;
+    font-size: 24px; font-weight: 700; color: #fff;
+  }
+  .s-founder .links a {
+    display: inline-flex; align-items: center; gap: 22px;
+    color: #fff; text-decoration: none;
+  }
+  .s-founder .links a u { text-decoration: underline; font-weight: 700; }
+  .s-founder .links svg { width: 32px; height: 32px; opacity: 0.6; fill: #fff; flex: 0 0 32px; }
+
+  /* 03 — About */
+  .s-about .hero {
+    position: absolute; left: 0; right: 0; top: 0; height: 580px;
+    background-image: linear-gradient(rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 100%), url(assets/about-house.jpg);
+    background-size: cover; background-position: center;
+  }
+  .s-about .head { color: #fff; }
+  .s-about .tri-l {
+    position: absolute; left: 0; top: 440px;
+    width: 162px; height: 142px;
+  }
+  .s-about .body {
+    position: absolute; left: 64px; right: 64px; top: 660px;
+  }
+  .s-about .kicker {
+    font-size: 38px; font-weight: 700; color: var(--navy);
+    letter-spacing: -0.005em; margin-bottom: 32px;
+  }
+  .s-about h2 {
+    font-size: 48px; font-weight: 800; line-height: 1.15;
+    letter-spacing: -0.015em; color: var(--graphite); margin: 0 0 36px;
+    max-width: 880px;
+  }
+  .s-about p {
+    font-size: 22px; font-weight: 500; line-height: 1.55;
+    color: var(--graphite); margin: 0; max-width: 880px;
+  }
+
+  /* 04 — Advantages */
+  .s-adv { background: #171925; color: #fff; }
+  .s-adv .head .lockup .word { color: #fff; }
+  .s-adv h2 {
+    position: absolute; left: 64px; top: 280px;
+    font-size: 56px; font-weight: 600; letter-spacing: -0.015em;
+    color: #fff; margin: 0;
+  }
+  .s-adv .grid {
+    position: absolute; left: 64px; right: 64px; top: 460px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+  }
+  .s-adv .card {
+    background: #fff;
+    padding: 40px 36px; min-height: 360px;
+    display: flex; flex-direction: column;
+    gap: 24px;
+  }
+  .s-adv .card.navy { background: var(--navy); color: #fff; }
+  .s-adv .card h4 {
+    font-size: 32px; font-weight: 800; line-height: 1.1;
+    letter-spacing: -0.01em; color: var(--graphite); margin: 0;
+  }
+  .s-adv .card.navy h4 { color: #fff; }
+  .s-adv .card p {
+    font-size: 18px; font-weight: 500; line-height: 1.5;
+    color: var(--graphite-700); margin: 0;
+  }
+  .s-adv .card.navy p { color: rgba(255,255,255,0.85); }
+  .s-adv .card .icn {
+    width: 28px; height: 28px; color: var(--graphite);
+  }
+  .s-adv .card.navy .icn { color: #fff; }
+  .s-adv .card .icn svg { width: 100%; height: 100%; fill: currentColor; }
+
+  /* 05 — Divider */
+  .s-div h1 {
+    position: absolute; left: 64px; top: 240px;
+    font-size: 72px; font-weight: 700; line-height: 1.1;
+    letter-spacing: -0.015em; color: var(--navy); margin: 0;
+    max-width: 750px;
+  }
+  .s-div .step-num {
+    position: absolute; right: 64px; bottom: 200px;
+    font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase;
+    font-weight: 700; color: var(--graphite-500);
+  }
+  .s-div .step-num b { color: var(--navy); font-size: 64px; font-weight: 900; display: block; line-height: 1; letter-spacing: -0.04em; margin-top: 8px; }
+
+  /* 06 — Spec list */
+  .s-spec h2 {
+    position: absolute; left: 64px; top: 200px;
+    font-size: 56px; font-weight: 700; letter-spacing: -0.015em;
+    color: var(--navy); margin: 0;
+  }
+  .s-spec .sub-rule {
+    position: absolute; left: 64px; right: 64px; top: 320px; height: 1px;
+    background: var(--cement);
+  }
+  .s-spec h3 {
+    position: absolute; left: 64px; top: 380px;
+    font-size: 40px; font-weight: 700; letter-spacing: -0.01em;
+    color: var(--graphite); margin: 0;
+  }
+  .s-spec .body { position: absolute; left: 64px; right: 64px; top: 490px; }
+  .s-spec ul {
+    list-style: none; margin: 0 0 28px; padding: 0;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .s-spec li {
+    position: relative; padding-left: 32px;
+    font-size: 20px; font-weight: 500; line-height: 1.4;
+    color: var(--graphite);
+  }
+  .s-spec li::before {
+    content: ""; position: absolute; left: 8px; top: 11px;
+    width: 8px; height: 8px; background: var(--graphite);
+  }
+  .s-spec .note {
+    font-size: 18px; font-weight: 400; line-height: 1.55;
+    color: var(--graphite-700); margin: 0 0 16px; max-width: 880px;
+  }
+  .s-spec .note b { font-weight: 700; }
+  .s-spec .term {
+    margin-top: 24px;
+    font-size: 20px; font-weight: 500; color: var(--graphite);
+  }
+
+  /* 07 — Project hero */
+  .s-phero { background: var(--paper); }
+  .s-phero .img {
+    position: absolute; left: 0; right: 0; top: 0; height: 800px;
+    background-image: url(assets/project-hero.png);
+    background-size: cover; background-position: center;
+    background-color: var(--cement);
+  }
+  .s-phero .head { color: #fff; }
+  .s-phero .badge {
+    position: absolute; left: 64px; top: 880px;
+    background: var(--navy); color: #fff;
+    padding: 16px 28px;
+    font-size: 22px; font-weight: 700; letter-spacing: 0.04em;
+  }
+  .s-phero h2 {
+    position: absolute; left: 64px; right: 64px; top: 970px;
+    font-size: 60px; font-weight: 800; line-height: 1.1;
+    letter-spacing: -0.02em; color: var(--graphite); margin: 0;
+  }
+  .s-phero .specs {
+    position: absolute; left: 64px; right: 64px; top: 1180px;
+    padding-top: 28px; border-top: 1px solid var(--cement);
+    display: flex; flex-direction: column; gap: 8px;
+    font-size: 22px; font-weight: 500; line-height: 1.45;
+    color: var(--graphite);
+  }
+
+  /* 08 — Project details (floorplans + prices) */
+  .s-pdetail .plans {
+    position: absolute; left: 64px; right: 64px; top: 200px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
+  }
+  .s-pdetail .plan {
+    background: #fff; border: 1px solid var(--cement);
+    aspect-ratio: 4/3; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .s-pdetail .plan img { width: 100%; height: 100%; object-fit: contain; padding: 16px; }
+  .s-pdetail .pname-row {
+    position: absolute; left: 64px; right: 64px; top: 760px;
+    display: flex; justify-content: space-between; align-items: center;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--cement);
+  }
+  .s-pdetail .pname-row h2 {
+    font-size: 56px; font-weight: 800; letter-spacing: 0.02em;
+    color: var(--graphite); margin: 0;
+  }
+  .s-pdetail .area-badge {
+    background: var(--navy); color: #fff;
+    padding: 18px 32px;
+    font-size: 32px; font-weight: 800; letter-spacing: -0.01em;
+    font-feature-settings: "tnum";
+  }
+  .s-pdetail .prices {
+    position: absolute; left: 64px; right: 64px; top: 920px;
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px;
+  }
+  .s-pdetail .price {
+    background: #fff; border: 1px solid var(--cement);
+    padding: 28px 22px;
+    display: flex; flex-direction: column; align-items: center; gap: 16px;
+    text-align: center;
+  }
+  .s-pdetail .price b {
+    font-size: 32px; font-weight: 800; color: var(--navy);
+    letter-spacing: -0.01em; font-feature-settings: "tnum";
+  }
+  .s-pdetail .price .sep { height: 1px; width: 80%; background: var(--cement); }
+  .s-pdetail .price span {
+    font-size: 20px; font-weight: 500; line-height: 1.3;
+    color: var(--graphite);
+  }
+  .s-pdetail .finep {
+    position: absolute; left: 64px; right: 64px; top: 1200px;
+    font-size: 16px; font-weight: 500; line-height: 1.5;
+    color: var(--graphite-700);
+  }
+
+  /* 09 — CTA */
+  .s-cta { background: var(--navy); color: #fff; }
+  .s-cta .head .lockup .word { color: #fff; }
+  .s-cta .body {
+    position: absolute; left: 64px; right: 64px; top: 720px;
+  }
+  .s-cta h2 {
+    font-size: 64px; font-weight: 700; line-height: 1.1;
+    letter-spacing: -0.02em; color: #fff; margin: 0 0 32px;
+    max-width: 780px;
+  }
+  .s-cta p {
+    font-size: 24px; font-weight: 500; line-height: 1.5;
+    color: rgba(255,255,255,0.92); margin: 0 0 48px;
+    max-width: 780px;
+  }
+  .s-cta .phone-big {
+    display: inline-flex; align-items: center; gap: 18px;
+    padding: 20px 40px;
+    background: #fff; color: var(--graphite);
+    font-size: 32px; font-weight: 700;
+    font-feature-settings: "tnum";
+  }
+  .s-cta .phone-big svg { width: 24px; height: 24px; fill: currentColor; }
+
+  /* ───── Lockup mark (used inside .lockup) ───── */
+  .lockup .mk.logo .b { height: 60px; }
+  .lockup .word span { display: block; }
+</style>
+</head>
+<body>
+
+<script type="application/json" id="speaker-notes">
+["", "", "", "", "", "", "", "", ""]
+</script>
+
+<deck-stage width="1010" height="1420">
+
+<!-- ─────────────────────────────────────────────── -->
+<!-- 01 · COVER -->
+<!-- ─────────────────────────────────────────────── -->
+<section class="s-cover" data-screen-label="01 Cover">
+  <div class="hero"></div>
+  <div class="tri-r"><svg viewBox="0 0 200 142" xmlns="http://www.w3.org/2000/svg"><path d="M 200 142 L 0 142 L 200 0 Z" fill="#2D4F91"/></svg></div>
+
+  <header class="head">
+    <span class="lockup light">
+      <span class="mk logo light"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+      <span class="word"><span>ФИН</span><span>СТРОЙ</span><span>ПАНЕЛЬ</span></span>
+    </span>
+    <span class="phone">
+      <svg viewBox="0 0 24 24"><path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.58l2.2-2.21c.28-.27.36-.66.25-1.01C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z"/></svg>
+      +7 (499) 490-28-12
+    </span>
+  </header>
+
+  <div class="title-block">
+    <h1 class="title">ФинСтрой&shy;Панель</h1>
+    <p class="subtitle">Строим в Москве, Подмосковье и ещё 15 городах России круглый год, включая зиму.</p>
+  </div>
+
+  <ul class="features">
+    <li class="feat">Заводская готовность элементов</li>
+    <li class="feat">Тёплые и энергоэффективные дома</li>
+    <li class="feat">Высокая скорость: от договора до готового дома — 6 месяцев</li>
+  </ul>
+
+  <div class="foot-rule"></div>
+  <div class="page-num on-dark">01 / 09</div>
+  <a class="foot on-dark" href="https://fspanel.biz">fspanel.biz</a>
+</section>
+
+<!-- ─────────────────────────────────────────────── -->
+<!-- 02 · FOUNDER -->
+<!-- ─────────────────────────────────────────────── -->
+<section class="s-founder" data-screen-label="02 Founder">
+  <header class="head">
+    <span class="lockup light">
+      <span class="mk logo light"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+      <span class="word" style="color:#fff"><span>ФИН</span><span>СТРОЙ</span><span>ПАНЕЛЬ</span></span>
+    </span>
+    <span class="phone">
+      <svg viewBox="0 0 24 24"><path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.58l2.2-2.21c.28-.27.36-.66.25-1.01C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z"/></svg>
+      +7 (499) 490-28-12
+    </span>
+  </header>
+
+  <h2 class="name">Антон Боев</h2>
+  <div class="role">Управляющий партнёр</div>
+
+  <div class="bio">
+    <p>ФинСтройПанель строит дома бизнес-класса по сборно-монолитной технологии: быстро, точно и без сезонных пауз.</p>
+    <p>Мы работаем по принципу полной ответственности за строительство дома: от фундамента до фасада. Это гарантирует качество на каждом этапе. За 3 года построили 250 домов в 15 городах России.</p>
+    <p>Мы максимально открыты и показываем все этапы строительства на YouTube и в Telegram-канале.</p>
+  </div>
+
+  <img class="portrait" src="assets/founder-boev.png" alt="Антон Боев"/>
+
+  <div class="social-block">
+    <div class="social-head">
+      <svg viewBox="0 0 35 30"><path d="M34.9 2.7l-5.3 24.8c-.4 1.7-1.4 2.1-2.9 1.3l-8-5.8-3.9 3.7c-.4.4-.8.8-1.7.8l.6-8.2L28.6 5.8c.6-.6-.1-.9-.9-.3l-18.5 11.6-8-2.4c-1.7-.5-1.8-1.7.4-2.5L32.6.1c1.5-.4 2.8.4 2.3 2.6z"/></svg>
+      <h3>Более 180 тысяч подписчиков в социальных сетях.</h3>
+    </div>
+    <div class="links">
+      <a href="https://t.me/finstroypanel">
+        <svg viewBox="0 0 24 24"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+        <u>https://t.me/finstroypanel</u>
+      </a>
+      <a href="https://www.youtube.com/@finstroypanel">
+        <svg viewBox="0 0 24 24"><path d="M23.5 6.2c-.3-1-1-1.8-2-2.1C19.7 3.6 12 3.6 12 3.6s-7.7 0-9.5.5c-1 .3-1.7 1.1-2 2.1C0 8 0 12 0 12s0 4 .5 5.8c.3 1 1 1.8 2 2.1 1.8.5 9.5.5 9.5.5s7.7 0 9.5-.5c1-.3 1.7-1.1 2-2.1.5-1.8.5-5.8.5-5.8s0-4-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>
+        <u>https://www.youtube.com/@finstroypanel</u>
+      </a>
+      <a href="https://vk.com/finstroypanel">
+        <svg viewBox="0 0 24 24"><path d="M12.8 17.5c-.8 0-.6-1.1-1-1.7-.4-.6-1.2-.8-2-.4-.7.4-.4 1.3-.8 1.6-.7.5-3-.7-4.7-3-1.7-2.4-3.1-5.2-3.1-5.5 0-.2.2-.4.8-.4h1.7c.6 0 .8.3.9.7.6 1.8 1.6 3.4 2 3.4.2 0 .3-.2.3-.9V8.6c-.1-1.1-.7-1.2-.7-1.6 0-.2.2-.4.5-.4h2.6c.5 0 .6.3.6.7v4.1c0 .5.2.7.4.7.4 0 .8-.2 1.7-1.2 1-1.1 1.7-2.7 1.7-2.7.1-.2.3-.4.8-.4h1.7c.5 0 .6.3.5.6-.2.9-1.9 3.3-1.9 3.3-.2.3-.2.4 0 .7.1.2.6.7 1 1.1.7.8 1.3 1.6 1.5 2.1.1.5-.1.7-.6.7h-1.7c-.4 0-.7-.1-.9-.6-.5-.8-1.3-2.1-1.7-2.1-.2 0-.3.1-.3.4v2c0 .2-.1.5-.7.5h-.6z"/></svg>
+        <u>https://vk.com/finstroypanel</u>
+      </a>
+    </div>
+  </div>
+
+  <div class="foot-rule dark"></div>
+  <div class="page-num on-dark">02 / 09</div>
+  <a class="foot on-dark" href="https://fspanel.biz">fspanel.biz</a>
+</section>
+
+<!-- ─────────────────────────────────────────────── -->
+<!-- 03 · ABOUT HOUSES -->
+<!-- ─────────────────────────────────────────────── -->
+<section class="s-about" data-screen-label="03 About houses">
+  <div class="hero"></div>
+  <div class="tri-l"><svg viewBox="0 0 162 142"><path d="M 162 142 L 0 142 L 0 0 L 162 142 Z" fill="#2D4F91"/></svg></div>
+
+  <header class="head">
+    <span class="lockup light">
+      <span class="mk logo light"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+      <span class="word" style="color:#fff"><span>ФИН</span><span>СТРОЙ</span><span>ПАНЕЛЬ</span></span>
+    </span>
+    <span class="phone">
+      <svg viewBox="0 0 24 24"><path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.58l2.2-2.21c.28-.27.36-.66.25-1.01C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z"/></svg>
+      +7 (499) 490-28-12
+    </span>
+  </header>
+
+  <div class="body">
+    <div class="kicker">О домах</div>
+    <h2>Загородные дома по сборно-монолитной технологии для людей и&nbsp;бизнеса</h2>
+    <p>Мы строим дома из трёхслойных железобетонных панелей. Внутри — утеплитель, снаружи — монолитные слои бетона. Пока на заводе 60 дней изготавливают домокомплект, на участке заливают крепкий фундамент. Панели ставятся на основание, фиксируются крепежами, швы герметизируются. Сверху — плоская или скатная кровля, вокруг — правильная отмостка для отвода воды. Такой дом держит тепло и служит 200+ лет.</p>
+  </div>
+
+  <div class="foot-rule"></div>
+  <div class="page-num">03 / 09</div>
+  <a class="foot" href="https://fspanel.biz">fspanel.biz</a>
+</section>
+
+<!-- ─────────────────────────────────────────────── -->
+<!-- 04 · ADVANTAGES -->
+<!-- ─────────────────────────────────────────────── -->
+<section class="s-adv" data-screen-label="04 Advantages">
+  <header class="head">
+    <span class="lockup light">
+      <span class="mk logo light"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+      <span class="word" style="color:#fff"><span>ФИН</span><span>СТРОЙ</span><span>ПАНЕЛЬ</span></span>
+    </span>
+    <span class="phone">
+      <svg viewBox="0 0 24 24"><path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.58l2.2-2.21c.28-.27.36-.66.25-1.01C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z"/></svg>
+      +7 (499) 490-28-12
+    </span>
+  </header>
+  <div class="head-rule dark"></div>
+
+  <h2>Преимущества</h2>
+
+  <div class="grid">
+    <div class="card">
+      <span class="icn"><svg viewBox="0 0 24 24"><path d="M3 21h7v-3h3v-3h3v-3h3v-3h3V3H3v18zm2-16h14v14h-2v-3h-3v3h-3v-3h-3v3H5V5z"/></svg></span>
+      <h4>Дома не дают усадку</h4>
+      <p>Домокомплект с завода не «гуляет» и не деформируется</p>
+    </div>
+    <div class="card">
+      <span class="icn"><svg viewBox="0 0 24 24"><path d="M12 2L4 5v6c0 5 3.4 9.6 8 11 4.6-1.4 8-6 8-11V5l-8-3z"/></svg></span>
+      <h4>Огнестойкие материалы дома</h4>
+      <p>Бетон, как и минеральная вата — не горит и не поддерживает горение</p>
+    </div>
+    <div class="card">
+      <span class="icn"><svg viewBox="0 0 24 24"><path d="M3 21h18V11L12 4 3 11v10zm2-9.2L12 6.5l7 5.3V19h-5v-4h-4v4H5v-7.2z"/></svg></span>
+      <h4>Стены и перекрытия не гниют</h4>
+      <p>Железобетонная конструкция не впитывает влагу, не размягчается, не плесневеет</p>
+    </div>
+    <div class="card navy">
+      <span class="icn"><svg viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></span>
+      <h4>Один подрядчик на весь дом</h4>
+      <p>Мы отвечаем за весь цикл строительства, что исключает споры и ошибки на стыках работ</p>
+    </div>
+  </div>
+
+  <div class="foot-rule dark"></div>
+  <div class="page-num on-dark">04 / 09</div>
+  <a class="foot on-dark" href="https://fspanel.biz">fspanel.biz</a>
+</section>
+
+<!-- ─────────────────────────────────────────────── -->
+<!-- 05 · DIVIDER -->
+<!-- ─────────────────────────────────────────────── -->
+<section class="s-div" data-screen-label="05 Technology section">
+  <header class="head">
+    <span class="lockup">
+      <span class="mk logo"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+      <span class="word"><span>ФИН</span><span>СТРОЙ</span><span>ПАНЕЛЬ</span></span>
+    </span>
+    <span class="phone outline">
+      <svg viewBox="0 0 24 24"><path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.58l2.2-2.21c.28-.27.36-.66.25-1.01C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z"/></svg>
+      +7 (499) 490-28-12
+    </span>
+  </header>
+  <div class="head-rule"></div>
+
+  <h1>Технология строительства</h1>
+
+  <div class="step-num">Раздел<b>03</b></div>
+
+  <div class="foot-rule"></div>
+  <div class="page-num">05 / 09</div>
+  <a class="foot" href="https://fspanel.biz">fspanel.biz</a>
+</section>
+
+<!-- ─────────────────────────────────────────────── -->
+<!-- 06 · SPEC LIST -->
+<!-- ─────────────────────────────────────────────── -->
+<section class="s-spec" data-screen-label="06 Spec list">
+  <header class="head">
+    <span class="lockup">
+      <span class="mk logo"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+      <span class="word"><span>ФИН</span><span>СТРОЙ</span><span>ПАНЕЛЬ</span></span>
+    </span>
+    <span class="phone outline">
+      <svg viewBox="0 0 24 24"><path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.58l2.2-2.21c.28-.27.36-.66.25-1.01C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z"/></svg>
+      +7 (499) 490-28-12
+    </span>
+  </header>
+  <div class="head-rule"></div>
+
+  <h2>Комплектации домов</h2>
+  <div class="sub-rule"></div>
+  <h3>Фундамент + Домокомплект</h3>
+
+  <div class="body">
+    <ul>
+      <li>Разработка котлована согласно проектной документации</li>
+      <li>Устройство прифундаментного дренажа (монтаж дренажной трубы и колодцев)</li>
+      <li>Геотекстиль 100 гр/м²</li>
+      <li>Устройство песчаного основания, послойно утрамбованного песком средней крупности</li>
+      <li>Устройство щебеночного основания, фракция 20–40 мм</li>
+      <li>Монтаж канализационных труб под плитой</li>
+      <li>Монтаж труб для ливневой канализации под плитой</li>
+      <li>Ввод водяной трубы и закладных для кабеля</li>
+      <li>Профилированная геомембрана из полиэтилена высокой плотности</li>
+      <li>Стальная арматура и заливка плиты бетоном по проектной документации</li>
+      <li>Изготовление, доставка и монтаж железобетонных изделий домокомплекта</li>
+    </ul>
+
+    <p class="note">* В комплект поставки входят все несущие наружные (трёхслойные утеплённые панели) и некоторые внутренние опорные стены, межэтажные перекрытия, металлоконструкции согласно проекту.</p>
+    <p class="note">* Стоимость фундамента зависит от почвы и может быть изменена после инженерно-геологических изысканий.</p>
+    <p class="note"><b>Дополнительно можно заказать:</b> устройство въезда на участок, фундамент террасы, подготовку парковочных мест.</p>
+    <p class="term">Срок строительства: 25–45 дней.</p>
+  </div>
+
+  <div class="foot-rule"></div>
+  <div class="page-num">06 / 09</div>
+  <a class="foot" href="https://fspanel.biz">fspanel.biz</a>
+</section>
+
+<!-- ─────────────────────────────────────────────── -->
+<!-- 07 · PROJECT HERO -->
+<!-- ─────────────────────────────────────────────── -->
+<section class="s-phero" data-screen-label="07 Project hero">
+  <div class="img"></div>
+  <header class="head">
+    <span class="lockup light">
+      <span class="mk logo light"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+      <span class="word" style="color:#fff"><span>ФИН</span><span>СТРОЙ</span><span>ПАНЕЛЬ</span></span>
+    </span>
+    <span class="phone">
+      <svg viewBox="0 0 24 24"><path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.58l2.2-2.21c.28-.27.36-.66.25-1.01C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z"/></svg>
+      +7 (499) 490-28-12
+    </span>
+  </header>
+
+  <span class="badge">FP-6 KUUTIO</span>
+  <h2>Двухэтажный дом с открытой террасой</h2>
+
+  <div class="specs">
+    <div>Площадь: <b>206,23 м²</b>.</div>
+    <div>Терраса 37,5 м², кухня-гостиная: 39,7 м²</div>
+    <div>5 спален, 3 с/у, 4 гардеробных и кладовая.</div>
+  </div>
+
+  <div class="foot-rule"></div>
+  <div class="page-num">07 / 09</div>
+  <a class="foot" href="https://fspanel.biz">fspanel.biz</a>
+</section>
+
+<!-- ─────────────────────────────────────────────── -->
+<!-- 08 · PROJECT DETAILS -->
+<!-- ─────────────────────────────────────────────── -->
+<section class="s-pdetail" data-screen-label="08 Project details">
+  <header class="head">
+    <span class="lockup">
+      <span class="mk logo"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+      <span class="word"><span>ФИН</span><span>СТРОЙ</span><span>ПАНЕЛЬ</span></span>
+    </span>
+    <span class="phone outline">
+      <svg viewBox="0 0 24 24"><path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.58l2.2-2.21c.28-.27.36-.66.25-1.01C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z"/></svg>
+      +7 (499) 490-28-12
+    </span>
+  </header>
+  <div class="head-rule"></div>
+
+  <div class="plans">
+    <div class="plan"><img src="../assets/oiva_floorplan.jpeg" alt="1 этаж"/></div>
+    <div class="plan"><img src="../assets/oiva_floorplan.jpeg" alt="2 этаж"/></div>
+  </div>
+
+  <div class="pname-row">
+    <h2>FP-6 KUUTIO</h2>
+    <span class="area-badge">206,6 м²</span>
+  </div>
+
+  <div class="prices">
+    <div class="price"><b>15 720 000 ₽</b><div class="sep"></div><span>Фундамент + домокомплект</span></div>
+    <div class="price"><b>18 950 000 ₽</b><div class="sep"></div><span>Тёплый контур</span></div>
+    <div class="price"><b>22 380 000 ₽</b><div class="sep"></div><span>Черновая отделка</span></div>
+  </div>
+
+  <p class="finep">Цена указана для Москвы и Московской области. Стоимость строительства в других регионах рассчитывается индивидуально.</p>
+
+  <div class="foot-rule"></div>
+  <div class="page-num">08 / 09</div>
+  <a class="foot" href="https://fspanel.biz">fspanel.biz</a>
+</section>
+
+<!-- ─────────────────────────────────────────────── -->
+<!-- 09 · CTA -->
+<!-- ─────────────────────────────────────────────── -->
+<section class="s-cta" data-screen-label="09 CTA">
+  <header class="head">
+    <span class="lockup light">
+      <span class="mk logo light"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+      <span class="word" style="color:#fff"><span>ФИН</span><span>СТРОЙ</span><span>ПАНЕЛЬ</span></span>
+    </span>
+  </header>
+
+  <div class="body">
+    <h2>Узнайте точную стоимость вашего дома</h2>
+    <p>Поможем выбрать планировку, расскажем о технологиях и&nbsp;ответим на все вопросы о строительстве.</p>
+    <a class="phone-big" href="tel:+74994902812">
+      <svg viewBox="0 0 24 24"><path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.58l2.2-2.21c.28-.27.36-.66.25-1.01C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z"/></svg>
+      +7 (499) 490-28-12
+    </a>
+  </div>
+
+  <div class="foot-rule dark"></div>
+  <div class="page-num on-dark">09 / 09</div>
+  <a class="foot on-dark" href="https://fspanel.biz">fspanel.biz</a>
+</section>
+
+</deck-stage>
+
+</body>
+</html>

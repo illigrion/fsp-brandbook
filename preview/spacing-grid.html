@@ -1,0 +1,11 @@
+<!doctype html>
+<!-- @dsCard group="Spacing" name="Spacing · 12-col Grid" subtitle="Сетка · gutter 24 · поля 80" viewport="700x240" --><html lang="ru"><head><meta charset="utf-8"/><meta name="viewport" content="width=700"/><link rel="stylesheet" href="card.css"/><style>body{height:240px;overflow:hidden;}
+.wrap{padding:20px 28px;height:100%;display:flex;flex-direction:column;gap:8px;justify-content:center;}
+.note{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--graphite-500);font-weight:700;}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:12px;height:160px;align-content:start;}
+.grid > div{display:flex;align-items:center;justify-content:center;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;font-weight:700;}
+</style></head><body><div class="wrap"><div class="note">Сетка · 12 колонок · gutter 24 px · поля 80 px</div><div class="grid">
+<div style="grid-column:span 12;background:var(--navy);color:#fff;height:38px;">Header · 12 col</div>
+<div style="grid-column:span 8;background:var(--concrete);color:var(--graphite-700);height:88px;">Content · 8 col</div>
+<div style="grid-column:span 4;background:var(--navy-100);color:var(--navy-deep);height:88px;">Aside · 4</div>
+</div></div></body></html>

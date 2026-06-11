@@ -1,0 +1,5 @@
+/* ============================================================
+   ФСП · FINSTROYPANEL — Design System entry point
+   Consumers link THIS file. It pulls in all foundations.
+   ============================================================ */
+@import "colors_and_type.css";

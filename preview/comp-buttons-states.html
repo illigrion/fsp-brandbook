@@ -1,0 +1,22 @@
+<!doctype html>
+<!-- @dsCard group="Components" name="Components · Button States" subtitle="Default / Hover / Pressed / Disabled" viewport="700x200" --><html lang="ru"><head><meta charset="utf-8"/><meta name="viewport" content="width=700"/><link rel="stylesheet" href="card.css"/><style>body{height:200px;overflow:hidden;}
+.wrap{padding:24px 28px;height:100%;display:flex;flex-direction:column;gap:14px;justify-content:center;background:var(--paper);}
+.row{display:grid;grid-template-columns:90px 1fr;gap:18px;align-items:center;}
+.lbl{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--graphite-500);font-weight:700;}
+.btns{display:flex;gap:12px;align-items:center;}
+
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;background:var(--navy);color:#fff;border:1px solid var(--navy);cursor:pointer;font-family:inherit;}
+.btn:hover{background:var(--navy-deep);}
+.btn.secondary{background:transparent;color:var(--navy);}
+.btn.secondary:hover{background:var(--navy-50);}
+.btn.ghost{background:transparent;color:var(--graphite);border-color:var(--graphite);}
+.btn.ghost:hover{background:var(--graphite);color:#fff;}
+.btn.danger{background:var(--red);border-color:var(--red);}
+.btn.sm{padding:9px 14px;font-size:10px;}
+.btn .arrow{width:14px;height:1px;background:currentColor;position:relative;}
+.btn .arrow::after{content:"";position:absolute;right:0;top:-3px;width:6px;height:6px;border-top:1px solid currentColor;border-right:1px solid currentColor;transform:rotate(45deg);}
+
+.is-hover{background:var(--navy-deep);}
+.is-press{background:var(--navy-deep);transform:translateY(1px);}
+.is-disabled{background:var(--graphite-300);border-color:var(--graphite-300);color:var(--paper);}
+</style></head><body><div class="wrap"><div class="row"><span class="lbl">Default</span><div class="btns"><button class="btn">Заказать</button><button class="btn secondary">Каталог</button><button class="btn ghost">PDF</button></div></div><div class="row"><span class="lbl">Hover</span><div class="btns"><button class="btn is-hover">Заказать</button><button class="btn secondary" style="background:var(--navy-50)">Каталог</button><button class="btn ghost" style="background:var(--graphite);color:#fff">PDF</button></div></div><div class="row"><span class="lbl">Pressed</span><div class="btns"><button class="btn is-press">Заказать</button></div></div><div class="row"><span class="lbl">Disabled</span><div class="btns"><button class="btn is-disabled">Заказать</button></div></div></div></body></html>

@@ -1,0 +1,1585 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<title>ФСП × Липатников × Топливо — Offer</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<style>
+/* ───── Fonts ───── */
+@font-face { font-family:"Montserrat"; src:url("fonts/Montserrat-Light.ttf") format("truetype"); font-weight:300; font-display:swap; }
+@font-face { font-family:"Montserrat"; src:url("fonts/Montserrat-Regular.ttf") format("truetype"); font-weight:400; font-display:swap; }
+@font-face { font-family:"Montserrat"; src:url("fonts/Montserrat-Medium.ttf") format("truetype"); font-weight:500; font-display:swap; }
+@font-face { font-family:"Montserrat"; src:url("fonts/Montserrat-SemiBold.ttf") format("truetype"); font-weight:600; font-display:swap; }
+@font-face { font-family:"Montserrat"; src:url("fonts/Montserrat-Bold.ttf") format("truetype"); font-weight:700; font-display:swap; }
+@font-face { font-family:"Montserrat"; src:url("fonts/Montserrat-ExtraBold.ttf") format("truetype"); font-weight:800; font-display:swap; }
+@font-face { font-family:"Montserrat"; src:url("fonts/Montserrat-Black.ttf") format("truetype"); font-weight:900; font-display:swap; }
+
+:root{
+  --navy:#2D4F91; --navy-deep:#1F3A6E; --navy-50:#EBF0F9; --navy-100:#D7DFEE; --navy-200:#A8B6D5;
+  --graphite:#2A2A2D; --graphite-700:#434242; --graphite-500:#6E6E70; --graphite-300:#A8A8A8;
+  --concrete:#ECECEA; --cement:#C9C8C3; --paper:#F7F6F2; --paper-2:#FAFAF7; --white:#fff; --red:#C0071A;
+  --bar-light:#A8B6D5; --bar-mid:#5979B5; --bar-dark:#2D4F91;
+}
+*{ box-sizing:border-box; }
+deck-stage:not(:defined){ visibility:hidden; }
+html,body{ margin:0; padding:0; background:#1a1a1c; font-family:"Montserrat",system-ui,sans-serif; -webkit-font-smoothing:antialiased; }
+img{ display:block; }
+
+section{
+  background:var(--paper); color:var(--graphite);
+  overflow:hidden; position:relative;
+}
+
+/* ───── III mark — canonical 2:2:3 ───── */
+.mk{ display:inline-flex; align-items:stretch; }
+.mk .b{ display:inline-block; }
+.mk .b:nth-child(1){ background:var(--bar-light); }
+.mk .b:nth-child(2){ background:var(--bar-mid); }
+.mk .b:nth-child(3){ background:var(--bar-dark); }
+.mk.light .b:nth-child(1){ background:rgba(255,255,255,0.55); }
+.mk.light .b:nth-child(2){ background:rgba(255,255,255,0.78); }
+.mk.light .b:nth-child(3){ background:#fff; }
+
+/* ───── Shared chrome ───── */
+.eyebrow{ font-size:18px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:var(--graphite-500); }
+.eyebrow .nv{ color:var(--navy); }
+
+/* ───── Co-brand lockup row ───── */
+.cobrand{ display:flex; align-items:center; gap:40px; }
+.cobrand .slot{ display:flex; align-items:center; height:64px; }
+.cobrand .slot img{ height:100%; width:auto; object-fit:contain; }
+.cobrand .slot.fsp{ gap:14px; }
+.cobrand .slot.fsp .mk{ gap:5px; }
+.cobrand .slot.fsp .mk .b{ height:62px; }
+.cobrand .slot.fsp .mk .b:nth-child(1), .cobrand .slot.fsp .mk .b:nth-child(2){ width:14px; }
+.cobrand .slot.fsp .mk .b:nth-child(3){ width:21px; }
+.cobrand .slot.fsp .word{ display:inline-flex; flex-direction:column; font-weight:800; font-size:19px; line-height:0.96; letter-spacing:-0.01em; color:var(--graphite); }
+.cobrand .div{ width:1px; height:72px; background:var(--cement); }
+
+/* lockup individual size tuning */
+.cobrand .slot.lip img{ height:52px; }
+.cobrand .slot.top img{ height:78px; }
+
+/* ════════════════ SLIDE 01 · COVER ════════════════ */
+.cover{ padding:96px 120px; display:flex; flex-direction:column; }
+
+/* flight trajectory motif */
+.cover .flight{ position:absolute; inset:0; pointer-events:none; z-index:0; }
+
+.cover .topbar{
+  display:flex; justify-content:space-between; align-items:flex-start;
+  position:relative; z-index:2;
+}
+.cover .center{
+  position:relative; z-index:2;
+  margin-top:auto; margin-bottom:auto;
+  padding-top:40px;
+}
+.cover h1{
+  margin:0; font-weight:900; font-size:146px; line-height:0.9;
+  letter-spacing:-0.045em; color:var(--graphite);
+}
+.cover .tagline{
+  margin:48px 0 0; font-weight:700; font-size:46px; line-height:1.1;
+  letter-spacing:-0.02em; color:var(--navy);
+}
+.cover .descriptor{
+  margin:24px 0 0; font-weight:500; font-size:26px; line-height:1.5;
+  color:var(--graphite-500); max-width:760px;
+}
+
+.cover .footer{
+  position:relative; z-index:2;
+  display:flex; flex-direction:column; gap:22px;
+  padding-top:40px; border-top:1px solid var(--cement);
+}
+.cover .footer .handles{
+  display:flex; gap:14px; align-items:center;
+  font-size:18px; font-weight:600; letter-spacing:0.02em; color:var(--graphite-500);
+}
+.cover .footer .handles .tag-note{
+  font-size:13px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase;
+  color:var(--navy); padding:5px 11px; background:var(--navy-50);
+}
+.cover .footer .handles .h{ font-feature-settings:"tnum"; }
+.cover .footer .handles .sep{ color:var(--cement); }
+
+/* ════════════════ CONTENT SLIDE SYSTEM ════════════════ */
+.content{ padding:88px 120px 96px; display:flex; flex-direction:column; }
+.content .flight{ position:absolute; inset:0; pointer-events:none; z-index:0; }
+
+/* header row: section plate + page marker */
+.c-head{
+  display:flex; justify-content:space-between; align-items:center;
+  position:relative; z-index:2;
+}
+.plate{
+  display:inline-flex; align-items:center; gap:14px;
+  background:var(--navy); color:#fff;
+  padding:13px 24px;
+  font-size:18px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase;
+}
+.plate .mk{ gap:3px; }
+.plate .mk .b{ height:22px; }
+.plate .mk .b:nth-child(1), .plate .mk .b:nth-child(2){ width:5px; }
+.plate .mk .b:nth-child(3){ width:8px; }
+.c-page{
+  font-size:16px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase;
+  color:var(--graphite-300); font-feature-settings:"tnum"; white-space:nowrap;
+}
+.c-page b{ color:var(--navy); }
+
+/* main 2-col body */
+.c-body{
+  position:relative; z-index:2;
+  margin-top:auto; margin-bottom:auto;
+  display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center;
+}
+.c-title{
+  font-weight:800; font-size:68px; line-height:1.08;
+  letter-spacing:-0.025em; color:var(--graphite); margin:0;
+}
+.c-title em{ font-style:normal; color:var(--navy); }
+.c-lead{
+  margin:32px 0 0; font-size:24px; font-weight:500; line-height:1.5;
+  color:var(--graphite-500); max-width:620px;
+}
+
+/* fact cards grid 2×2 */
+.fact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+.fact{
+  background:#fff; border:1px solid var(--cement);
+  padding:34px 32px; min-height:268px;
+  display:flex; flex-direction:column; justify-content:space-between; gap:18px;
+}
+.fact .num{
+  font-size:78px; font-weight:900; line-height:0.9; letter-spacing:-0.04em;
+  color:var(--navy); font-feature-settings:"tnum";
+}
+.fact .num u{ text-decoration:none; font-size:34px; font-weight:800; color:var(--navy-200); margin-left:2px; }
+.fact .num small{ font-size:34px; font-weight:800; letter-spacing:-0.02em; }
+.fact p{ margin:0; font-size:19px; font-weight:500; line-height:1.45; color:var(--graphite-700); }
+.fact .lbl{
+  font-size:13px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase;
+  color:var(--graphite-500);
+}
+.fact.accent{ background:var(--navy); border-color:var(--navy); }
+.fact.accent .num{ color:#fff; }
+.fact.accent .num u{ color:var(--navy-200); }
+.fact.accent p{ color:rgba(255,255,255,0.92); }
+.fact.accent .lbl{ color:var(--navy-200); }
+
+/* footer line — flight motif: hairline + ascending marker */
+.c-foot{
+  position:relative; z-index:2;
+  display:flex; align-items:center; gap:18px;
+  padding-top:26px; border-top:1px solid var(--cement);
+  font-size:15px; font-weight:600; letter-spacing:0.04em; color:var(--graphite-500);
+}
+.c-foot .brand{ font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--graphite); }
+.c-foot .sep{ color:var(--cement); }
+
+/* ── Problem slide: title with arrow marker + 4-card row ── */
+.c-titlewrap{ display:flex; flex-direction:column; gap:0; }
+.arrow-marker{
+  display:inline-flex; align-items:center; gap:14px; margin-bottom:24px;
+}
+.arrow-marker .line{ width:64px; height:3px; background:var(--navy); position:relative; }
+.arrow-marker .line::after{
+  content:""; position:absolute; right:-2px; top:-5px;
+  width:13px; height:13px; border-top:3px solid var(--navy); border-right:3px solid var(--navy);
+  transform:rotate(45deg);
+}
+.arrow-marker span{
+  font-size:18px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--navy);
+}
+
+.pain-row{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; margin-top:8px; }
+.pain{
+  background:#fff; border:1px solid var(--cement);
+  padding:32px 28px; min-height:340px;
+  display:flex; flex-direction:column; gap:20px;
+  position:relative;
+}
+.pain .n{
+  font-size:20px; font-weight:900; letter-spacing:0.04em; color:var(--navy);
+  font-feature-settings:"tnum"; line-height:1;
+  width:44px; height:44px; border:1px solid var(--cement);
+  display:flex; align-items:center; justify-content:center;
+}
+.pain h4{ margin:0; font-size:23px; font-weight:800; line-height:1.18; letter-spacing:-0.01em; color:var(--graphite); }
+.pain p{ margin:10px 0 0; font-size:17px; font-weight:500; line-height:1.45; color:var(--graphite-500); }
+.pain .txt{ margin-top:auto; }
+
+.metaphor{
+  margin-top:40px; display:flex; align-items:center; gap:16px;
+  font-size:18px; font-weight:500; font-style:italic; color:var(--graphite-500);
+}
+.metaphor .mline{ width:48px; height:2px; background:var(--cement); }
+
+/* ── Solution slide: 3 branches converging to one thesis ── */
+.solution .c-body{ display:block; }
+.sol-top{ max-width:1120px; }
+.sol-top h2{ font-weight:800; font-size:60px; line-height:1.08; letter-spacing:-0.025em; color:var(--graphite); margin:0; }
+.sol-top h2 em{ font-style:normal; color:var(--navy); }
+.sol-top p{ margin:26px 0 0; font-size:24px; font-weight:500; line-height:1.5; color:var(--graphite-500); max-width:880px; }
+
+.converge{ position:relative; height:430px; margin-top:36px; }
+.converge .links{ position:absolute; inset:0; pointer-events:none; }
+.branch{
+  position:absolute; top:0; width:452px;
+  background:#fff; border:1px solid var(--cement);
+  padding:24px 26px; display:flex; flex-direction:column; gap:10px;
+}
+.branch .role{ font-size:13px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--navy); }
+.branch .co{ font-size:25px; font-weight:800; letter-spacing:-0.01em; color:var(--graphite); }
+.branch .n{ position:absolute; top:24px; right:26px; font-size:14px; font-weight:700; color:var(--graphite-300); font-feature-settings:"tnum"; }
+.branch.b1{ left:0; }
+.branch.b2{ left:50%; transform:translateX(-50%); }
+.branch.b3{ right:0; }
+
+.converge .dot{
+  position:absolute; left:50%; top:268px; transform:translate(-50%,-50%);
+  width:22px; height:22px; background:var(--navy); border-radius:0;
+  box-shadow:0 0 0 8px var(--navy-50);
+}
+.thesis{
+  position:absolute; left:50%; bottom:0; transform:translateX(-50%);
+  background:var(--navy); color:#fff;
+  padding:30px 56px; text-align:center; min-width:760px;
+}
+.thesis .t{ font-size:34px; font-weight:800; letter-spacing:-0.015em; line-height:1.1; }
+.thesis .s{ margin-top:8px; font-size:16px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--navy-200); }
+
+/* ── Team slide: 3 equal partner cards ── */
+.team .c-body{ display:block; }
+.team-head h2{ font-weight:800; font-size:64px; line-height:1.05; letter-spacing:-0.025em; color:var(--graphite); margin:0; }
+.team-head h2 .d{ color:var(--navy-200); font-weight:800; margin:0 10px; }
+.team-row{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:48px; }
+.team{
+  background:#fff; border:1px solid var(--cement);
+  padding:40px 38px; display:flex; flex-direction:column; gap:22px;
+}
+.team .ico{
+  width:76px; height:76px; border:1px solid var(--cement);
+  display:flex; align-items:center; justify-content:center;
+}
+.team .ico svg{ width:42px; height:42px; stroke:var(--navy); fill:none; stroke-width:1.5; stroke-linecap:square; stroke-linejoin:miter; }
+.team .ico svg .fill{ fill:var(--navy); stroke:none; }
+.team .co{ font-size:30px; font-weight:800; letter-spacing:-0.015em; color:var(--graphite); line-height:1.05; }
+.team .role{ font-size:16px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--navy); }
+.team .role::before{ content:"« "; }
+.team .role::after{ content:" »"; }
+.team .sep{ height:1px; background:var(--cement); }
+.team ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:13px; }
+.team li{ position:relative; padding-left:24px; font-size:19px; font-weight:500; line-height:1.4; color:var(--graphite-700); }
+.team li::before{ content:""; position:absolute; left:4px; top:9px; width:8px; height:8px; background:var(--navy); }
+
+/* ── Synergy slide ── */
+.synergy .c-body{ display:block; }
+.syn-head h2{ font-weight:800; font-size:64px; line-height:1.05; letter-spacing:-0.025em; color:var(--graphite); margin:0; }
+.syn-head h2 em{ font-style:normal; color:var(--navy); }
+
+.syn-eq{ display:flex; align-items:stretch; justify-content:center; gap:22px; margin:44px 0; }
+.syn-eq .node{
+  flex:1; max-width:330px; background:#fff; border:1px solid var(--cement);
+  padding:26px 20px; text-align:center; display:flex; flex-direction:column; gap:6px; justify-content:center;
+}
+.syn-eq .node .co{ font-size:24px; font-weight:800; letter-spacing:-0.01em; color:var(--graphite); line-height:1.05; }
+.syn-eq .node .rl{ font-size:13px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--graphite-500); }
+.syn-eq .op{ display:flex; align-items:center; font-size:44px; font-weight:300; color:var(--navy-200); }
+.syn-eq .arrow{ display:flex; align-items:center; gap:0; color:var(--navy); }
+.syn-eq .arrow .ln{ width:40px; height:3px; background:var(--navy); position:relative; }
+.syn-eq .arrow .ln::after{ content:""; position:absolute; right:-2px; top:-6px; width:15px; height:15px; border-top:3px solid var(--navy); border-right:3px solid var(--navy); transform:rotate(45deg); }
+.syn-eq .system{
+  background:var(--navy); color:#fff; padding:26px 40px;
+  display:flex; flex-direction:column; gap:4px; justify-content:center; text-align:center;
+}
+.syn-eq .system .t{ font-size:30px; font-weight:800; letter-spacing:-0.01em; }
+.syn-eq .system .s{ font-size:13px; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; color:var(--navy-200); }
+
+.syn-row{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.syn-card{ background:#fff; border:1px solid var(--cement); padding:32px 30px; display:flex; flex-direction:column; gap:14px; }
+.syn-card .lead{ font-size:22px; font-weight:800; letter-spacing:-0.01em; color:var(--navy); line-height:1.15; }
+.syn-card p{ margin:0; font-size:18px; font-weight:500; line-height:1.5; color:var(--graphite-700); }
+
+/* ── Split layout: content + image (stages) ── */
+.split{ display:grid; grid-template-columns:1.05fr 1fr; gap:64px; align-items:center; }
+.split h2{ font-weight:800; font-size:56px; line-height:1.08; letter-spacing:-0.025em; color:var(--graphite); margin:0; }
+.split h2 em{ font-style:normal; color:var(--navy); }
+.split .lead{ margin:24px 0 0; font-size:23px; font-weight:500; font-style:italic; line-height:1.45; color:var(--graphite-500); max-width:600px; }
+.do-list{ list-style:none; margin:34px 0 0; padding:0; display:flex; flex-direction:column; }
+.do-list li{
+  position:relative; padding:18px 0 18px 36px;
+  border-top:1px solid var(--cement);
+  font-size:21px; font-weight:500; line-height:1.4; color:var(--graphite);
+}
+.do-list li:last-child{ border-bottom:1px solid var(--cement); }
+.do-list li::before{
+  content:""; position:absolute; left:4px; top:24px;
+  width:16px; height:3px; background:var(--navy);
+}
+.do-list li::after{
+  content:""; position:absolute; left:16px; top:19px;
+  width:9px; height:9px; border-top:3px solid var(--navy); border-right:3px solid var(--navy); transform:rotate(45deg);
+}
+.imgph{
+  position:relative; width:100%; aspect-ratio:4/3; background:var(--concrete);
+  border:1px solid var(--cement); overflow:hidden;
+  display:flex; align-items:center; justify-content:center;
+}
+.imgph img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.imgph .ph-label{
+  display:flex; flex-direction:column; align-items:center; gap:12px;
+  color:var(--graphite-300); text-align:center;
+}
+.imgph .ph-label svg{ width:46px; height:46px; stroke:var(--graphite-300); fill:none; stroke-width:1.5; stroke-linecap:square; stroke-linejoin:miter; }
+.imgph .ph-label span{ font-size:14px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; }
+.imgph .mk-corner{ position:absolute; top:16px; left:16px; z-index:2; display:inline-flex; align-items:stretch; gap:2px; }
+.imgph .mk-corner .b{ height:22px; }
+.imgph .mk-corner .b:nth-child(1){ width:5px; background:var(--bar-light); }
+.imgph .mk-corner .b:nth-child(2){ width:5px; background:var(--bar-mid); }
+.imgph .mk-corner .b:nth-child(3){ width:8px; background:var(--bar-dark); }
+.imgph .ph-cap{ position:absolute; left:0; bottom:0; z-index:2; background:rgba(42,42,45,0.82); color:#fff; font-size:14px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; padding:10px 18px; }
+
+.regalia{
+  position:relative; z-index:2;
+  margin-top:30px; padding:18px 0 0; border-top:1px solid var(--cement);
+  font-size:18px; font-weight:600; letter-spacing:0.02em; color:var(--graphite-500);
+}
+.regalia b{ color:var(--graphite); font-weight:700; }
+
+/* ── Advantages (stage 2) ── */
+.adv-grid{ display:flex; flex-direction:column; }
+.adv{
+  display:grid; grid-template-columns:54px 1fr; gap:20px; align-items:start;
+  padding:18px 0; border-top:1px solid var(--cement);
+}
+.adv:last-child{ border-bottom:1px solid var(--cement); }
+.adv .ai{ width:54px; height:54px; border:1px solid var(--cement); display:flex; align-items:center; justify-content:center; }
+.adv .ai svg{ width:30px; height:30px; stroke:var(--navy); fill:none; stroke-width:1.5; stroke-linecap:square; stroke-linejoin:miter; }
+.adv .ai svg .fill{ fill:var(--navy); stroke:none; }
+.adv .at{ font-size:21px; font-weight:700; letter-spacing:-0.005em; color:var(--graphite); line-height:1.3; padding-top:11px; }
+.adv .at b{ color:var(--navy); font-weight:800; }
+
+.anchors{
+  position:relative; z-index:2;
+  margin-top:30px; padding-top:26px; border-top:1px solid var(--cement);
+  display:flex; gap:64px; align-items:baseline;
+}
+.anchors .a b{ font-size:56px; font-weight:900; letter-spacing:-0.04em; color:var(--navy); font-feature-settings:"tnum"; line-height:0.9; }
+.anchors .a span{ display:block; margin-top:8px; font-size:15px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--graphite-500); }
+
+/* ── Stage 3: Strategy → Marketing → Sales band ── */
+.fuel .c-body{ display:block; }
+.fuel h2{ font-weight:800; font-size:60px; line-height:1.05; letter-spacing:-0.025em; color:var(--graphite); margin:0; }
+.fuel h2 em{ font-style:normal; color:var(--navy); }
+.fuel-band{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:0; margin-top:44px; border:1px solid var(--cement); }
+.fuel-col{ padding:34px 32px; border-right:1px solid var(--cement); display:flex; flex-direction:column; gap:18px; position:relative; }
+.fuel-col:last-child{ border-right:0; }
+.fuel-col .step{ display:flex; align-items:center; gap:14px; }
+.fuel-col .step .num{ font-size:14px; font-weight:900; color:var(--navy); font-feature-settings:"tnum"; width:36px; height:36px; border:1px solid var(--cement); display:flex; align-items:center; justify-content:center; }
+.fuel-col .step .t{ font-size:25px; font-weight:800; letter-spacing:-0.01em; color:var(--graphite); }
+.fuel-col.last .step .t{ color:var(--navy); }
+.fuel-col .arr{ position:absolute; right:-13px; top:44px; z-index:3; width:26px; height:26px; background:var(--paper); display:flex; align-items:center; justify-content:center; }
+.fuel-col .arr::after{ content:""; width:11px; height:11px; border-top:3px solid var(--navy); border-right:3px solid var(--navy); transform:rotate(45deg); margin-left:-3px; }
+.fuel-col ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:11px; }
+.fuel-col li{ position:relative; padding-left:22px; font-size:18px; font-weight:500; line-height:1.4; color:var(--graphite-700); }
+.fuel-col li::before{ content:""; position:absolute; left:3px; top:9px; width:7px; height:7px; background:var(--navy); }
+.fuel-anchors{
+  position:relative; z-index:2; margin-top:28px; padding-top:22px; border-top:1px solid var(--cement);
+  font-size:17px; font-weight:600; color:var(--graphite-500); letter-spacing:0.01em; line-height:1.6;
+}
+.fuel-anchors b{ color:var(--graphite); font-weight:700; }
+.fuel-portfolio{ position:relative; z-index:2; margin-top:14px; font-size:16px; font-weight:500; color:var(--graphite-500); letter-spacing:0.01em; }
+.fuel-portfolio b{ color:var(--graphite); font-weight:700; }
+
+/* slide 9 split + sales-system visual */
+.fuel-split{ display:grid; grid-template-columns:1.05fr 0.95fr; gap:clamp(32px,3.5vw,56px); align-items:start; margin-top:30px; }
+.fsteps{ display:flex; flex-direction:column; }
+.fstep{ display:grid; grid-template-columns:48px 1fr; gap:18px; padding:17px 0; border-top:1px solid var(--cement); }
+.fstep:last-child{ border-bottom:1px solid var(--cement); }
+.fstep .num{ width:42px; height:42px; border:1px solid var(--cement); display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:900; color:var(--navy); font-feature-settings:"tnum"; }
+.fstep .t{ font-size:22px; font-weight:800; letter-spacing:-0.01em; color:var(--graphite); margin-bottom:5px; }
+.fstep.last .t{ color:var(--navy); }
+.fstep p{ margin:0; font-size:16px; font-weight:500; line-height:1.45; color:var(--graphite-500); }
+.fuel-vis{ background:#fff; border:1px solid var(--cement); padding:28px 30px; display:flex; flex-direction:column; gap:18px; }
+.fv-head{ display:flex; align-items:center; gap:12px; font-size:13px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--graphite); }
+.fv-head .mk{ gap:3px; } .fv-head .mk .b{ height:20px; width:5px; } .fv-head .mk .b:nth-child(3){ width:8px; }
+.funnel{ display:flex; flex-direction:column; gap:9px; }
+.fn{ position:relative; display:flex; align-items:center; height:44px; }
+.fn .bar{ height:100%; display:block; }
+.fn:nth-child(1) .bar{ width:100%; background:var(--navy-deep); }
+.fn:nth-child(2) .bar{ width:72%; background:var(--navy); }
+.fn:nth-child(3) .bar{ width:46%; background:#5979B5; }
+.fn:nth-child(4) .bar{ width:26%; background:var(--navy-200); }
+.fn .fl{ position:absolute; left:15px; top:50%; transform:translateY(-50%); font-size:14px; font-weight:700; letter-spacing:0.04em; color:#fff; white-space:nowrap; }
+.fn:nth-child(4) .fl{ color:var(--navy-deep); }
+.fv-tools{ display:flex; gap:7px; flex-wrap:wrap; }
+.fv-tools span{ font-size:12px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--navy); border:1px solid var(--navy-100); background:var(--navy-50); padding:7px 11px; }
+.fv-cap{ font-size:13px; font-weight:600; letter-spacing:0.02em; color:var(--graphite-500); }
+
+/* ── Journey hero: ascending trajectory with 8 stages ── */
+.journey .c-body{ display:block; }
+.journey h2{ font-weight:800; font-size:58px; line-height:1.05; letter-spacing:-0.025em; color:var(--graphite); margin:0; }
+.journey h2 em{ font-style:normal; color:var(--navy); }
+.journey-wrap{ position:relative; margin-top:24px; height:540px; }
+.journey-wrap .traj{ position:absolute; top:0; left:0; width:100%; height:340px; }
+.j-labels{ position:absolute; top:352px; left:0; right:0; display:grid; grid-template-columns:repeat(8,1fr); gap:0; }
+.j-label{ text-align:center; padding:0 10px; display:flex; flex-direction:column; align-items:center; gap:7px; }
+.j-label .num{ font-size:13px; font-weight:900; color:var(--navy-200); font-feature-settings:"tnum"; letter-spacing:0.08em; }
+.j-label .nm{ font-size:21px; font-weight:800; letter-spacing:-0.01em; color:var(--graphite); line-height:1.05; }
+.j-label .ds{ font-size:13px; font-weight:500; line-height:1.35; color:var(--graphite-500); }
+.j-label .pb{ margin-top:4px; font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--navy); padding:4px 9px; border:1px solid var(--navy-100); background:var(--navy-50); white-space:nowrap; }
+.j-label.all .pb{ color:#fff; background:var(--navy); border-color:var(--navy); }
+
+/* ── Audience (3 cards) / Benefits (5 grid) ── */
+.aud .c-body, .benefit .c-body{ display:block; }
+.sec-h2{ font-weight:800; font-size:64px; line-height:1.05; letter-spacing:-0.025em; color:var(--graphite); margin:0; }
+.sec-h2 em{ font-style:normal; color:var(--navy); }
+
+.aud-row{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:48px; }
+.aud-card{ background:#fff; border:1px solid var(--cement); padding:40px 38px; display:flex; flex-direction:column; gap:22px; }
+.aud-card .ai{ width:72px; height:72px; border:1px solid var(--cement); display:flex; align-items:center; justify-content:center; }
+.aud-card .ai svg{ width:40px; height:40px; stroke:var(--navy); fill:none; stroke-width:1.5; stroke-linecap:square; stroke-linejoin:miter; }
+.aud-card h4{ margin:0; font-size:26px; font-weight:800; letter-spacing:-0.015em; color:var(--graphite); line-height:1.15; }
+.aud-card p{ margin:0; font-size:19px; font-weight:500; line-height:1.5; color:var(--graphite-500); }
+
+.ben-grid{ display:grid; grid-template-columns:repeat(3,1fr); grid-auto-rows:1fr; gap:20px; margin-top:44px; }
+.ben{ background:#fff; border:1px solid var(--cement); padding:32px 30px; display:flex; flex-direction:column; gap:18px; }
+.ben.accent{ background:var(--navy); border-color:var(--navy); }
+.ben .bi{ width:54px; height:54px; border:1px solid var(--cement); display:flex; align-items:center; justify-content:center; }
+.ben .bi svg{ width:30px; height:30px; stroke:var(--navy); fill:none; stroke-width:1.5; stroke-linecap:square; stroke-linejoin:miter; }
+.ben.accent .bi{ border-color:rgba(255,255,255,0.3); }
+.ben.accent .bi svg{ stroke:#fff; }
+.ben p{ margin:0; font-size:21px; font-weight:700; line-height:1.3; letter-spacing:-0.01em; color:var(--graphite); }
+.ben.accent p{ color:#fff; }
+
+/* ── Proof slide ── */
+.proof .c-body{ display:block; }
+.proof-cases{ display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:26px; }
+.case{ background:#fff; border:1px solid var(--cement); display:flex; flex-direction:column; }
+.case .ph{ position:relative; height:188px; background:var(--concrete); display:flex; align-items:center; justify-content:center; overflow:hidden; }
+.case .ph img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.case .ph .mk-corner{ position:absolute; top:14px; left:14px; z-index:2; display:inline-flex; align-items:stretch; gap:2px; }
+.case .ph .mk-corner .b{ height:20px; }
+.case .ph .mk-corner .b:nth-child(1){ width:4px; background:var(--bar-light); }
+.case .ph .mk-corner .b:nth-child(2){ width:4px; background:var(--bar-mid); }
+.case .ph .mk-corner .b:nth-child(3){ width:7px; background:var(--bar-dark); }
+.case .ph .pl{ font-size:13px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--graphite-300); }
+.case .ph .ph-tag{ position:absolute; left:0; bottom:0; z-index:2; background:rgba(42,42,45,0.82); color:#fff; font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; padding:7px 13px; }
+.case .cb{ padding:22px 28px 24px; display:flex; flex-direction:column; gap:14px; }
+.case .ch{ display:flex; justify-content:space-between; align-items:baseline; gap:16px; }
+.case .cb h4{ margin:0; font-size:25px; font-weight:800; letter-spacing:-0.01em; color:var(--graphite); }
+.case .pby{ font-size:12px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--navy); white-space:nowrap; }
+.case .stats{ display:flex; gap:32px; }
+.case .stats .st b{ font-size:30px; font-weight:900; letter-spacing:-0.03em; color:var(--navy); font-feature-settings:"tnum"; line-height:0.9; }
+.case .stats .st b u{ text-decoration:none; font-size:15px; font-weight:700; color:var(--graphite-500); }
+.case .stats .st span{ display:block; margin-top:6px; font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--graphite-500); }
+.case .cnote{ margin:0; font-size:15px; font-weight:500; line-height:1.45; color:var(--graphite-500); }
+
+.proof-mini{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:20px; }
+.mini{ background:#fff; border:1px solid var(--cement); }
+.mini .mb{ padding:20px 22px; display:flex; flex-direction:column; gap:10px; }
+.mini .mh{ display:flex; justify-content:space-between; align-items:center; gap:12px; }
+.mini .mt{ font-size:19px; font-weight:800; letter-spacing:-0.01em; color:var(--graphite); }
+.mini .mbadge{ font-size:10px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--navy); border:1px solid var(--navy-100); background:var(--navy-50); padding:5px 9px; white-space:nowrap; }
+.mini .mbadge.nda{ color:var(--graphite-500); border-color:var(--cement); background:var(--paper-2); }
+.mini p{ margin:0; font-size:14px; font-weight:500; line-height:1.45; color:var(--graphite-500); }
+
+.proof-line{ position:relative; z-index:2; margin-top:22px; padding-top:20px; border-top:1px solid var(--cement); font-size:16px; font-weight:500; color:var(--graphite-500); letter-spacing:0.01em; }
+.proof-line b{ color:var(--navy); font-weight:800; }
+
+/* ── Formats slide ── */
+.formats .c-body{ display:block; }
+.fmt-row{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:44px; }
+.fmt{ background:#fff; border:1px solid var(--cement); padding:36px 34px; display:flex; flex-direction:column; gap:16px; }
+.fmt.accent{ background:var(--navy); border-color:var(--navy); }
+.fmt .n{ font-size:14px; font-weight:900; color:var(--navy); font-feature-settings:"tnum"; letter-spacing:0.08em; }
+.fmt.accent .n{ color:var(--navy-200); }
+.fmt h4{ margin:0; font-size:28px; font-weight:800; letter-spacing:-0.015em; color:var(--graphite); line-height:1.1; }
+.fmt.accent h4{ color:#fff; }
+.fmt p{ margin:0; font-size:19px; font-weight:500; line-height:1.5; color:var(--graphite-500); }
+.fmt.accent p{ color:rgba(255,255,255,0.9); }
+.fmt-foot{ margin-top:28px; display:flex; align-items:center; gap:24px; }
+.fmt-foot .first{ font-size:20px; font-weight:600; color:var(--graphite); }
+.fmt-foot .first b{ color:var(--navy); font-weight:800; }
+.fmt-split{ margin-top:18px; padding:18px 22px; border:1px dashed var(--graphite-300); font-size:15px; font-weight:600; letter-spacing:0.04em; color:var(--graphite-500); background:var(--paper-2); }
+
+/* ── Team slide ── */
+.crew .c-body{ display:block; }
+.crew-row{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:48px; }
+.crew-card{ background:#fff; border:1px solid var(--cement); display:flex; flex-direction:column; }
+.crew-card .ph{ position:relative; height:360px; background:var(--concrete); display:flex; align-items:center; justify-content:center; overflow:hidden; }
+.crew-card .ph img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.crew-card .ph .mk-corner{ position:absolute; top:16px; left:16px; display:inline-flex; align-items:stretch; gap:2px; }
+.crew-card .ph .mk-corner .b{ height:22px; }
+.crew-card .ph .mk-corner .b:nth-child(1){ width:5px; background:var(--bar-light); }
+.crew-card .ph .mk-corner .b:nth-child(2){ width:5px; background:var(--bar-mid); }
+.crew-card .ph .mk-corner .b:nth-child(3){ width:8px; background:var(--bar-dark); }
+.crew-card .ph svg{ width:64px; height:64px; stroke:var(--graphite-300); fill:none; stroke-width:1.5; stroke-linecap:square; stroke-linejoin:miter; }
+.crew-card .cb{ padding:28px 30px; display:flex; flex-direction:column; gap:8px; border-top:1px solid var(--cement); }
+.crew-card .nm{ font-size:28px; font-weight:800; letter-spacing:-0.015em; color:var(--graphite); line-height:1.05; }
+.crew-card .rl{ font-size:15px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--navy); }
+.crew-card .rg{ margin-top:6px; font-size:17px; font-weight:500; line-height:1.4; color:var(--graphite-500); }
+
+/* ── Final CTA slide ── */
+.final{ background:var(--navy); color:#fff; padding:88px 120px 96px; display:flex; flex-direction:column; }
+.final .flight{ position:absolute; inset:0; pointer-events:none; z-index:0; }
+.final .c-head{ position:relative; z-index:2; }
+.final .plate{ background:#fff; color:var(--navy); }
+.final .plate .mk .b:nth-child(1){ background:var(--bar-light); }
+.final .plate .mk .b:nth-child(2){ background:var(--bar-mid); }
+.final .plate .mk .b:nth-child(3){ background:var(--navy); }
+.final .c-page{ color:rgba(255,255,255,0.5); }
+.final .c-page b{ color:#fff; }
+.final-body{ position:relative; z-index:2; margin-top:auto; margin-bottom:auto; display:grid; grid-template-columns:1.1fr 1fr; gap:72px; align-items:center; }
+.final-body h2{ font-weight:900; font-size:92px; line-height:0.95; letter-spacing:-0.035em; color:#fff; margin:0; }
+.final-body .lead{ margin:28px 0 0; font-size:26px; font-weight:500; line-height:1.5; color:rgba(255,255,255,0.9); max-width:600px; }
+.quiz{ background:#fff; padding:40px 40px; display:flex; flex-direction:column; gap:22px; }
+.quiz .qh{ font-size:14px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--graphite-500); }
+.quiz .qfield{ display:flex; flex-direction:column; gap:9px; }
+.quiz .qfield label{ font-size:13px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--graphite-500); }
+.quiz .chips{ display:flex; gap:8px; flex-wrap:wrap; }
+.quiz .chip{ padding:10px 16px; border:1px solid var(--cement); font-size:15px; font-weight:600; color:var(--graphite-700); white-space:nowrap; }
+.quiz .chip.on{ background:var(--navy); color:#fff; border-color:var(--navy); }
+.quiz .qinput{ border:1px solid var(--cement); padding:13px 16px; font-size:15px; color:var(--graphite-300); font-weight:500; }
+.quiz .qrow{ display:flex; gap:16px; align-items:stretch; margin-top:4px; }
+.quiz .cta{ flex:1; background:var(--red); color:#fff; border:0; padding:18px 24px; font-size:16px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; display:flex; align-items:center; justify-content:center; gap:12px; }
+.quiz .cta .ar{ width:20px; height:2px; background:#fff; position:relative; }
+.quiz .cta .ar::after{ content:""; position:absolute; right:-1px; top:-4px; width:9px; height:9px; border-top:2px solid #fff; border-right:2px solid #fff; transform:rotate(45deg); }
+.quiz .qr{ width:96px; height:96px; border:1px solid var(--cement); display:flex; align-items:center; justify-content:center; flex:0 0 96px; }
+.quiz .qr svg{ width:56px; height:56px; stroke:var(--graphite-300); fill:none; stroke-width:1.5; }
+.final-foot{ position:relative; z-index:2; padding-top:34px; border-top:1px solid rgba(255,255,255,0.18); display:flex; justify-content:space-between; align-items:flex-end; gap:40px; }
+.final-foot .cobrand-f{ display:flex; align-items:center; gap:32px; }
+.final-foot .cobrand-f img{ height:46px; width:auto; object-fit:contain; }
+.final-foot .cobrand-f .slot.top img{ height:64px; }
+.final-foot .cobrand-f .slot.fsp{ display:flex; align-items:center; gap:12px; }
+.final-foot .cobrand-f .slot.fsp .mk{ gap:4px; }
+.final-foot .cobrand-f .slot.fsp .mk .b{ height:50px; }
+.final-foot .cobrand-f .slot.fsp .mk .b:nth-child(1), .final-foot .cobrand-f .slot.fsp .mk .b:nth-child(2){ width:11px; }
+.final-foot .cobrand-f .slot.fsp .mk .b:nth-child(3){ width:17px; }
+.final-foot .cobrand-f .slot.fsp .word{ display:flex; flex-direction:column; font-weight:800; font-size:15px; line-height:0.96; color:#fff; }
+.final-foot .cobrand-f .dv{ width:1px; height:56px; background:rgba(255,255,255,0.25); }
+.final-foot .contacts{ text-align:right; font-size:16px; font-weight:600; color:rgba(255,255,255,0.8); line-height:1.7; }
+.final-foot .contacts b{ color:#fff; font-weight:700; }
+</style>
+</head>
+<body>
+
+<deck-stage width="1920" height="1080">
+
+<!-- ════════════════ 01 · COVER ════════════════ -->
+<section class="cover" data-screen-label="01 Cover">
+
+  <!-- Flight trajectory: thin ascending navy line with marker -->
+  <svg class="flight" viewBox="0 0 1920 1080" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="flightFade" x1="0" y1="1" x2="1" y2="0">
+        <stop offset="0" stop-color="#2D4F91" stop-opacity="0"/>
+        <stop offset="0.35" stop-color="#2D4F91" stop-opacity="0.35"/>
+        <stop offset="1" stop-color="#2D4F91" stop-opacity="1"/>
+      </linearGradient>
+    </defs>
+    <!-- faint dotted tail -->
+    <path d="M -40 1000 C 360 940, 720 800, 1080 560 S 1680 200, 1980 80"
+          fill="none" stroke="url(#flightFade)" stroke-width="2.5"/>
+    <!-- ascending dotted ticks under the curve -->
+    <path d="M -40 1000 C 360 940, 720 800, 1080 560 S 1680 200, 1980 80"
+          fill="none" stroke="#2D4F91" stroke-width="2.5" stroke-dasharray="2 14"
+          stroke-linecap="round" opacity="0.25"/>
+  </svg>
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <span class="eyebrow">Совместный продукт <span class="nv">·</span> 2026</span>
+    <span class="eyebrow">B2B Offer <span class="nv">·</span> Доходная загородка</span>
+  </div>
+
+  <!-- Center -->
+  <div class="center">
+    <h1>От участка<br/>до ключей</h1>
+    <p class="tagline">Заправляем землю и поднимаем проект в воздух.</p>
+    <p class="descriptor">Проектируем, строим и продаём загородную недвижимость под ключ.</p>
+  </div>
+
+  <!-- Footer co-brand -->
+  <div class="footer">
+    <div class="cobrand">
+      <span class="slot lip"><img src="assets/lipatnikov-graphite.png" alt="Архитектор Липатников"/></span>
+      <span class="div"></span>
+      <span class="slot fsp">
+        <span class="mk"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+        <span class="word"><span>ФИН</span><span>СТРОЙ</span><span>ПАНЕЛЬ</span></span>
+      </span>
+      <span class="div"></span>
+      <span class="slot top"><img src="assets/toplivo-graphite.png" alt="Топливо Недвижимости"/></span>
+    </div>
+    <div class="handles">
+      <span class="tag-note">Telegram</span>
+      <span class="h">@lipatnikov_architect</span>
+      <span class="sep">·</span>
+      <span class="h">@finstroypanel</span>
+      <span class="sep">·</span>
+      <span class="h">@realestatefuel</span>
+    </div>
+  </div>
+
+</section>
+
+<!-- ════════════════ 02 · MARKET CONTEXT ════════════════ -->
+<section class="content" data-screen-label="02 Market context">
+
+  <!-- flight motif: subtle ascending corner line -->
+  <svg class="flight" viewBox="0 0 1920 1080" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="flight2" x1="0" y1="1" x2="1" y2="0">
+        <stop offset="0" stop-color="#2D4F91" stop-opacity="0"/>
+        <stop offset="1" stop-color="#2D4F91" stop-opacity="0.45"/>
+      </linearGradient>
+    </defs>
+    <path d="M -40 1030 C 300 1005, 560 965, 760 900" fill="none" stroke="url(#flight2)" stroke-width="2.5"/>
+  </svg>
+
+  <div class="c-head">
+    <span class="plate">
+      <span class="mk light"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+      Контекст рынка
+    </span>
+    <span class="c-page"><b>02</b> / 16</span>
+  </div>
+
+  <div class="c-body">
+    <div>
+      <h2 class="c-title">Загородка и доходный туризм <em>растут</em>. А земля простаивает.</h2>
+      <p class="c-lead">Спрос смещается за город — в посёлки, базы отдыха и глэмпинги. Земли в обороте много, а готового продукта на ней почти нет.</p>
+    </div>
+
+    <div class="fact-grid">
+      <div class="fact">
+        <div class="num">15<small> млрд ₽</small></div>
+        <p>Федеральная поддержка глэмпингов и модульных размещений в 2025–2027</p>
+        <div class="lbl">Нацпроект «Туризм»</div>
+      </div>
+      <div class="fact">
+        <div class="num">1,5<small> млн ₽</small></div>
+        <p>Грант на номер модульной гостиницы — до 50% стоимости проекта</p>
+        <div class="lbl">Гранты</div>
+      </div>
+      <div class="fact">
+        <div class="num">140<small> млн+</small></div>
+        <p>Цель по внутреннему турпотоку к 2030 году — поездок в год</p>
+        <div class="lbl">Внутренний туризм</div>
+      </div>
+      <div class="fact accent">
+        <div class="num">0<u>%</u></div>
+        <p>Нулевая ставка НДС для гостиниц — продлена до 2030 года</p>
+        <div class="lbl">Налоговый режим</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="c-foot">
+    <span class="brand">От участка до ключей</span>
+    <span class="sep">·</span>
+    <span>Липатников · ФинСтройПанель · Топливо</span>
+  </div>
+
+</section>
+
+<!-- ════════════════ 03 · PROBLEM ════════════════ -->
+<section class="content" data-screen-label="03 Problem">
+
+  <svg class="flight" viewBox="0 0 1920 1080" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="flight3" x1="0" y1="1" x2="1" y2="0">
+        <stop offset="0" stop-color="#2D4F91" stop-opacity="0"/>
+        <stop offset="1" stop-color="#2D4F91" stop-opacity="0.4"/>
+      </linearGradient>
+    </defs>
+    <path d="M -40 1030 C 320 1010, 600 975, 820 915" fill="none" stroke="url(#flight3)" stroke-width="2.5"/>
+  </svg>
+
+  <div class="c-head">
+    <span class="plate">
+      <span class="mk light"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+      Боль
+    </span>
+    <span class="c-page"><b>03</b> / 16</span>
+  </div>
+
+  <div class="c-body" style="display:block;">
+    <div class="c-titlewrap">
+      <span class="arrow-marker"><span class="line"></span><span>Проблема заказчика</span></span>
+      <h2 class="c-title" style="font-size:62px;">Земля и идея есть. <em>Денег пока нет.</em></h2>
+    </div>
+
+    <div class="pain-row">
+      <div class="pain">
+        <span class="n">01</span>
+        <div class="txt"><h4>Разные подрядчики</h4>
+        <p>Споры и ошибки на стыках работ — никто не отвечает за результат целиком.</p></div>
+      </div>
+      <div class="pain">
+        <span class="n">02</span>
+        <div class="txt"><h4>Долго и непредсказуемо</h4>
+        <p>Сроки и бюджет плывут. План срывается, смета растёт по ходу стройки.</p></div>
+      </div>
+      <div class="pain">
+        <span class="n">03</span>
+        <div class="txt"><h4>Построено — но не продаётся</h4>
+        <p>Нет продукта, упаковки и системы продаж. Объект стоит, деньги заморожены.</p></div>
+      </div>
+      <div class="pain">
+        <span class="n">04</span>
+        <div class="txt"><h4>Земля в деньги — долго</h4>
+        <p>Превратить участок в доход выходит дольше и дороже, чем казалось на старте.</p></div>
+      </div>
+    </div>
+
+    <div class="metaphor">
+      <span class="mline"></span>
+      Самолёт собран по частям разными бригадами — и не взлетает.
+    </div>
+  </div>
+
+  <div class="c-foot">
+    <span class="brand">От участка до ключей</span>
+    <span class="sep">·</span>
+    <span>Липатников · ФинСтройПанель · Топливо</span>
+  </div>
+
+</section>
+
+<!-- ════════════════ 04 · SOLUTION ════════════════ -->
+<section class="content solution" data-screen-label="04 Solution">
+
+  <svg class="flight" viewBox="0 0 1920 1080" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="flight4" x1="0" y1="1" x2="1" y2="0">
+        <stop offset="0" stop-color="#2D4F91" stop-opacity="0"/>
+        <stop offset="1" stop-color="#2D4F91" stop-opacity="0.4"/>
+      </linearGradient>
+    </defs>
+    <path d="M -40 1035 C 320 1015, 600 980, 820 922" fill="none" stroke="url(#flight4)" stroke-width="2.5"/>
+  </svg>
+
+  <div class="c-head">
+    <span class="plate">
+      <span class="mk light"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+      Решение
+    </span>
+    <span class="c-page"><b>04</b> / 16</span>
+  </div>
+
+  <div class="c-body">
+    <div class="sol-top">
+      <h2>Один партнёр на весь путь — <em>от земли до сделки</em>.</h2>
+      <p>Три экспертизы, собранные в один маршрут. Вы получаете не подрядчиков, а готовый доходный проект под ключ.</p>
+    </div>
+
+    <div class="converge">
+      <svg class="links" viewBox="0 0 1680 430" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- three branches bottom-centers (226,128 / 840,128 / 1454,128) → dot (840,268) -->
+        <path d="M 226 128 C 226 210, 840 200, 840 268"  fill="none" stroke="#A8B6D5" stroke-width="2"/>
+        <path d="M 840 128 L 840 268"                     fill="none" stroke="#5979B5" stroke-width="2"/>
+        <path d="M 1454 128 C 1454 210, 840 200, 840 268" fill="none" stroke="#A8B6D5" stroke-width="2"/>
+        <!-- dot → thesis top (840,330) -->
+        <path d="M 840 268 L 840 330" fill="none" stroke="#2D4F91" stroke-width="2"/>
+      </svg>
+
+      <div class="branch b1"><span class="n">01</span><span class="role">Концепция и проект</span><span class="co">Архитектор Липатников</span></div>
+      <div class="branch b2"><span class="n">02</span><span class="role">Генподряд и стройка</span><span class="co">ФинСтройПанель</span></div>
+      <div class="branch b3"><span class="n">03</span><span class="role">Упаковка и продажи</span><span class="co">Топливо Недвижимости</span></div>
+
+      <div class="dot"></div>
+
+      <div class="thesis">
+        <div class="t">Готовый доходный проект под ключ</div>
+        <div class="s">Один маршрут · один результат</div>
+      </div>
+    </div>
+
+    <div class="metaphor" style="margin-top:32px;">
+      <span class="mline"></span>
+      Один экипаж ведёт борт от взлётной полосы до посадки.
+    </div>
+  </div>
+
+  <div class="c-foot">
+    <span class="brand">От участка до ключей</span>
+    <span class="sep">·</span>
+    <span>Липатников · ФинСтройПанель · Топливо</span>
+  </div>
+
+</section>
+
+<!-- ════════════════ 05 · TEAM ════════════════ -->
+<section class="content team" data-screen-label="05 Team">
+
+  <svg class="flight" viewBox="0 0 1920 1080" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="flight5" x1="0" y1="1" x2="1" y2="0">
+        <stop offset="0" stop-color="#2D4F91" stop-opacity="0"/>
+        <stop offset="1" stop-color="#2D4F91" stop-opacity="0.4"/>
+      </linearGradient>
+    </defs>
+    <path d="M -40 1035 C 320 1015, 600 980, 820 922" fill="none" stroke="url(#flight5)" stroke-width="2.5"/>
+  </svg>
+
+  <div class="c-head">
+    <span class="plate">
+      <span class="mk light"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+      Команда продукта
+    </span>
+    <span class="c-page"><b>05</b> / 16</span>
+  </div>
+
+  <div class="c-body">
+    <div class="team-head">
+      <h2>Проектируем<span class="d">·</span>Строим<span class="d">·</span>Продаём</h2>
+    </div>
+
+    <div class="team-row">
+
+      <!-- Lipatnikov -->
+      <div class="team">
+        <div class="ico">
+          <svg viewBox="0 0 24 24">
+            <path d="M4 20 L10 12 L14 16 L20 5"/>
+            <rect class="fill" x="2.5" y="18.5" width="3" height="3"/>
+            <rect class="fill" x="8.5" y="10.5" width="3" height="3"/>
+            <rect class="fill" x="18.5" y="3.5" width="3" height="3"/>
+          </svg>
+        </div>
+        <div class="co">Архитектор<br/>Липатников</div>
+        <div class="role">прокладывает маршрут</div>
+        <div class="sep"></div>
+        <ul>
+          <li>Архитектура и концепция</li>
+          <li>Мастер-план посёлка</li>
+          <li>Изыскания</li>
+          <li>Авторский надзор</li>
+        </ul>
+      </div>
+
+      <!-- FSP -->
+      <div class="team">
+        <div class="ico">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2 C12.6 2 13 3 13 5 L13 9 L22 14 L22 16 L13 13 L13 19 L16 21 L16 22 L12 21 L8 22 L8 21 L11 19 L11 13 L2 16 L2 14 L11 9 L11 5 C11 3 11.4 2 12 2 Z"/>
+          </svg>
+        </div>
+        <div class="co">ФинСтрой&shy;Панель</div>
+        <div class="role">строит борт</div>
+        <div class="sep"></div>
+        <ul>
+          <li>Генеральный подряд</li>
+          <li>Сборно-монолитная технология</li>
+          <li>Скорость строительства</li>
+          <li>Единый стиль застройки</li>
+        </ul>
+      </div>
+
+      <!-- Toplivo -->
+      <div class="team">
+        <div class="ico">
+          <svg viewBox="0 0 24 24">
+            <path d="M13 2 L4 14 L11 14 L9 22 L20 9 L13 9 L13 2 Z"/>
+          </svg>
+        </div>
+        <div class="co">Топливо<br/>Недвижимости</div>
+        <div class="role">поднимает в воздух</div>
+        <div class="sep"></div>
+        <ul>
+          <li>Стратегия продукта</li>
+          <li>Упаковка и маркетинг</li>
+          <li>Система продаж</li>
+          <li>Аналитика</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="c-foot">
+    <span class="brand">От участка до ключей</span>
+    <span class="sep">·</span>
+    <span>Липатников · ФинСтройПанель · Топливо</span>
+  </div>
+
+</section>
+
+<!-- ════════════════ 06 · SYNERGY ════════════════ -->
+<section class="content synergy" data-screen-label="06 Synergy">
+
+  <svg class="flight" viewBox="0 0 1920 1080" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="flight6" x1="0" y1="1" x2="1" y2="0">
+        <stop offset="0" stop-color="#2D4F91" stop-opacity="0"/>
+        <stop offset="1" stop-color="#2D4F91" stop-opacity="0.4"/>
+      </linearGradient>
+    </defs>
+    <path d="M -40 1035 C 320 1015, 600 980, 820 922" fill="none" stroke="url(#flight6)" stroke-width="2.5"/>
+  </svg>
+
+  <div class="c-head">
+    <span class="plate">
+      <span class="mk light"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+      Синергия
+    </span>
+    <span class="c-page"><b>06</b> / 16</span>
+  </div>
+
+  <div class="c-body">
+    <div class="syn-head">
+      <h2>Это не три подрядчика. <em>Это система.</em></h2>
+    </div>
+
+    <div class="syn-eq">
+      <div class="node"><span class="co">Липатников</span><span class="rl">Маршрут</span></div>
+      <div class="op">+</div>
+      <div class="node"><span class="co">ФинСтройПанель</span><span class="rl">Борт</span></div>
+      <div class="op">+</div>
+      <div class="node"><span class="co">Топливо</span><span class="rl">Тяга</span></div>
+      <div class="arrow"><span class="ln"></span></div>
+      <div class="system"><span class="t">Система</span><span class="s">Один результат</span></div>
+    </div>
+
+    <div class="syn-row">
+      <div class="syn-card">
+        <div class="lead">Связка проверена в деле</div>
+        <p>ФСП и Липатников уже строят вместе по сборному трёхслойному железобетону — домокомплект собирается на участке за неделю.</p>
+      </div>
+      <div class="syn-card">
+        <div class="lead">Топливо закрывает пробел</div>
+        <p>Добавляет то, чего обычно не хватает стройке: продукт, упаковку и систему продаж.</p>
+      </div>
+      <div class="syn-card">
+        <div class="lead">Общий интерес в результате</div>
+        <p>Единая технология, единый архитектурный стиль — а не сумма счетов от разных исполнителей.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="c-foot">
+    <span class="brand">От участка до ключей</span>
+    <span class="sep">·</span>
+    <span>Липатников · ФинСтройПанель · Топливо</span>
+  </div>
+
+</section>
+
+<!-- ════════════════ 07 · STAGE 1 · ROUTE ════════════════ -->
+<section class="content" data-screen-label="07 Stage 1 Route">
+
+  <svg class="flight" viewBox="0 0 1920 1080" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs><linearGradient id="flight7" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#2D4F91" stop-opacity="0"/><stop offset="1" stop-color="#2D4F91" stop-opacity="0.4"/></linearGradient></defs>
+    <path d="M -40 1035 C 320 1015, 600 980, 820 922" fill="none" stroke="url(#flight7)" stroke-width="2.5"/>
+  </svg>
+
+  <div class="c-head">
+    <span class="plate"><span class="mk light"><span class="b"></span><span class="b"></span><span class="b"></span></span>Этап 1 · Маршрут</span>
+    <span class="c-page"><b>07</b> / 16</span>
+  </div>
+
+  <div class="c-body" style="display:block;">
+    <div class="split">
+      <div>
+        <h2>Сначала диагностика — <em>потом стройка</em>.</h2>
+        <p class="lead">Ни один врач не лечит без анализов. Мы не строим без изысканий.</p>
+        <ul class="do-list">
+          <li>Изыскания, лазерное сканирование (лидар), подеревная топосъёмка и ортофотоплан</li>
+          <li>Градостроительный анализ и оценка рисков участка</li>
+          <li>Концепция и мастер-план посёлка</li>
+          <li>Архитектурно-строительное проектирование полного цикла</li>
+          <li>Авторское сопровождение реализации</li>
+        </ul>
+      </div>
+      <div class="imgph">
+        <span class="mk-corner"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+        <img src="assets/club100-survey.jpg" alt="Изыскания: ортофотоплан, облако точек, тепловая карта рельефа, мастер-план"/>
+        <span class="ph-cap">Пример: Club 100 · изыскания и анализ участка</span>
+      </div>
+    </div>
+    <div class="regalia"><b>20+ лет в архитектуре</b> · клубные и загородные посёлки · цифровой двойник и BIM</div>
+  </div>
+
+  <div class="c-foot">
+    <span class="brand">От участка до ключей</span>
+    <span class="sep">·</span>
+    <span>Липатников · ФинСтройПанель · Топливо</span>
+  </div>
+
+</section>
+
+<!-- ════════════════ 08 · STAGE 2 · AIRCRAFT ════════════════ -->
+<section class="content" data-screen-label="08 Stage 2 Aircraft">
+
+  <svg class="flight" viewBox="0 0 1920 1080" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs><linearGradient id="flight8" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#2D4F91" stop-opacity="0"/><stop offset="1" stop-color="#2D4F91" stop-opacity="0.4"/></linearGradient></defs>
+    <path d="M -40 1035 C 320 1015, 600 980, 820 922" fill="none" stroke="url(#flight8)" stroke-width="2.5"/>
+  </svg>
+
+  <div class="c-head">
+    <span class="plate"><span class="mk light"><span class="b"></span><span class="b"></span><span class="b"></span></span>Этап 2 · Борт</span>
+    <span class="c-page"><b>08</b> / 16</span>
+  </div>
+
+  <div class="c-body" style="display:block; margin:20px 0 0;">
+    <div class="split" style="align-items:start;">
+      <div>
+        <h2>Дом за 60 дней на заводе. <em>Посёлок — в едином стиле.</em></h2>
+        <div class="adv-grid" style="margin-top:26px;">
+          <div class="adv">
+            <span class="ai"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="4" height="18"/><rect x="10" y="3" width="4" height="18"/><rect x="17" y="3" width="4" height="18"/></svg></span>
+            <span class="at">Сборно-монолитная технология, трёхслойные ж/б панели — <b>всесезонно, без пауз</b></span>
+          </div>
+          <div class="adv">
+            <span class="ai"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7 V12 L16 14"/></svg></span>
+            <span class="at">От договора до готового дома — <b>~6 месяцев</b></span>
+          </div>
+          <div class="adv">
+            <span class="ai"><svg viewBox="0 0 24 24"><path d="M3 21 H21"/><path d="M5 21 V11 L12 6 L19 11 V21"/><rect x="9" y="14" width="6" height="7"/></svg></span>
+            <span class="at">До <b>300 домов в год</b> — реальные объёмы для посёлка, базы, глэмпинга</span>
+          </div>
+          <div class="adv">
+            <span class="ai"><svg viewBox="0 0 24 24"><path d="M12 3 L20 7 V13 C20 17.5 16.5 20.5 12 22 C7.5 20.5 4 17.5 4 13 V7 Z"/><path d="M8.5 12 L11 14.5 L15.5 9.5"/></svg></span>
+            <span class="at"><b>Один подрядчик</b> на весь дом — без споров на стыках</span>
+          </div>
+          <div class="adv">
+            <span class="ai"><svg viewBox="0 0 24 24"><path d="M4 12 L11 19 L20 5"/></svg></span>
+            <span class="at">Не даёт усадку, не горит, не гниёт — <b>служит 200+ лет</b></span>
+          </div>
+        </div>
+      </div>
+      <div class="imgph" style="height:560px; align-self:start;">
+        <span class="mk-corner"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+        <img src="assets/negorod-aerial.jpg" alt="Посёлок Негород — единый стиль застройки"/>
+        <span class="ph-cap">Негород · единый стиль застройки</span>
+      </div>
+    </div>
+
+    <div class="anchors">
+      <div class="a"><b>250</b><span>домов построено</span></div>
+      <div class="a"><b>15</b><span>городов России</span></div>
+      <div class="a"><b>175 000+</b><span>аудитории</span></div>
+    </div>
+  </div>
+
+  <div class="c-foot">
+    <span class="brand">От участка до ключей</span>
+    <span class="sep">·</span>
+    <span>Липатников · ФинСтройПанель · Топливо</span>
+  </div>
+
+</section>
+
+<!-- ════════════════ 09 · STAGE 3 · FUEL & TAKEOFF ════════════════ -->
+<section class="content fuel" data-screen-label="09 Stage 3 Fuel">
+
+  <svg class="flight" viewBox="0 0 1920 1080" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs><linearGradient id="flight9" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#2D4F91" stop-opacity="0"/><stop offset="1" stop-color="#2D4F91" stop-opacity="0.4"/></linearGradient></defs>
+    <path d="M -40 1035 C 320 1015, 600 980, 820 922" fill="none" stroke="url(#flight9)" stroke-width="2.5"/>
+  </svg>
+
+  <div class="c-head">
+    <span class="plate"><span class="mk light"><span class="b"></span><span class="b"></span><span class="b"></span></span>Этап 3 · Заправка и взлёт</span>
+    <span class="c-page"><b>09</b> / 16</span>
+  </div>
+
+  <div class="c-body">
+    <h2>Не просто построено — <em>упаковано и продано</em>.</h2>
+
+    <div class="fuel-split">
+      <div class="fsteps">
+        <div class="fstep">
+          <span class="num">01</span>
+          <div><div class="t">Стратегия</div><p>Экономика проекта и расчёт окупаемости до старта продаж · форматы, цены, шахматка, план продаж.</p></div>
+        </div>
+        <div class="fstep">
+          <span class="num">02</span>
+          <div><div class="t">Маркетинг</div><p>Брендинг, айдентика, презентация проекта · IT-инфраструктура продаж (amoCRM + AI) и сквозная аналитика (DataLens).</p></div>
+        </div>
+        <div class="fstep last">
+          <span class="num">03</span>
+          <div><div class="t">Взлёт · Продажи</div><p>Лидогенерация: TG Ads, посевы, VK, Директ, классифайды · брокеридж и закрытие сделок.</p></div>
+        </div>
+      </div>
+
+      <div class="fuel-vis">
+        <div class="fv-head"><span class="mk"><span class="b"></span><span class="b"></span><span class="b"></span></span>Система продаж</div>
+        <div class="funnel">
+          <div class="fn"><span class="bar"></span><span class="fl">Трафик</span></div>
+          <div class="fn"><span class="bar"></span><span class="fl">Лиды</span></div>
+          <div class="fn"><span class="bar"></span><span class="fl">Брони</span></div>
+          <div class="fn"><span class="bar"></span><span class="fl">Сделки</span></div>
+        </div>
+        <div class="fv-tools"><span>amoCRM</span><span>AI</span><span>DataLens</span><span>TG Ads</span></div>
+        <div class="fv-cap">Сквозная аналитика — от клика до сделки.</div>
+      </div>
+    </div>
+
+    <div class="fuel-anchors">
+      На рынке <b>с 2020</b> · <b>30+ человек</b> в команде · <b>12 проектов</b> на сопровождении · средний срок с клиентом <b>3 года</b> · сертифицированные партнёры <b>amoCRM</b>
+    </div>
+    <div class="fuel-portfolio">
+      Среди клиентов: <b>ARTEL · GloraX · West&nbsp;Garden · One&nbsp;Moscow · Патек&nbsp;Групп · Sminex · LES</b>
+    </div>
+  </div>
+
+  <div class="c-foot">
+    <span class="brand">От участка до ключей</span>
+    <span class="sep">·</span>
+    <span>Липатников · ФинСтройПанель · Топливо</span>
+  </div>
+
+</section>
+
+<!-- ════════════════ 10 · JOURNEY (HERO) ════════════════ -->
+<section class="content journey" data-screen-label="10 Journey">
+
+  <div class="c-head">
+    <span class="plate"><span class="mk light"><span class="b"></span><span class="b"></span><span class="b"></span></span>Путь проекта</span>
+    <span class="c-page"><b>10</b> / 16</span>
+  </div>
+
+  <div class="c-body">
+    <h2>От земли до ключей — <em>за один полёт</em>.</h2>
+
+    <div class="journey-wrap">
+      <svg class="traj" viewBox="0 0 1680 340" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="trajGrad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#A8B6D5"/>
+            <stop offset="0.5" stop-color="#2D4F91"/>
+            <stop offset="1" stop-color="#1F3A6E"/>
+          </linearGradient>
+        </defs>
+
+        <!-- baseline ground -->
+        <line x1="0" y1="320" x2="1680" y2="320" stroke="#C9C8C3" stroke-width="1" stroke-dasharray="2 8"/>
+
+        <!-- ascending → cruise → landing trajectory -->
+        <path d="M 105 290 C 200 252 250 232 315 214
+                 C 405 190 460 172 525 150
+                 C 615 121 685 110 735 100
+                 C 825 84 900 72 945 70
+                 C 1015 69 1090 69 1155 72
+                 C 1245 76 1310 98 1365 122
+                 C 1455 162 1510 205 1575 240"
+              fill="none" stroke="url(#trajGrad)" stroke-width="3"/>
+
+        <!-- vertical ticks dot→labels (y 320) -->
+        <g stroke="#C9C8C3" stroke-width="1">
+          <line x1="105" y1="290" x2="105" y2="332"/>
+          <line x1="315" y1="214" x2="315" y2="332"/>
+          <line x1="525" y1="150" x2="525" y2="332"/>
+          <line x1="735" y1="100" x2="735" y2="332"/>
+          <line x1="945" y1="70"  x2="945" y2="332"/>
+          <line x1="1155" y1="72" x2="1155" y2="332"/>
+          <line x1="1365" y1="122" x2="1365" y2="332"/>
+          <line x1="1575" y1="240" x2="1575" y2="332"/>
+        </g>
+
+        <!-- stage dots -->
+        <g fill="#2D4F91">
+          <rect x="99" y="284" width="12" height="12"/>
+          <rect x="309" y="208" width="12" height="12"/>
+          <rect x="519" y="144" width="12" height="12"/>
+          <rect x="729" y="94" width="12" height="12"/>
+          <rect x="939" y="64" width="12" height="12"/>
+          <rect x="1149" y="66" width="12" height="12"/>
+          <rect x="1359" y="116" width="12" height="12"/>
+          <rect x="1569" y="234" width="12" height="12"/>
+        </g>
+
+        <!-- plane marker at cruise leading edge -->
+        <g transform="translate(1045 56) scale(1.4)">
+          <path d="M12 2 C12.6 2 13 3 13 5 L13 9 L22 14 L22 16 L13 13 L13 19 L16 21 L16 22 L12 21 L8 22 L8 21 L11 19 L11 13 L2 16 L2 14 L11 9 L11 5 C11 3 11.4 2 12 2 Z"
+                fill="#2D4F91" transform="rotate(90 12 12)"/>
+        </g>
+      </svg>
+
+      <div class="j-labels">
+        <div class="j-label"><span class="num">01</span><span class="nm">Земля</span><span class="ds">Участок, изыскания, экономика</span><span class="pb">Л · Т</span></div>
+        <div class="j-label"><span class="num">02</span><span class="nm">Маршрут</span><span class="ds">Концепция и мастер-план</span><span class="pb">Л</span></div>
+        <div class="j-label"><span class="num">03</span><span class="nm">Борт</span><span class="ds">Проект и стройка</span><span class="pb">Л · ФСП</span></div>
+        <div class="j-label"><span class="num">04</span><span class="nm">Заправка</span><span class="ds">Упаковка, бренд, IT-продаж</span><span class="pb">Т</span></div>
+        <div class="j-label"><span class="num">05</span><span class="nm">Взлёт</span><span class="ds">Старт продаж, реклама</span><span class="pb">Т</span></div>
+        <div class="j-label"><span class="num">06</span><span class="nm">Полёт</span><span class="ds">Лидген, крейсерские продажи</span><span class="pb">Т</span></div>
+        <div class="j-label"><span class="num">07</span><span class="nm">Приземление</span><span class="ds">Закрытие продаж</span><span class="pb">Т</span></div>
+        <div class="j-label all"><span class="num">08</span><span class="nm">Ключи</span><span class="ds">Сдача и эксплуатация</span><span class="pb">Все</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="c-foot">
+    <span class="brand">От участка до ключей</span>
+    <span class="sep">·</span>
+    <span>Липатников · ФинСтройПанель · Топливо</span>
+  </div>
+
+</section>
+
+<!-- ════════════════ 11 · AUDIENCE ════════════════ -->
+<section class="content aud" data-screen-label="11 Audience">
+
+  <svg class="flight" viewBox="0 0 1920 1080" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs><linearGradient id="flight11" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#2D4F91" stop-opacity="0"/><stop offset="1" stop-color="#2D4F91" stop-opacity="0.4"/></linearGradient></defs>
+    <path d="M -40 1035 C 320 1015, 600 980, 820 922" fill="none" stroke="url(#flight11)" stroke-width="2.5"/>
+  </svg>
+
+  <div class="c-head">
+    <span class="plate"><span class="mk light"><span class="b"></span><span class="b"></span><span class="b"></span></span>Аудитория</span>
+    <span class="c-page"><b>11</b> / 16</span>
+  </div>
+
+  <div class="c-body">
+    <h2 class="sec-h2">С кем мы <em>работаем</em>.</h2>
+    <div class="aud-row">
+      <div class="aud-card">
+        <span class="ai"><svg viewBox="0 0 24 24"><path d="M3 21 H21"/><path d="M5 21 V9 L12 4 L19 9 V21"/><rect x="9" y="13" width="6" height="8"/></svg></span>
+        <h4>Владельцы земли и девелоперы</h4>
+        <p>Застроим и продадим ваш участок единым архитектурным стилем.</p>
+      </div>
+      <div class="aud-card">
+        <span class="ai"><svg viewBox="0 0 24 24"><path d="M3 17 L9 11 L13 15 L21 6"/><path d="M15 6 H21 V12"/></svg></span>
+        <h4>Инвесторы в доходную загородку</h4>
+        <p>Базы отдыха, глэмпинги, арендные посёлки — с расчётом окупаемости.</p>
+      </div>
+      <div class="aud-card">
+        <span class="ai"><svg viewBox="0 0 24 24"><path d="M3 21 H21 M5 21 V5 H13 V21 M13 9 H19 V21"/><path d="M8 9 H10 M8 13 H10 M16 13 H17"/></svg></span>
+        <h4>Юридические лица</h4>
+        <p>Строительство с возможностью возврата НДС и полным пакетом документов.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="c-foot">
+    <span class="brand">От участка до ключей</span>
+    <span class="sep">·</span>
+    <span>Липатников · ФинСтройПанель · Топливо</span>
+  </div>
+
+</section>
+
+<!-- ════════════════ 12 · BENEFITS ════════════════ -->
+<section class="content benefit" data-screen-label="12 Benefits">
+
+  <svg class="flight" viewBox="0 0 1920 1080" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs><linearGradient id="flight12" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#2D4F91" stop-opacity="0"/><stop offset="1" stop-color="#2D4F91" stop-opacity="0.4"/></linearGradient></defs>
+    <path d="M -40 1035 C 320 1015, 600 980, 820 922" fill="none" stroke="url(#flight12)" stroke-width="2.5"/>
+  </svg>
+
+  <div class="c-head">
+    <span class="plate"><span class="mk light"><span class="b"></span><span class="b"></span><span class="b"></span></span>Выгоды</span>
+    <span class="c-page"><b>12</b> / 16</span>
+  </div>
+
+  <div class="c-body">
+    <h2 class="sec-h2">Меньше рисков. <em>Быстрее деньги.</em></h2>
+    <div class="ben-grid">
+      <div class="ben">
+        <span class="bi"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18"/><path d="M8.5 12 L11 14.5 L15.5 9.5"/></svg></span>
+        <p>Единое окно и одна ответственность за результат</p>
+      </div>
+      <div class="ben">
+        <span class="bi"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7 V12 L16 14"/></svg></span>
+        <p>Предсказуемые сроки и бюджет</p>
+      </div>
+      <div class="ben">
+        <span class="bi"><svg viewBox="0 0 24 24"><path d="M3 21 V3 H21 V21 Z"/><path d="M3 16 L9 11 L13 14 L21 7"/></svg></span>
+        <p>Продукт спроектирован под продажи с первого дня</p>
+      </div>
+      <div class="ben">
+        <span class="bi"><svg viewBox="0 0 24 24"><path d="M4 20 L10 12 L14 16 L20 5"/><path d="M14 5 H20 V11"/></svg></span>
+        <p>Премиальная упаковка → выше маржа и скорость продаж</p>
+      </div>
+      <div class="ben accent">
+        <span class="bi"><svg viewBox="0 0 24 24"><path d="M12 3 L20 7 V13 C20 17.5 16.5 20.5 12 22 C7.5 20.5 4 17.5 4 13 V7 Z"/><path d="M9 12 L11.5 14.5 L16 10"/></svg></span>
+        <p>Общий интерес: мы зарабатываем, когда зарабатываете вы</p>
+      </div>
+    </div>
+    <div class="metaphor" style="margin-top:30px;">
+      <span class="mline"></span>
+      Один экипаж отвечает за весь полёт — от взлёта до посадки.
+    </div>
+  </div>
+
+  <div class="c-foot">
+    <span class="brand">От участка до ключей</span>
+    <span class="sep">·</span>
+    <span>Липатников · ФинСтройПанель · Топливо</span>
+  </div>
+
+</section>
+
+<!-- ════════════════ 13 · PROOF ════════════════ -->
+<section class="content proof" data-screen-label="13 Proof">
+
+  <svg class="flight" viewBox="0 0 1920 1080" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs><linearGradient id="flight13" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#2D4F91" stop-opacity="0"/><stop offset="1" stop-color="#2D4F91" stop-opacity="0.4"/></linearGradient></defs>
+    <path d="M -40 1035 C 320 1015, 600 980, 820 922" fill="none" stroke="url(#flight13)" stroke-width="2.5"/>
+  </svg>
+
+  <div class="c-head">
+    <span class="plate"><span class="mk light"><span class="b"></span><span class="b"></span><span class="b"></span></span>Доказательства</span>
+    <span class="c-page"><b>13</b> / 16</span>
+  </div>
+
+  <div class="c-body" style="display:block; margin:12px 0 0;">
+    <h2 class="sec-h2" style="font-size:52px;">Это уже <em>работает</em>.</h2>
+
+    <div class="proof-cases">
+      <div class="case">
+        <div class="ph">
+          <span class="mk-corner"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+          <img src="assets/club100-hero.jpg" alt="Club 100 — клубный посёлок в лесу"/>
+          <span class="ph-tag">Пример реализуемого проекта</span>
+        </div>
+        <div class="cb">
+          <div class="ch"><h4>Club 100 · Новосибирск</h4><span class="pby">Липатников</span></div>
+          <div class="stats">
+            <div class="st"><b>10<u> Га</u></b><span>~90 участков</span></div>
+            <div class="st"><b>от 8,6<u> млн</u></b><span>дом · 6–8 мес</span></div>
+            <div class="st"><b>от 400<u>к</u></b><span>₽ / сотка</span></div>
+          </div>
+          <p class="cnote">Архитектура + стройка + упаковка в одном проекте · единый дизайн-код.</p>
+        </div>
+      </div>
+      <div class="case">
+        <div class="ph">
+          <span class="mk-corner"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+          <img src="assets/corner-kaltino.jpg" alt="Corner Kaltino — посёлок вилл класса А++"/>
+        </div>
+        <div class="cb">
+          <div class="ch"><h4>Corner Kaltino · СПб</h4><span class="pby">ФинСтройПанель</span></div>
+          <div class="stats">
+            <div class="st"><b>54<u></u></b><span>дома · ед. стиль</span></div>
+            <div class="st"><b>161–212<u> м²</u></b><span>виллы · А++</span></div>
+            <div class="st"><b>30<u> мин</u></b><span>до центра</span></div>
+          </div>
+          <p class="cnote">Подземные коммуникации · комьюнити под Санкт-Петербургом.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="proof-mini">
+      <div class="mini">
+        <div class="mb">
+          <div class="mh"><span class="mt">Негород Заневский</span><span class="mbadge">кейс под НДС</span></div>
+          <p>Приватный посёлок · 54 дома · 105–160 м² · от 6,03 млн ₽ · СПб (ФСП).</p>
+        </div>
+      </div>
+      <div class="mini">
+        <div class="mb">
+          <div class="mh"><span class="mt">База отдыха</span><span class="mbadge nda">под NDA</span></div>
+          <p>Крупный доходный объект загородного туризма. Детали — по запросу.</p>
+        </div>
+      </div>
+      <div class="mini">
+        <div class="mb">
+          <div class="mh"><span class="mt">Топливо Недвижимости</span><span class="mbadge">4 года</span></div>
+          <p>Десятки решений, сотни клиентов — маркетинг и продажи проектов.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="proof-line">
+      <b>175 000+</b> аудитории ФСП · телеграм-каналы Топлива и Липатникова · портфель клиентов федерального уровня
+    </div>
+  </div>
+
+  <div class="c-foot">
+    <span class="brand">От участка до ключей</span>
+    <span class="sep">·</span>
+    <span>Липатников · ФинСтройПанель · Топливо</span>
+  </div>
+
+</section>
+
+<!-- ════════════════ 14 · FORMATS ════════════════ -->
+<section class="content formats" data-screen-label="14 Formats">
+
+  <svg class="flight" viewBox="0 0 1920 1080" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs><linearGradient id="flight14" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#2D4F91" stop-opacity="0"/><stop offset="1" stop-color="#2D4F91" stop-opacity="0.4"/></linearGradient></defs>
+    <path d="M -40 1035 C 320 1015, 600 980, 820 922" fill="none" stroke="url(#flight14)" stroke-width="2.5"/>
+  </svg>
+
+  <div class="c-head">
+    <span class="plate"><span class="mk light"><span class="b"></span><span class="b"></span><span class="b"></span></span>Как работаем</span>
+    <span class="c-page"><b>14</b> / 16</span>
+  </div>
+
+  <div class="c-body">
+    <h2 class="sec-h2">Как мы можем <em>работать вместе</em>.</h2>
+
+    <div class="fmt-row">
+      <div class="fmt">
+        <span class="n">01</span>
+        <h4>Полный цикл под ключ</h4>
+        <p>От участка до продаж, единый договор и одна ответственность.</p>
+      </div>
+      <div class="fmt">
+        <span class="n">02</span>
+        <h4>Модульно по этапам</h4>
+        <p>Берёте только нужные звенья: концепция / стройка / продажи.</p>
+      </div>
+      <div class="fmt accent">
+        <span class="n">03</span>
+        <h4>Модели оплаты продаж</h4>
+        <p>Фикс + % за сделку или чистый % от сделок.</p>
+      </div>
+    </div>
+
+    <div class="fmt-foot">
+      <span class="first"><b>Первый шаг</b> — расчёт экономики проекта и экспресс-оценка участка (отдельная услуга аналитики, от 150 000 ₽)</span>
+    </div>
+    <div class="fmt-split">Коммерческий сплит между партнёрами — финализируем под проект</div>
+  </div>
+
+  <div class="c-foot">
+    <span class="brand">От участка до ключей</span>
+    <span class="sep">·</span>
+    <span>Липатников · ФинСтройПанель · Топливо</span>
+  </div>
+
+</section>
+
+<!-- ════════════════ 15 · CREW ════════════════ -->
+<section class="content crew" data-screen-label="15 Crew">
+
+  <svg class="flight" viewBox="0 0 1920 1080" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs><linearGradient id="flight15" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#2D4F91" stop-opacity="0"/><stop offset="1" stop-color="#2D4F91" stop-opacity="0.4"/></linearGradient></defs>
+    <path d="M -40 1035 C 320 1015, 600 980, 820 922" fill="none" stroke="url(#flight15)" stroke-width="2.5"/>
+  </svg>
+
+  <div class="c-head">
+    <span class="plate"><span class="mk light"><span class="b"></span><span class="b"></span><span class="b"></span></span>Команда</span>
+    <span class="c-page"><b>15</b> / 16</span>
+  </div>
+
+  <div class="c-body">
+    <h2 class="sec-h2">Кто за это <em>отвечает</em>.</h2>
+    <div class="crew-row">
+      <div class="crew-card">
+        <div class="ph">
+          <span class="mk-corner"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+          <img src="assets/lipatnikov-portrait.jpg" alt="Максим Липатников" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
+        </div>
+        <div class="cb">
+          <span class="nm">Максим Липатников</span>
+          <span class="rl">Архитектор</span>
+          <span class="rg">20+ лет · малоэтажка и посёлки · BIM и цифровой двойник</span>
+        </div>
+      </div>
+      <div class="crew-card">
+        <div class="ph">
+          <span class="mk-corner"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21 V19 C4 16 7.5 15 12 15 C16.5 15 20 16 20 19 V21"/></svg>
+        </div>
+        <div class="cb">
+          <span class="nm">Антон Боев</span>
+          <span class="rl">Управляющий партнёр</span>
+          <span class="rg">ФинСтройПанель · генподряд и стройка</span>
+        </div>
+      </div>
+      <div class="crew-card">
+        <div class="ph">
+          <span class="mk-corner"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21 V19 C4 16 7.5 15 12 15 C16.5 15 20 16 20 19 V21"/></svg>
+        </div>
+        <div class="cb">
+          <span class="nm">Команда Топлива</span>
+          <span class="rl">Продукт · маркетинг · продажи</span>
+          <span class="rg">30+ человек · с 2020 года</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="c-foot">
+    <span class="brand">От участка до ключей</span>
+    <span class="sep">·</span>
+    <span>Липатников · ФинСтройПанель · Топливо</span>
+  </div>
+
+</section>
+
+<!-- ════════════════ 16 · FINAL CTA ════════════════ -->
+<section class="final" data-screen-label="16 CTA">
+
+  <svg class="flight" viewBox="0 0 1920 1080" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="flightF" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#ffffff" stop-opacity="0.5"/>
+        <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <!-- descending trajectory landing into a point bottom-right -->
+    <path d="M -40 120 C 360 200, 760 360, 1100 520 S 1640 760, 1800 880" fill="none" stroke="url(#flightF)" stroke-width="2.5"/>
+    <rect x="1793" y="873" width="14" height="14" fill="#fff"/>
+  </svg>
+
+  <div class="c-head">
+    <span class="plate"><span class="mk"><span class="b"></span><span class="b"></span><span class="b"></span></span>Следующий шаг</span>
+    <span class="c-page"><b>16</b> / 16</span>
+  </div>
+
+  <div class="final-body">
+    <div>
+      <h2>Рассчитаем<br/>ваш проект.</h2>
+      <p class="lead">Первый шаг — экспресс-оценка участка и расчёт экономики проекта.</p>
+    </div>
+
+    <div class="quiz">
+      <div class="qh">Экспресс-заявка</div>
+      <div class="qfield">
+        <label>Тип объекта</label>
+        <div class="chips">
+          <span class="chip on">Посёлок</span>
+          <span class="chip">База отдыха</span>
+          <span class="chip">Глэмпинг</span>
+          <span class="chip">Другое</span>
+        </div>
+      </div>
+      <div class="qfield">
+        <label>Площадь участка</label>
+        <div class="qinput">Например, 2 га</div>
+      </div>
+      <div class="qfield">
+        <label>Сроки запуска</label>
+        <div class="qinput">Например, 2026</div>
+      </div>
+      <div class="qrow">
+        <button class="cta">Получить расчёт <span class="ar"></span></button>
+        <span class="qr"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14 H17 V17 M21 14 V17 M14 21 H17 M21 21 V18"/></svg></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="final-foot">
+    <div class="cobrand-f">
+      <span class="slot lip"><img src="assets/lipatnikov-white.png" alt="Архитектор Липатников"/></span>
+      <span class="dv"></span>
+      <span class="slot fsp">
+        <span class="mk light"><span class="b"></span><span class="b"></span><span class="b"></span></span>
+        <span class="word"><span>ФИН</span><span>СТРОЙ</span><span>ПАНЕЛЬ</span></span>
+      </span>
+      <span class="dv"></span>
+      <span class="slot top"><img src="assets/toplivo-white.png" alt="Топливо Недвижимости"/></span>
+    </div>
+    <div class="contacts">
+      <b>+7 (499) 490-28-12</b> · fspanel.biz<br/>
+      @lipatnikov_architect · @finstroypanel · @realestatefuel
+    </div>
+  </div>
+
+</section>
+
+</deck-stage>
+
+<script src="deck-stage.js"></script>
+</body>
+</html>

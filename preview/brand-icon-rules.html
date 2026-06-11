@@ -1,0 +1,13 @@
+<!doctype html>
+<!-- @dsCard group="Brand" name="Brand · Icon Rules" subtitle="Grid 24 · stroke 1.5 · square/miter · fill none" viewport="700x200" --><html lang="ru"><head><meta charset="utf-8"/><meta name="viewport" content="width=700"/><link rel="stylesheet" href="card.css"/><style>body{height:200px;overflow:hidden;}
+.wrap{padding:20px 28px;height:100%;background:var(--paper-2);display:flex;align-items:center;gap:28px;}
+.demo{display:flex;flex-direction:column;align-items:center;gap:8px;}
+.box{width:96px;height:96px;background:#fff;border:1px solid var(--cement);position:relative;display:flex;align-items:center;justify-content:center;}
+.box svg{width:48px;height:48px;stroke:var(--graphite);fill:none;stroke-width:1.5;stroke-linecap:square;stroke-linejoin:miter;}
+.box::before{content:"";position:absolute;inset:0;background-image:linear-gradient(to right,rgba(45,79,145,0.12) 1px,transparent 1px),linear-gradient(to bottom,rgba(45,79,145,0.12) 1px,transparent 1px);background-size:8px 8px;pointer-events:none;}
+.box .grid24{position:absolute;top:2px;left:2px;font-size:8px;letter-spacing:0.16em;text-transform:uppercase;color:var(--navy);font-weight:700;}
+.label{font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--graphite-500);font-weight:700;}
+.kv{display:grid;grid-template-columns:120px 1fr;gap:8px 18px;font-size:11px;flex:1;}
+.kv .k{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--graphite-500);font-weight:700;}
+.kv .v{color:var(--graphite);font-weight:600;}
+</style></head><body><div class="wrap"><div class="demo"><div class="box"><span class="grid24">24×24</span><svg viewBox="0 0 24 24"><path d="M3 21 H21 M5 21 V11 L12 6 L19 11 V21"/><rect x="9" y="14" width="6" height="7"/></svg></div><span class="label">Сетка 24 · stroke 1.5</span></div><div class="kv"><div class="k">Grid</div><div class="v">24 × 24 px</div><div class="k">Stroke</div><div class="v">1.5 px</div><div class="k">Caps · joins</div><div class="v">square · miter</div><div class="k">Fill</div><div class="v">none — только обводка</div><div class="k">Скругления</div><div class="v">запрещены</div><div class="k">Цвет</div><div class="v">currentColor (graphite)</div></div></div></body></html>

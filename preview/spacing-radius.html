@@ -1,0 +1,15 @@
+<!doctype html>
+<!-- @dsCard group="Spacing" name="Spacing · Radius = 0" subtitle="Скругления запрещены" viewport="700x180" --><html lang="ru"><head><meta charset="utf-8"/><meta name="viewport" content="width=700"/><link rel="stylesheet" href="card.css"/><style>body{height:180px;overflow:hidden;}
+.wrap{padding:24px 28px;height:100%;display:flex;align-items:center;gap:28px;}
+.col{display:flex;flex-direction:column;gap:8px;}
+.col h4{margin:0;font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--graphite);}
+.col p{margin:0;font-size:11px;color:var(--graphite-500);line-height:1.5;max-width:34ch;}
+.box{width:64px;height:64px;background:var(--navy);}
+.bigger{flex:1;}
+.note{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--navy);font-weight:700;}
+.do{position:relative;}
+.do::after{content:"";position:absolute;inset:-6px;border:1px solid #1F8A5B;display:none;}
+.bad{position:relative;opacity:0.35;}
+.bad::after{content:"✕";position:absolute;top:-6px;right:-10px;font-size:22px;color:var(--red);font-weight:900;}
+.bad .box{border-radius:14px;}
+</style></head><body><div class="wrap"><div class="col"><div class="do"><div class="box"></div></div><span class="note">Так — можно</span></div><div class="col"><div class="bad"><div class="box"></div></div><span class="note" style="color:var(--red)">Нельзя</span></div><div class="col bigger"><h4>Углы = 0 px</h4><p>ФСП — инженерный бренд про панели. Все компоненты квадратные: кнопки, карточки, поля, бейджи. Скругления запрещены без исключений.</p></div></div></body></html>

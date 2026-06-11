@@ -1,0 +1,11 @@
+<!doctype html>
+<!-- @dsCard group="Components" name="Components · Tabs" subtitle="Сегментированный контрол с счётчиками" viewport="700x160" --><html lang="ru"><head><meta charset="utf-8"/><meta name="viewport" content="width=700"/><link rel="stylesheet" href="card.css"/><style>body{height:160px;overflow:hidden;}
+.wrap{padding:24px 28px;height:100%;background:var(--paper);display:flex;flex-direction:column;gap:18px;justify-content:center;}
+.note{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--graphite-500);font-weight:700;}
+.tabs{display:flex;}
+.tab{padding:12px 18px;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;border:1px solid var(--cement);border-right:0;background:#fff;color:var(--graphite-700);display:inline-flex;gap:8px;align-items:center;}
+.tab:last-child{border-right:1px solid var(--cement);}
+.tab.on{background:var(--graphite);color:#fff;border-color:var(--graphite);}
+.cnt{font-size:9px;color:var(--graphite-500);font-weight:600;font-feature-settings:"tnum";}
+.tab.on .cnt{color:var(--graphite-300);}
+</style></head><body><div class="wrap"><div class="note">Tabs · сегментированный контрол</div><div class="tabs"><span class="tab on">Готовые <span class="cnt">12</span></span><span class="tab">В работе <span class="cnt">7</span></span><span class="tab">Архив <span class="cnt">48</span></span><span class="tab">Все <span class="cnt">67</span></span></div></div></body></html>
